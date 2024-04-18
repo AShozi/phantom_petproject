@@ -1,13 +1,13 @@
 //
-//  HomeViewController.swift
+//  LoginViewController.swift
 //  phantomgames
 //
-//  Created by Aphiwe Shozi on 2024/04/17.
+//  Created by Aphiwe Shozi on 2024/04/18.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
