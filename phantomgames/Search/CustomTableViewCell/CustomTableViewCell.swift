@@ -38,6 +38,10 @@ class CustomTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+//    override func prepareForReuse() {
+//        <#code#>
+//    }
+//    
     static func tableViewNib() -> UINib{
         
     return UINib(nibName: identifier, bundle: nil)
