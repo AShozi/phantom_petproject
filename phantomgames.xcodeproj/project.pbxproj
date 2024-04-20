@@ -22,6 +22,7 @@
 		D853B69B2BD401D400A26090 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D853B69A2BD401D400A26090 /* SDWebImage */; };
 		D853B69D2BD401D400A26090 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D853B69C2BD401D400A26090 /* SDWebImageMapKit */; };
 		D853B69F2BD40A7800A26090 /* Imageview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D853B69E2BD40A7800A26090 /* Imageview.swift */; };
+		D853B6A12BD4176400A26090 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D853B6A02BD4176400A26090 /* HomeScreenViewController.swift */; };
 		D8B088222BD006DA00EFD094 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B088212BD006DA00EFD094 /* AppDelegate.swift */; };
 		D8B088242BD006DA00EFD094 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B088232BD006DA00EFD094 /* SceneDelegate.swift */; };
 		D8B088292BD006DA00EFD094 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8B088272BD006DA00EFD094 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		D826430C2BD11D3D00C133BB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D826430E2BD11DA900C133BB /* HomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
 		D853B69E2BD40A7800A26090 /* Imageview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imageview.swift; sourceTree = "<group>"; };
+		D853B6A02BD4176400A26090 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		D8B0881E2BD006DA00EFD094 /* phantomgames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = phantomgames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B088212BD006DA00EFD094 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8B088232BD006DA00EFD094 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				D826430E2BD11DA900C133BB /* HomeScreen.storyboard */,
+				D853B6A02BD4176400A26090 /* HomeScreenViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				D82643092BD1130800C133BB /* UIViewControllerExtension.swift in Sources */,
 				D82643052BD10F3900C133BB /* CustomTableViewCell.swift in Sources */,
 				D82642F12BD0FF8E00C133BB /* SearchGameRepository.swift in Sources */,
+				D853B6A12BD4176400A26090 /* HomeScreenViewController.swift in Sources */,
 				D82642F72BD1002D00C133BB /* SearchGameViewModel.swift in Sources */,
 				D8B088222BD006DA00EFD094 /* AppDelegate.swift in Sources */,
 				D82642F52BD0FFEE00C133BB /* SearchGameModel.swift in Sources */,
