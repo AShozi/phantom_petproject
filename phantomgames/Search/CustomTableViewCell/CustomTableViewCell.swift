@@ -18,15 +18,18 @@ class CustomTableViewCell: UITableViewCell {
     
     @IBOutlet weak var genreLabel: UILabel!
     //    @IBOutlet weak var descriptionLabel: UILabel!
-    static let identifier = "TableViewCell"
+    static let identifier = "CustomTableViewCell"
     
+//    func setUpNib(imageName: String, imageURL: String ) {
+//      nameLabel.text = imageName
+//      characterImageView.load(urlString: imageURL)
+//    }
     
     func populateWith(game:GamesModel){
         
-
         titleLabel.text = game.title
        genreLabel.text = game.genre
-        
+//        icon.imageView.load(urlString: thumbnail)
         
         
     }
@@ -38,6 +41,10 @@ class CustomTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+//    override func prepareForReuse() {
+//        <#code#>
+//    }
+//    
     static func tableViewNib() -> UINib{
         
     return UINib(nibName: identifier, bundle: nil)

@@ -13,9 +13,10 @@ private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepositor
     }
     
     private func setupTableView() {
+        tableView.register(CustomTableViewCell.tableViewNib(), forCellReuseIdentifier: CustomTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(CustomTableViewCell.tableViewNib(), forCellReuseIdentifier: CustomTableViewCell.identifier)
+ 
         
         //(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
     }
@@ -40,13 +41,17 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier) as? CustomTableViewCell else { return UITableViewCell()
         }
-        guard let game = viewModel.game(atIndex: indexPath.item) else {
+        guard let game = viewModel.game(atIndex: indexPath.row) else {
+            // preconditionFailure vs assertionFailure
             return UITableViewCell()
         }
         
         //code for displaying attribute on table , is it in the right place?
-        cell.titleLabel.text = String(viewModel.game[indexPath.row].title)
-        cell.genreLabel.text = String(viewModel.game[indexPath.row].genre)
+        cell.titleLabel.text = String(game.title)
+        cell.genreLabel.text = String(game.genre)
+      
+       
+        
         //table image using api thumbnail
         
         cell.populateWith(game: game)
