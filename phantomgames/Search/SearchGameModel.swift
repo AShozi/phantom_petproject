@@ -1,3 +1,10 @@
+//
+//  SearchGameModel.swift
+//  phantomgames
+//
+//  Created by Aphiwe Shozi on 2024/04/20.
+//
+
 import Foundation
 
 struct GamesModel: Codable {
@@ -6,13 +13,13 @@ struct GamesModel: Codable {
     let thumbnail: String
     let shortDescription: String
     let gameURL: String
-    let genre: String // Changed the type to String in debuggin
-    let platform: String // Changed the type to String in debugging
+    let genre: String
+    let platform: String
     let publisher: String
     let developer: String
     let releaseDate: String
     let freetogameProfileURL: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id, title, thumbnail
         case shortDescription = "short_description"

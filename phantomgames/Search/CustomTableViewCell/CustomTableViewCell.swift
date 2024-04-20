@@ -1,6 +1,6 @@
 //
 //  CustomTableViewCell.swift
-//  phantomgames
+//  phantomgame
 //
 //  Created by Aphiwe Shozi on 2024/04/18.
 //
@@ -8,52 +8,35 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var icon: UIImageView!
     
+    // MARK: IBOutlets
     
-    @IBOutlet weak var titleLabel: UILabel!
-//    @IBOutlet weak var play: UIButton!
-    @IBOutlet weak var play: UIButton!
+    @IBOutlet weak private var icon: UIImageView!
+    @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var play: UIButton!
+    @IBOutlet weak private var genreLabel: UILabel!
     
-    @IBOutlet weak var genreLabel: UILabel!
-    //    @IBOutlet weak var descriptionLabel: UILabel!
-    static let identifier = "CustomTableViewCell"
-    
-//    func setUpNib(imageName: String, imageURL: String ) {
-//      nameLabel.text = imageName
-//      characterImageView.load(urlString: imageURL)
-//    }
-    
-    func populateWith(game:GamesModel){
-        
-        titleLabel.text = game.title
-       genreLabel.text = game.genre
-//        icon.imageView.load(urlString: thumbnail)
-        
-        
-    }
-
-   
+    // MARK: Functions
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
-//    override func prepareForReuse() {
-//        <#code#>
-//    }
-//    
-    static func tableViewNib() -> UINib{
-        
-    return UINib(nibName: identifier, bundle: nil)
+    func populateWith(game: GamesModel) {
+        titleLabel.text = game.title
+        genreLabel.text = game.genre
     }
-
+    
+    static func tableViewNib() -> UINib {
+        return UINib(nibName: Constants.TableViewIdentifiers.customCellIdentifier, bundle: nil)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    func setUpNib(title: String, genre: String) {
+        titleLabel.text = title
+        genreLabel.text = genre
+    }
 }
