@@ -25,10 +25,10 @@ class LoginvViewController: UIViewController {
         let enteredUsername = username.text ?? ""
         let enteredPassword = password.text ?? ""
         
-        if enteredUsername == "Aphiwe" && enteredPassword == "aphiweshozi" {
+        if enteredUsername == "" && enteredPassword == "" {
             // Successful login
             //                showAlert(message: "Login successful, Welcome Back Aphiwe!")
-            performSegue(withIdentifier: "loggedInSegue", sender: Any?.self)
+            performSegue(withIdentifier: "LoggedInSegue", sender: self)
         } else {
             // Failed login
             showAlert(message: "Login failed. Either the username or the password is wrong.")
@@ -41,4 +41,5 @@ class LoginvViewController: UIViewController {
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
+
 }
