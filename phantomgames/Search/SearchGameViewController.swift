@@ -1,10 +1,21 @@
+//
+//  SearchGameViewController.swift
+//  phantomgames
+//
+//  Created by Aphiwe Shozi on 2024/04/20.
+//
+
 import UIKit
 
 class SearchGameViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
-private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepository(),
-                                                      delegate: self)
+    
+    // MARK: IBOutlets
+    
+    @IBOutlet weak private var tableView: UITableView!
+    private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepository(),
+                                                     delegate: self)
+    
+    // MARK: Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,12 +24,9 @@ private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepositor
     }
     
     private func setupTableView() {
-        tableView.register(CustomTableViewCell.tableViewNib(), forCellReuseIdentifier: CustomTableViewCell.identifier)
+        tableView.register(CustomTableViewCell.tableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customCellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
- 
-        
-        //(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
     }
 }
 
@@ -35,25 +43,20 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.gameListCount
+        viewModel.gameListCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier) as? CustomTableViewCell else { return UITableViewCell()
-        }
-        guard let game = viewModel.game(atIndex: indexPath.row) else {
-            // preconditionFailure vs assertionFailure
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewIdentifiers.customCellIdentifier) as?
+                CustomTableViewCell else {
             return UITableViewCell()
         }
         
-        //code for displaying attribute on table , is it in the right place?
-        cell.titleLabel.text = String(game.title)
-        cell.genreLabel.text = String(game.genre)
-      
-       
+        guard let game = viewModel.game(atIndex: indexPath.row) else {
+            return UITableViewCell()
+        }
         
-        //table image using api thumbnail
-        
+        cell.setUpNib(title: game.title, genre: game.genre)
         cell.populateWith(game: game)
         return cell
     }

@@ -9,37 +9,34 @@ import UIKit
 
 class LoginvViewController: UIViewController {
     
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var password: UITextField!
+    // MARK: IBOutlets
+    
+    @IBOutlet weak private var username: UITextField!
+    @IBOutlet weak private var password: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         password.isSecureTextEntry = true
-        
     }
     
+    // MARK: IBAction
     
-    @IBAction func Login(_ sender: Any) {
+    @IBAction func logingin(_ sender: Any) {
         let enteredUsername = username.text ?? ""
         let enteredPassword = password.text ?? ""
-        
         if enteredUsername == "" && enteredPassword == "" {
-            // Successful login
-            //                showAlert(message: "Login successful, Welcome Back Aphiwe!")
-            performSegue(withIdentifier: "LoggedInSegue", sender: self)
+            performSegue(withIdentifier: Constants.SegueIdentifiers.loginSegueIdentifier, sender: self)
         } else {
-            // Failed login
             showAlert(message: "Login failed. Either the username or the password is wrong.")
         }
-        
     }
+    
+    // MARK: Functions
+    
     func showAlert(message: String) {
         let alertController = UIAlertController(title: "Login", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
-
 }
