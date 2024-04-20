@@ -23,33 +23,6 @@
             </objects>
             <point key="canvasLocation" x="-121" y="1373"/>
         </scene>
-        <!--Search View Controller-->
-        <scene sceneID="XOh-4Q-Ftf">
-            <objects>
-                <viewController id="GgK-Is-qkm" customClass="SearchViewController" customModule="phantomgames" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BQ6-U7-vlk">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QAz-xq-XBB">
-                                <rect key="frame" x="0.0" y="108" width="393" height="695"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="d0t-5h-dWR"/>
-                        <constraints>
-                            <constraint firstItem="d0t-5h-dWR" firstAttribute="trailing" secondItem="QAz-xq-XBB" secondAttribute="trailing" id="Cr9-m6-wzV"/>
-                            <constraint firstItem="QAz-xq-XBB" firstAttribute="top" secondItem="d0t-5h-dWR" secondAttribute="top" id="Mya-i6-bNu"/>
-                            <constraint firstItem="QAz-xq-XBB" firstAttribute="leading" secondItem="d0t-5h-dWR" secondAttribute="leading" id="cx4-kh-VSo"/>
-                            <constraint firstItem="d0t-5h-dWR" firstAttribute="bottom" secondItem="QAz-xq-XBB" secondAttribute="bottom" id="vre-sO-mE9"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="OZC-UE-KSS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Osd-5b-faI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1494" y="1373"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="4uz-nJ-usB">
             <objects>
@@ -134,12 +107,22 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="GgK-Is-qkm" kind="relationship" relationship="rootViewController" id="GKT-NH-qWk"/>
+                        <segue destination="VNZ-W8-nhG" kind="relationship" relationship="rootViewController" id="7IS-aL-MQn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVg-Of-r6R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1495" y="563"/>
+        </scene>
+        <!--SearchGame-->
+        <scene sceneID="XTH-mq-lUG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SearchGame" id="VNZ-W8-nhG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="G45-HE-bbm"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LQw-9m-fP6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1494" y="1124"/>
         </scene>
     </scenes>
     <resources>

@@ -2,7 +2,7 @@
 //
 import Foundation
 
-typealias SearchGameResult = (Result<GamesModel, APIError>) -> Void
+typealias SearchGameResult = (Result<[GamesModel], APIError>) -> Void
 
 protocol SearchGameRepositoryType: AnyObject {
     func fetchSearchResults(completion: @escaping(SearchGameResult))

@@ -13,9 +13,10 @@ private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepositor
     }
     
     private func setupTableView() {
+        tableView.register(CustomTableViewCell.tableViewNib(), forCellReuseIdentifier: CustomTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(CustomTableViewCell.tableViewNib(), forCellReuseIdentifier: CustomTableViewCell.identifier)
+ 
         
         //(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
     }
@@ -48,6 +49,9 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
         //code for displaying attribute on table , is it in the right place?
         cell.titleLabel.text = String(game.title)
         cell.genreLabel.text = String(game.genre)
+      
+       
+        
         //table image using api thumbnail
         
         cell.populateWith(game: game)
