@@ -10,7 +10,8 @@ import Foundation
 struct Constants {
     
     struct SegueIdentifiers {
-        static let loginSegueIdentifier = "LoggedInSegue"
+//        static let loginSegueIdentifier = "LoggedInSegue"
+        static let loginSegueIdentifier = "MainSegue"
     }
     
     struct TableViewIdentifiers {

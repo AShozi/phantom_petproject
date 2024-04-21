@@ -38,7 +38,7 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Login"/>
                                 <connections>
                                     <action selector="logingin:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rwe-MU-bhP"/>
-                                    <segue destination="fUg-8v-QsJ" kind="show" identifier="LoggedInSegue" id="ORx-a0-3zO"/>
+                                    <segue destination="fUg-8v-QsJ" kind="show" identifier="MainSegue" id="ORx-a0-3zO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -54,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="129.00763358778624" y="-2.1126760563380285"/>
         </scene>
-        <!--HomeScreen-->
+        <!--Main-->
         <scene sceneID="8bj-mp-ggl">
             <objects>
-                <viewControllerPlaceholder storyboardName="HomeScreen" id="fUg-8v-QsJ" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Main" id="fUg-8v-QsJ" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="JAY-uB-iQ5"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIW-No-QEw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
