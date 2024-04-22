@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CustomTableViewCell: UITableViewCell {
     
@@ -22,21 +23,20 @@ class CustomTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func populateWith(game: GamesModel) {
+    func populateWith(game: GameModel) {
         titleLabel.text = game.title
         genreLabel.text = game.genre
+                if let imageURL = URL(string: game.thumbnail) {
+                    icon.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "placeholder"))
+                } else {
+                    icon.image = UIImage(named: "placeholder")
+                }
     }
-    
     static func tableViewNib() -> UINib {
         return UINib(nibName: Constants.TableViewIdentifiers.customCellIdentifier, bundle: nil)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
-    
-    func setUpNib(title: String, genre: String) {
-        titleLabel.text = title
-        genreLabel.text = genre
     }
 }

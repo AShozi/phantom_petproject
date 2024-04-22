@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias SearchGameResult = (Result<[GamesModel], APIError>) -> Void
+typealias SearchGameResult = (Result<[GameModel], APIError>) -> Void
 
 protocol SearchGameRepositoryType: AnyObject {
     func fetchSearchResults(completion: @escaping(SearchGameResult))
@@ -58,4 +58,3 @@ class SearchGameRepository: SearchGameRepositoryType {
         dataTask.resume()
     }
 }
-
