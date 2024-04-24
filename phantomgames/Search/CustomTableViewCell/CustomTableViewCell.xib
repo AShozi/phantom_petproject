@@ -86,9 +86,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="genreLabel" destination="AgU-Vc-Mr5" id="Dt8-q6-Z3H"/>
+                <outlet property="genreLabel" destination="AgU-Vc-Mr5" id="aMA-Zu-Dwg"/>
                 <outlet property="icon" destination="Mvc-RA-Lqh" id="7Gi-aE-rmY"/>
-                <outlet property="play" destination="6Xy-Jd-qiJ" id="wmC-qu-wtp"/>
+                <outlet property="playButton" destination="6Xy-Jd-qiJ" id="s17-cb-WKS"/>
                 <outlet property="titleLabel" destination="tac-8y-Oe2" id="gf8-hj-c4X"/>
             </connections>
             <point key="canvasLocation" x="172.51908396946564" y="35.91549295774648"/>
