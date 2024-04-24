@@ -23,7 +23,7 @@ class SearchGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        setupSearchcontroller ()
+        setupSearchcontroller()
         viewModel.fetchSearchResults()
     }
     
