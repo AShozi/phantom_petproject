@@ -10,20 +10,19 @@ import SDWebImage
 
 class SearchGameViewController: UIViewController {
    
-    // MARK: - IBOutlets
+    // MARK: IBOutlets
     
     @IBOutlet weak private var tableView: UITableView!
-    private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepository(),
-                                                     delegate: self)
-    // MARK: - UI Component
+    private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepository(), delegate: self)
+    // MARK: UI Component
     private let searchController = UISearchController(searchResultsController: nil)
     
-    // MARK: - Functions
+    // MARK: Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        setupSearchcontroller()
+        setupSearchController()
         viewModel.fetchSearchResults()
     }
     
@@ -32,35 +31,34 @@ class SearchGameViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    private func setupSearchcontroller () {
-        self.searchController.searchResultsUpdater = self
-        self.searchController.obscuresBackgroundDuringPresentation = false
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchBar.placeholder = "Search Game title"
-        
-        self.navigationItem.searchController = searchController
-        self.definesPresentationContext = false
-        self.navigationItem.hidesSearchBarWhenScrolling = false
+    private func setupSearchController () {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = Constants.SearchConstants.searchBarPlaceholder
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 }
 
-// MARK: - Search Controller Functions
+// MARK:  Search Controller Functions
 
 extension SearchGameViewController: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController)
-    { self.viewModel.updateSearchController(searchBarText: searchController.searchBar.text) }
+    { viewModel.updateSearchController(searchBarText: searchController.searchBar.text) }
 }
-// MARK: - TableView Delegate
+// MARK:  TableView Delegate
 
 extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "pageScreenSegue", sender: [indexPath.row])
+        performSegue(withIdentifier: Constants.SegueIdentifiers.pageScreenSegue, sender: [indexPath.row])
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let inSearchMode = self.viewModel.inSearchMode(searchController)
-        return inSearchMode ? self.viewModel.filteredGames.count :
-        self.viewModel.allGameList.count
+        let inSearchMode = viewModel.inSearchMode(searchController)
+        return inSearchMode ? viewModel.filteredGames.count : viewModel.allGameList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -72,17 +70,17 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
                 CustomTableViewCell else {
             return UITableViewCell()
         }
-        let inSearchMode = self.viewModel.inSearchMode(searchController)
+        let inSearchMode = viewModel.inSearchMode(searchController)
         
-        let game = inSearchMode ? self.viewModel.filteredGames[indexPath.row] :
-        self.viewModel.allGameList[indexPath.row]
+        let game = inSearchMode ? viewModel.filteredGames[indexPath.row] :
+        viewModel.allGameList[indexPath.row]
         
         cell.populateWith(game: game)
         return cell
     }
 }
 
-// MARK: - ViewModel Delegate
+// MARK:  ViewModel Delegate
 
 extension SearchGameViewController: ViewModelDelegate {
     

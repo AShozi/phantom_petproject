@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GameModel: Codable {
+struct Game: Codable {
     let id: Int
     let title: String
     let thumbnail: String

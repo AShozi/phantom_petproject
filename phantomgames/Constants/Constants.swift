@@ -6,15 +6,24 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     
     struct SegueIdentifiers {
-//        static let loginSegueIdentifier = "LoggedInSegue"
+
         static let loginSegueIdentifier = "MainSegue"
+        static let pageScreenSegue = "pageScreenSegue"
+
     }
     
     struct TableViewIdentifiers {
         static let customCellIdentifier = "CustomTableViewCell"
     }
+    struct ImageConstants {
+        static let placeholder = UIImage(named: "placeholder")
+    }
+    struct SearchConstants {
+          static let searchBarPlaceholder = "Search Game title"
+      }
 }

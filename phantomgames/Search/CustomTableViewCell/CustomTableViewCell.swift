@@ -14,8 +14,8 @@ class CustomTableViewCell: UITableViewCell {
     
     @IBOutlet weak private var icon: UIImageView!
     @IBOutlet weak private var titleLabel: UILabel!
-    @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak private var playButton: UIButton!
+    @IBOutlet weak private var genreLabel: UILabel!
     
     // MARK: Variables
     
@@ -25,27 +25,27 @@ class CustomTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(playButtonTap), for: .touchUpInside)
     }
     
-    func populateWith(game: GameModel) {
+    func populateWith(game: Game) {
         titleLabel.text = game.title
         genreLabel.text = game.genre
                 if let imageURL = URL(string: game.thumbnail) {
-                    icon.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "placeholder"))
+                    icon.sd_setImage(with: imageURL, placeholderImage: Constants.ImageConstants.placeholder)
                 } else {
-                    icon.image = UIImage(named: "placeholder")
+                    icon.image = Constants.ImageConstants.placeholder
                 }
              if let gameURL = URL(string: game.gameURL) {
                  self.gameURL = gameURL
              }
     }
-     @objc private func playButtonTapped() {
-   
-         if let gameURL = self.gameURL {
-             UIApplication.shared.open(gameURL)
-         }
-     }
+    
+    @IBAction func playButtonTap(_ sender: Any) {
+        if let gameURL = self.gameURL {
+            UIApplication.shared.open(gameURL)
+        }
+    }
      
     static func tableViewNib() -> UINib {
         return UINib(nibName: Constants.TableViewIdentifiers.customCellIdentifier, bundle: nil)
