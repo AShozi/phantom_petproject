@@ -16,7 +16,6 @@ protocol SearchGameRepositoryType: AnyObject {
 class SearchGameRepository: SearchGameRepositoryType {
     
     func fetchSearchResults(completion: @escaping (SearchGameResult)) {
-        let url = Endpoints.search
-        URLSession.shared.request(endpoint: url, method: .GET, completion: completion)
+        URLSession.shared.request(endpoint:Constants.Endpoints.search, method: .GET, completion: completion)
     }
 }

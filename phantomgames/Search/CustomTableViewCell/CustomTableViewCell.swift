@@ -8,6 +8,8 @@
 import UIKit
 import SDWebImage
 
+// MARK: UI Components
+
 class CustomTableViewCell: UITableViewCell {
     
     // MARK: IBOutlets

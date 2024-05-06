@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 class SearchGameViewController: UIViewController {
-   
+    
     // MARK: IBOutlets
     
     @IBOutlet weak private var tableView: UITableView!
@@ -46,8 +46,9 @@ class SearchGameViewController: UIViewController {
 
 extension SearchGameViewController: UISearchResultsUpdating {
     
-    func updateSearchResults(for searchController: UISearchController)
-    { viewModel.updateSearchController(searchBarText: searchController.searchBar.text) }
+    func updateSearchResults(for searchController: UISearchController){
+        viewModel.updateSearchController(searchBarText: searchController.searchBar.text)
+    }
 }
 // MARK:  TableView Delegate
 
@@ -62,9 +63,9 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-     85
+        85
     }
-  
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewIdentifiers.customCellIdentifier) as?
                 CustomTableViewCell else {
