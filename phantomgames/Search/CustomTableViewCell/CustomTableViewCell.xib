@@ -65,7 +65,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Play"/>
                                         <connections>
-                                            <action selector="playButtonTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LxN-la-Grg"/>
+                                            <action selector="playButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LxN-la-Grg"/>
                                         </connections>
                                     </button>
                                 </subviews>
