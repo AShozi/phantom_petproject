@@ -27,7 +27,7 @@ class CustomTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        playButton.addTarget(self, action: #selector(playButtonTap), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
     }
     
     func populateWith(game: Game) {
@@ -43,14 +43,14 @@ class CustomTableViewCell: UITableViewCell {
              }
     }
     
-    @IBAction func playButtonTap(_ sender: Any) {
+    @IBAction func playButtonTapped(_ sender: Any) {
         if let gameURL = self.gameURL {
             UIApplication.shared.open(gameURL)
         }
     }
      
     static func tableViewNib() -> UINib {
-        return UINib(nibName: Constants.TableViewIdentifiers.customCellIdentifier, bundle: nil)
+        UINib(nibName: Constants.TableViewIdentifiers.customCellIdentifier, bundle: nil)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

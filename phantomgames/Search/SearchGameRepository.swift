@@ -1,4 +1,3 @@
-
 //
 //  SearchGameRepositoryType.swift
 //  phantomgames
@@ -16,6 +15,6 @@ protocol SearchGameRepositoryType: AnyObject {
 class SearchGameRepository: SearchGameRepositoryType {
     
     func fetchSearchResults(completion: @escaping (SearchGameResult)) {
-        URLSession.shared.request(endpoint:Constants.Endpoints.search, method: .GET, completion: completion)
+        URLSession.shared.request(endpoint: Constants.Endpoints.search, method: .GET, completion: completion)
     }
 }
