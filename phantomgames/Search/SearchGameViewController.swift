@@ -6,20 +6,23 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SearchGameViewController: UIViewController {
     
     // MARK: IBOutlets
     
     @IBOutlet weak private var tableView: UITableView!
-    private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepository(),
-                                                     delegate: self)
+    private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepository(), delegate: self)
+    // MARK: UI Component
+    private let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupSearchController()
         viewModel.fetchSearchResults()
     }
     
@@ -28,22 +31,39 @@ class SearchGameViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    private func setupSearchController () {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = Constants.SearchConstants.searchBarPlaceholder
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
 }
 
-// MARK: - TableView Delegate
+// MARK:  Search Controller Functions
+
+extension SearchGameViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController){
+        viewModel.updateSearchController(searchBarText: searchController.searchBar.text)
+    }
+}
+// MARK:  TableView Delegate
 
 extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "pageScreenSegue", sender: [indexPath.row])
+        performSegue(withIdentifier: Constants.SegueIdentifiers.pageScreenSegue, sender: [indexPath.row])
     }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.gameListCount
+        let inSearchMode = viewModel.inSearchMode(searchController)
+        return inSearchMode ? viewModel.filteredGames.count : viewModel.allGameList.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        85
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,18 +71,17 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
                 CustomTableViewCell else {
             return UITableViewCell()
         }
+        let inSearchMode = viewModel.inSearchMode(searchController)
         
-        guard let game = viewModel.game(atIndex: indexPath.row) else {
-            return UITableViewCell()
-        }
+        let game = inSearchMode ? viewModel.filteredGames[indexPath.row] :
+        viewModel.allGameList[indexPath.row]
         
-        cell.setUpNib(title: game.title, genre: game.genre)
         cell.populateWith(game: game)
         return cell
     }
 }
 
-// MARK: - ViewModel Delegate
+// MARK:  ViewModel Delegate
 
 extension SearchGameViewController: ViewModelDelegate {
     

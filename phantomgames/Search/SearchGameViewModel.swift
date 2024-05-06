@@ -1,4 +1,11 @@
-import Foundation
+//
+//  SearchGameViewModel.swift
+//  phantomgames
+//
+//  Created by Aphiwe Shozi on 2024/04/20.
+//
+
+import UIKit
 
 protocol ViewModelDelegate: AnyObject {
     func reloadView()
@@ -7,32 +14,52 @@ protocol ViewModelDelegate: AnyObject {
 
 class SearchGameViewModel {
     
+    // MARK: Variables
+    
     private var repository: SearchGameRepositoryType?
     private weak var delegate: ViewModelDelegate?
-    private(set) var gameList: [GamesModel] = []
+    private(set) var allGameList: [Game] = []
+    private(set) var filteredGames: [Game] = []
     
-    init(repository: SearchGameRepositoryType,
-         delegate: ViewModelDelegate) {
-        self.repository = repository
-        self.delegate = delegate
-    }
+    init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) { self.repository =
+        repository;self.delegate = delegate }
+    
+    // MARK: Computed Proterties
     
     var gameListCount: Int {
-        return gameList.count
+        allGameList.count
     }
     
+    // MARK: Functions
     
+    func game(atIndex: Int) -> Game? {
+        allGameList[atIndex]
+    }
     
     func fetchSearchResults() {
-        repository?.fetchSearchResults(completion: { [weak self] result in
+        repository?.fetchSearchResults { [weak self] result in
             switch result {
             case .success(let searchResults):
-                self?.gameList = searchResults.results
+                self?.allGameList = searchResults
                 self?.delegate?.reloadView()
             case .failure(let error):
                 self?.delegate?.show(error: error.rawValue)
             }
-        })
+        }
+    }
+    // MARK: - Search Functions
+    func inSearchMode(_ searchController: UISearchController) -> Bool {
+        let isActive = searchController.isActive
+        let searchText = searchController.searchBar.text ?? ""
+        return isActive && !searchText.isEmpty
+    }
+    
+    func updateSearchController(searchBarText: String?) {
+        filteredGames = allGameList
+        
+        if let searchText = searchBarText?.lowercased(), !searchText.isEmpty {
+            filteredGames = allGameList.filter { $0.title.lowercased().contains(searchText) }
+        }
+        delegate?.reloadView()
     }
 }
-

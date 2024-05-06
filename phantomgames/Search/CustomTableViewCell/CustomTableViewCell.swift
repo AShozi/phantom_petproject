@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import SDWebImage
+
+// MARK: UI Components
 
 class CustomTableViewCell: UITableViewCell {
     
@@ -13,30 +16,44 @@ class CustomTableViewCell: UITableViewCell {
     
     @IBOutlet weak private var icon: UIImageView!
     @IBOutlet weak private var titleLabel: UILabel!
-    @IBOutlet weak private var play: UIButton!
+    @IBOutlet weak private var playButton: UIButton!
     @IBOutlet weak private var genreLabel: UILabel!
+    
+    // MARK: Variables
+    
+    private var gameURL: URL?
     
     // MARK: Functions
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
     }
     
-    func populateWith(game: GamesModel) {
+    func populateWith(game: Game) {
         titleLabel.text = game.title
         genreLabel.text = game.genre
+                if let imageURL = URL(string: game.thumbnail) {
+                    icon.sd_setImage(with: imageURL, placeholderImage: Constants.ImageConstants.placeholder)
+                } else {
+                    icon.image = Constants.ImageConstants.placeholder
+                }
+             if let gameURL = URL(string: game.gameURL) {
+                 self.gameURL = gameURL
+             }
     }
     
+    @IBAction func playButtonTapped(_ sender: Any) {
+        if let gameURL = self.gameURL {
+            UIApplication.shared.open(gameURL)
+        }
+    }
+     
     static func tableViewNib() -> UINib {
-        return UINib(nibName: Constants.TableViewIdentifiers.customCellIdentifier, bundle: nil)
+        UINib(nibName: Constants.TableViewIdentifiers.customCellIdentifier, bundle: nil)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
-    
-    func setUpNib(title: String, genre: String) {
-        titleLabel.text = title
-        genreLabel.text = genre
     }
 }
