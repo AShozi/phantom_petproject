@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ViewModelDelegate: AnyObject {
+protocol SearchGameViewModelDelegate: AnyObject {
     func reloadView()
     func show(error: String)
 }
@@ -17,11 +17,11 @@ class SearchGameViewModel {
     // MARK: Variables
     
     private var repository: SearchGameRepositoryType?
-    private weak var delegate: ViewModelDelegate?
+    private weak var delegate: SearchGameViewModelDelegate?
     private(set) var allGameList: [Game] = []
     private(set) var filteredGames: [Game] = []
     
-    init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) { self.repository =
+    init(repository: SearchGameRepositoryType, delegate: SearchGameViewModelDelegate) { self.repository =
         repository;self.delegate = delegate }
     
     // MARK: Computed Proterties
