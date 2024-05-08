@@ -14,7 +14,6 @@ final class SearchGameViewModelTests: XCTestCase {
     var mockRepository: MockSearchGameRepository!
     var mockDelegate: MockViewModelDelegate!
     
-    
     override func setUp() {
         mockRepository = MockSearchGameRepository()
         mockDelegate = MockViewModelDelegate()
