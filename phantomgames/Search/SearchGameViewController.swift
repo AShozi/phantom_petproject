@@ -83,7 +83,7 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK:  ViewModel Delegate
 
-extension SearchGameViewController: SearchGameViewModelDelegate {
+extension SearchGameViewController: ViewModelDelegate {
     
     func reloadView() {
         tableView.reloadData()

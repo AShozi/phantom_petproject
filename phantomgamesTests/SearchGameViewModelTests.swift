@@ -20,6 +20,13 @@ final class SearchGameViewModelTests: XCTestCase {
         mockDelegate = MockViewModelDelegate()
         viewModel = SearchGameViewModel(repository: mockRepository, delegate: mockDelegate)
     }
+    
+    override func tearDown() {
+        mockRepository = nil
+        mockDelegate = nil
+        viewModel = nil
+        super.tearDown()
+    }
     class MockSearchGameRepository: SearchGameRepositoryType {
         var shouldReturnError = false
         let mockGameList = [
@@ -27,7 +34,7 @@ final class SearchGameViewModelTests: XCTestCase {
             Game(id: 2, title: "game2", thumbnail: "Thumbnail2", shortDescription: "shortDes2", gameURL: "URL2", genre: "genre2", platform: "platform2", publisher: "publisher2", developer: "dev2", releaseDate: "Date2", freetogameProfileURL: "Profile2")
         ]
         
-        func fetchSearchResults(completion: @escaping (phantomgames.SearchGameResult)) {
+        func fetchSearchResults(completion: @escaping (SearchGameResult)) {
             if shouldReturnError {
                 completion(.failure(APIError.serverError))
             }
@@ -37,7 +44,7 @@ final class SearchGameViewModelTests: XCTestCase {
         }
     }
     
-    class MockViewModelDelegate: SearchGameViewModelDelegate {
+    class MockViewModelDelegate: ViewModelDelegate {
         var showErrorCalled = false
         var errorMessage: String?
         
@@ -61,7 +68,7 @@ final class SearchGameViewModelTests: XCTestCase {
         let expectedResult = Game(id: 1, title: "game1", thumbnail: "Thumbnail1", shortDescription: "shortDes1", gameURL: "URL1", genre: "genre1", platform: "platform1", publisher: "publisher1", developer: "dev1", releaseDate: "Date1", freetogameProfileURL: "Profile1").title
         let result = viewModel.game(atIndex: 0)?.title
         XCTAssertNotNil(result)
-        XCTAssertEqual(result, expectedResult)
+        XCTAssertEqual(result, "game1")
     }
     
     func testFetchSearchResultSuccess() {
