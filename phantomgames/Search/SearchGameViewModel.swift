@@ -48,6 +48,7 @@ class SearchGameViewModel {
         }
     }
     // MARK: - Search Functions
+    
     func inSearchMode(_ searchController: UISearchController) -> Bool {
         let isActive = searchController.isActive
         let searchText = searchController.searchBar.text ?? ""
