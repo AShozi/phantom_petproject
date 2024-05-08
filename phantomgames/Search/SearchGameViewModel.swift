@@ -21,8 +21,8 @@ class SearchGameViewModel {
     private(set) var allGameList: [Game] = []
     private(set) var filteredGames: [Game] = []
     
-    init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) { self.repository =
-        repository;self.delegate = delegate }
+    init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) { 
+        self.repository = repository;self.delegate = delegate }
     
     // MARK: Computed Proterties
     
@@ -48,6 +48,7 @@ class SearchGameViewModel {
         }
     }
     // MARK: - Search Functions
+    
     func inSearchMode(_ searchController: UISearchController) -> Bool {
         let isActive = searchController.isActive
         let searchText = searchController.searchBar.text ?? ""

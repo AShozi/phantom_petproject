@@ -30,7 +30,18 @@
 		D8B0882B2BD006DB00EFD094 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8B0882A2BD006DB00EFD094 /* Assets.xcassets */; };
 		D8B0882E2BD006DB00EFD094 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8B0882C2BD006DB00EFD094 /* LaunchScreen.storyboard */; };
 		D8D1B2AC2BE3928D00C272C9 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1B2AB2BE3928D00C272C9 /* APIHandler.swift */; };
+		D8D1B2C82BE92F3F00C272C9 /* SearchGameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1B2C72BE92F3F00C272C9 /* SearchGameViewModelTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D8D1B2C22BE92EE200C272C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8B088162BD006DA00EFD094 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8B0881D2BD006DA00EFD094;
+			remoteInfo = phantomgames;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D8094B182BD932FC00EE19ED /* SearchGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGameViewModel.swift; sourceTree = "<group>"; };
@@ -56,6 +67,8 @@
 		D8B0882D2BD006DB00EFD094 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8B0882F2BD006DB00EFD094 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8D1B2AB2BE3928D00C272C9 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		D8D1B2BE2BE92EE200C272C9 /* phantomgamesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = phantomgamesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8D1B2C72BE92F3F00C272C9 /* SearchGameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGameViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +78,13 @@
 			files = (
 				D853B69D2BD401D400A26090 /* SDWebImageMapKit in Frameworks */,
 				D853B69B2BD401D400A26090 /* SDWebImage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8D1B2BB2BE92EE200C272C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				D8B088202BD006DA00EFD094 /* phantomgames */,
+				D8D1B2BF2BE92EE200C272C9 /* phantomgamesTests */,
 				D8B0881F2BD006DA00EFD094 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -149,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				D8B0881E2BD006DA00EFD094 /* phantomgames.app */,
+				D8D1B2BE2BE92EE200C272C9 /* phantomgamesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,6 +202,14 @@
 			path = UserInterfaces;
 			sourceTree = "<group>";
 		};
+		D8D1B2BF2BE92EE200C272C9 /* phantomgamesTests */ = {
+			isa = PBXGroup;
+			children = (
+				D8D1B2C72BE92F3F00C272C9 /* SearchGameViewModelTests.swift */,
+			);
+			path = phantomgamesTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -205,6 +235,24 @@
 			productReference = D8B0881E2BD006DA00EFD094 /* phantomgames.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D8D1B2BD2BE92EE200C272C9 /* phantomgamesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8D1B2C42BE92EE200C272C9 /* Build configuration list for PBXNativeTarget "phantomgamesTests" */;
+			buildPhases = (
+				D8D1B2BA2BE92EE200C272C9 /* Sources */,
+				D8D1B2BB2BE92EE200C272C9 /* Frameworks */,
+				D8D1B2BC2BE92EE200C272C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8D1B2C32BE92EE200C272C9 /* PBXTargetDependency */,
+			);
+			name = phantomgamesTests;
+			productName = phantomgamesTests;
+			productReference = D8D1B2BE2BE92EE200C272C9 /* phantomgamesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -217,6 +265,10 @@
 				TargetAttributes = {
 					D8B0881D2BD006DA00EFD094 = {
 						CreatedOnToolsVersion = 15.2;
+					};
+					D8D1B2BD2BE92EE200C272C9 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = D8B0881D2BD006DA00EFD094;
 					};
 				};
 			};
@@ -237,6 +289,7 @@
 			projectRoot = "";
 			targets = (
 				D8B0881D2BD006DA00EFD094 /* phantomgames */,
+				D8D1B2BD2BE92EE200C272C9 /* phantomgamesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -253,6 +306,13 @@
 				D82643062BD10F3900C133BB /* CustomTableViewCell.xib in Resources */,
 				D826430B2BD11D2A00C133BB /* LoginScreen.storyboard in Resources */,
 				D8B088292BD006DA00EFD094 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8D1B2BC2BE92EE200C272C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +361,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D8D1B2BA2BE92EE200C272C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8D1B2C82BE92F3F00C272C9 /* SearchGameViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D8D1B2C32BE92EE200C272C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8B0881D2BD006DA00EFD094 /* phantomgames */;
+			targetProxy = D8D1B2C22BE92EE200C272C9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D8B088272BD006DA00EFD094 /* Main.storyboard */ = {
@@ -510,6 +586,44 @@
 			};
 			name = Release;
 		};
+		D8D1B2C52BE92EE200C272C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y55S9X92UF;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dvtsoftware.com.phantomgamesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/phantomgames.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/phantomgames";
+			};
+			name = Debug;
+		};
+		D8D1B2C62BE92EE200C272C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y55S9X92UF;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dvtsoftware.com.phantomgamesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/phantomgames.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/phantomgames";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -527,6 +641,15 @@
 			buildConfigurations = (
 				D8B088332BD006DB00EFD094 /* Debug */,
 				D8B088342BD006DB00EFD094 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8D1B2C42BE92EE200C272C9 /* Build configuration list for PBXNativeTarget "phantomgamesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8D1B2C52BE92EE200C272C9 /* Debug */,
+				D8D1B2C62BE92EE200C272C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
