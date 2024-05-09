@@ -15,6 +15,7 @@ final class SearchGameViewModelTests: XCTestCase {
     var mockDelegate: MockViewModelDelegate!
     
     override func setUp() {
+        super.setUp()
         mockRepository = MockSearchGameRepository()
         mockDelegate = MockViewModelDelegate()
         viewModel = SearchGameViewModel(repository: mockRepository, delegate: mockDelegate)
@@ -63,8 +64,6 @@ final class SearchGameViewModelTests: XCTestCase {
     
     func testGameAtIndex () {
         viewModel.fetchSearchResults()
-        
-        let expectedResult = Game(id: 1, title: "game1", thumbnail: "Thumbnail1", shortDescription: "shortDes1", gameURL: "URL1", genre: "genre1", platform: "platform1", publisher: "publisher1", developer: "dev1", releaseDate: "Date1", freetogameProfileURL: "Profile1").title
         let result = viewModel.game(atIndex: 0)?.title
         XCTAssertNotNil(result)
         XCTAssertEqual(result, "game1")
