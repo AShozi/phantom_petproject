@@ -22,7 +22,7 @@ class SearchGameViewModel {
     private(set) var filteredGames: [Game] = []
     
     init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) { 
-   feature/UnitTests
+   
         self.repository = repository
         self.delegate = delegate }
   
