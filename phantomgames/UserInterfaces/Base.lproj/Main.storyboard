@@ -22,7 +22,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="2mt-Se-fF2">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="IQs-9k-TNk" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="IQs-9k-TNk" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="97s-KT-9vF"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9C1-uS-MYw">
@@ -43,7 +43,7 @@
         <!--Welcome-->
         <scene sceneID="mWa-pu-sJQ">
             <objects>
-                <navigationController title="Welcome" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="overFullScreen" id="LQ5-Vn-8K3" sceneMemberID="viewController">
+                <navigationController title="Welcome" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="LQ5-Vn-8K3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house" id="cb7-gd-c2P"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="9RZ-Xe-W9D">
@@ -76,7 +76,7 @@
         <!--Search-->
         <scene sceneID="HPo-dL-hlm">
             <objects>
-                <navigationController title="Search" automaticallyAdjustsScrollViewInsets="NO" id="B8m-HG-5oh" sceneMemberID="viewController">
+                <navigationController title="Search" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="B8m-HG-5oh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="JeI-jT-4PO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="1p3-ON-JIc">
@@ -95,7 +95,7 @@
         <!--Account-->
         <scene sceneID="vbt-ST-XLB">
             <objects>
-                <viewController id="gCi-HK-gWl" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="gCi-HK-gWl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rlh-AT-K7O">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

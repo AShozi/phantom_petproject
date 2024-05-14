@@ -9,78 +9,66 @@ import UIKit
 
 class HomeScreenViewController: UIViewController{
     
-    var data = [ToDo]()
-    
     @IBOutlet weak var HomeCollectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
+    private lazy var viewModel = HomeScreenViewModel(repository: HomeScreenRepository(), delegate: self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //method calling
-        fetchingAPIImages(URL: "https://www.freetogame.com/api/games"){ result in
-            self.data = result
-            DispatchQueue.main.async {
-                self.HomeCollectionView.reloadData()
-            }
-        }
+        setupTableView()
+        viewModel.fetchHomeResults()
     }
-    
-    func fetchingAPIImages(URL Url:String, completion: @escaping ([ToDo]) -> Void){
-            let url = URL(string: Url)
-            let session = URLSession.shared
-            let dataTask = session.dataTask(with: url!) {data, response, error in
-                do {
-                    let fetchingData =
-                    try JSONDecoder().decode([ToDo].self, from: data!)
-                    completion(fetchingData)
-                } catch {
-                    print("Parsing error")
-                }
-                
-            }
-            dataTask.resume()
-        }
-        
+    private func setupTableView() {
+        tableView.register(CustomTableViewCell.tableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customCellIdentifier)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
+}
     
     extension HomeScreenViewController: UICollectionViewDataSource{
         public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return data.count
+            return viewModel.allGameList.count
         }
         
         public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as!CustomCollectionViewCell
             
-            let apiData:ToDo
-            apiData = data[indexPath.item]
-            if let thumbnailURL = URL(string: apiData.thumbnail) {
+            let game = viewModel.game(atIndex: indexPath.item)
+            if let thumbnailURL = URL(string: game?.thumbnail ?? "" ) {
                        cell.apiImage.downloaded(from: thumbnailURL)
                    }
-            cell.Gtitle.text = apiData.title
+            cell.Gtitle.text = game?.title
             return cell
         }
     }
-
-extension UIImageView {
-    func downloaded(from url: URL) {
-        
-        URLSession.shared.dataTask(with: url) {data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-               let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-            else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = image
-                
-            }
-            
-        } .resume()
-        
+extension HomeScreenViewController: UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.allGameList.count
     }
-    func downloaded(from link: String){
-        guard let url = URL (string: link) else {return}
-        downloaded(from: url)
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewIdentifiers.customCellIdentifier) as? CustomTableViewCell
+         else {
+            return UITableViewCell()
+        }
+        let game = viewModel.allGameList[indexPath.row]
+
+        cell.populateWith(game: game)
+        return cell
+    }
+}
+
+// MARK:  ViewModel Delegate
+
+extension HomeScreenViewController: HomeScreenViewModelDelegate {
+    
+    func reloadView() {
+        HomeCollectionView.reloadData()
+        tableView.reloadData()
+    }
+    
+    func show(error: String) {
+        displayAlert(title: "Error", message: error, buttonTitle: "Ok")
     }
 }

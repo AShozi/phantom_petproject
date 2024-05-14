@@ -21,7 +21,7 @@ class SearchGameViewModel {
     private(set) var allGameList: [Game] = []
     private(set) var filteredGames: [Game] = []
     
-    init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) { 
+    init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) {
         self.repository = repository
         self.delegate = delegate }
   
