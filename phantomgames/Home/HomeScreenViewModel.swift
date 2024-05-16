@@ -14,6 +14,8 @@ protocol HomeScreenViewModelDelegate: AnyObject {
 
 class HomeScreenViewModel {
     
+    // MARK: Variables
+    
     private var repository: HomeScreenRepositoryType?
     private weak var delegate: HomeScreenViewModelDelegate?
     private(set) var allGameList: [Game] = []
@@ -27,6 +29,8 @@ class HomeScreenViewModel {
     var gameListCount: Int {
         allGameList.count
     }
+    
+    // MARK: Functions
     
     func game(atIndex: Int) -> Game? {
         allGameList[atIndex]

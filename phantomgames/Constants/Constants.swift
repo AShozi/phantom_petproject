@@ -12,10 +12,11 @@ struct Constants {
     struct SegueIdentifiers {
         
         static let loginSegueIdentifier = "MainSegue"
-        static let pageScreenSegue = "pageScreenSegue"
+        static let GameDetailScreenSegue = "GameDetailScreenSegue"
     }
     struct TableViewIdentifiers {
         static let customCellIdentifier = "CustomTableViewCell"
+        static let customHomeCellIdentifier = "CustomHomeTableViewCell"
     }
     struct ImageConstants {
         static let placeholder = UIImage(named: "placeholder")
@@ -25,5 +26,15 @@ struct Constants {
     }
     struct Endpoints {
         static let search = "https://www.freetogame.com/api/games"
+        static let home = "https://www.freetogame.com/api/games?sort-by=alphabetical"
     }
+    
+    struct CategoryEndpoints {
+        static let shooter = "https://www.freetogame.com/api/games/games?category=shooter"
+        static let stratergy = "https://www.freetogame.com/api/games/games?category=strategy"
+        static let racing = "https://www.freetogame.com/api/games/games?category=racing"
+        static let card = "https://www.freetogame.com/api/games/games?category=card"
+        static let zombie = "https://www.freetogame.com/api/games/games?category=zombie"
+    }
+    
 }

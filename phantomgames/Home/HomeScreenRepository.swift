@@ -25,9 +25,6 @@ class HomeScreenRepository: HomeScreenRepositoryType {
         URLSession.shared.request(endpoint: Constants.Endpoints.search, method: .GET, completion: completion)
     }
     
-    
-    
-    
 }
 
 

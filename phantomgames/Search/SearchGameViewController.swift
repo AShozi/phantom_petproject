@@ -55,7 +55,7 @@ extension SearchGameViewController: UISearchResultsUpdating {
 extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Constants.SegueIdentifiers.pageScreenSegue, sender: [indexPath.row])
+        performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: [indexPath.row])
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let inSearchMode = viewModel.inSearchMode(searchController)

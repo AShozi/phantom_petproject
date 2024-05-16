@@ -11,6 +11,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var apiImage: UIImageView!
     
-    @IBOutlet weak var Gtitle: UILabel!
+    @IBOutlet weak var Gametitle: UILabel!
     
 }
