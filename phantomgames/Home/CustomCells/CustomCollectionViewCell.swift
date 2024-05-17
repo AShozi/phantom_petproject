@@ -9,8 +9,8 @@ import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var apiImage: UIImageView!
+    @IBOutlet weak private var apiImage: UIImageView!
     
-    @IBOutlet weak var Gametitle: UILabel!
+    @IBOutlet weak private var Gametitle: UILabel!
     
 }
