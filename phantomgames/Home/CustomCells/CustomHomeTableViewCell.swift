@@ -10,6 +10,7 @@ import SDWebImage
 
 class CustomHomeTableViewCell: UITableViewCell {
 
+    // MARK: IBOutlets
     
     @IBOutlet weak var icon: UIImageView!
     
@@ -17,8 +18,11 @@ class CustomHomeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var playButton: UIButton!
     
+    // MARK: Variables
     
     private var gameURL: URL?
+    
+    // MARK: Functions
     
     override func awakeFromNib() {
         super.awakeFromNib()
