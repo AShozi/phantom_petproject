@@ -47,4 +47,7 @@ class HomeScreenViewModel {
         }
         
     }
+    func fetchGameDetail(id: Int, completion: @escaping (GameDetailResult)) {
+        repository?.fetchGameDetailResults(id: id, completion: completion)
+    }
 }

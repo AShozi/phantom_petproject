@@ -6,10 +6,12 @@
 //
 import Foundation
 typealias HomeScreenResult = (Result<[Game], APIError>) -> Void
+typealias GameDetailResult = (Result<GameDetail, APIError>) -> Void
 
 protocol HomeScreenRepositoryType: AnyObject {
     func fetchAPIImage(completion: @escaping(HomeScreenResult))
     func fetchHomeResults(completion: @escaping (HomeScreenResult))
+    func fetchGameDetailResults(id: Int, completion: @escaping (GameDetailResult))
 }
 
 class HomeScreenRepository: HomeScreenRepositoryType {
@@ -20,5 +22,9 @@ class HomeScreenRepository: HomeScreenRepositoryType {
     }
     func fetchHomeResults(completion: @escaping (HomeScreenResult)) {
         URLSession.shared.request(endpoint: Constants.Endpoints.search, method: .GET, completion: completion)
+    }
+    func fetchGameDetailResults(id: Int, completion: @escaping (GameDetailResult))  -> Void {
+        let urlString = Constants.Endpoints.gameDetail(id: id)
+        URLSession.shared.request(endpoint: urlString, method: .GET, completion: completion)
     }
 }

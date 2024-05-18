@@ -51,7 +51,22 @@ extension HomeScreenViewController: UICollectionViewDataSource{
         return cell
     }
     
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: indexPath)
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        
+        guard let game = viewModel.game(atIndex: indexPath.item) else { return }
+        
+        viewModel.fetchGameDetail(id: game.id) { [weak self] result in
+            switch result {
+            case .success(let gameDetail):
+                DispatchQueue.main.async {
+                    self?.performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameDetail)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.show(error: error.localizedDescription)
+                }
+            }
+        }
     }
 }
 
@@ -60,11 +75,11 @@ extension HomeScreenViewController: UICollectionViewDataSource{
 extension HomeScreenViewController: UITableViewDelegate,UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-       3
+        3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       viewModel.allGameList.count
+        viewModel.allGameList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,6 +98,8 @@ extension HomeScreenViewController: UITableViewDelegate,UITableViewDataSource {
 
 extension HomeScreenViewController: HomeScreenViewModelDelegate {
     
+    // MARK:  functions
+    
     func reloadView() {
         HomeCollectionView.reloadData()
         tableView.reloadData()
@@ -90,5 +107,13 @@ extension HomeScreenViewController: HomeScreenViewModelDelegate {
     
     func show(error: String) {
         displayAlert(title: "Error", message: error, buttonTitle: "Ok")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
+           let destinationVC = segue.destination as? GameDetailViewController,
+           let gameDetail = sender as? GameDetail {
+            destinationVC.gameDetail = gameDetail
+        }
     }
 }
