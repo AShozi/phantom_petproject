@@ -11,8 +11,8 @@ class HomeScreenViewController: UIViewController{
     
     // MARK: IBOutlets
     
-    @IBOutlet weak var HomeCollectionView: UICollectionView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var HomeCollectionView: UICollectionView!
+    @IBOutlet weak private var tableView: UITableView!
     
     // MARK: UI Components
     private lazy var viewModel = HomeScreenViewModel(repository: HomeScreenRepository(), delegate: self)
@@ -29,22 +29,25 @@ class HomeScreenViewController: UIViewController{
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    private func setupCollectionView() {
+        HomeCollectionView.dataSource = self
+        HomeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+    }
 }
 // MARK:  Collection View
 
 extension HomeScreenViewController: UICollectionViewDataSource{
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.allGameList.count
+        viewModel.allGameList.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as!CustomCollectionViewCell
         
-        let game = viewModel.game(atIndex: indexPath.item)
-        if let thumbnailURL = URL(string: game?.thumbnail ?? "" ) {
-            cell.apiImage.downloaded(from: thumbnailURL)
+        if let game = viewModel.game(atIndex: indexPath.item) {
+            cell.ConfigCellWith(game: game)
         }
-        cell.Gametitle.text = game?.title
         return cell
     }
     
@@ -57,11 +60,11 @@ extension HomeScreenViewController: UICollectionViewDataSource{
 extension HomeScreenViewController: UITableViewDelegate,UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+       3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.allGameList.count
+       viewModel.allGameList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,7 +75,6 @@ extension HomeScreenViewController: UITableViewDelegate,UITableViewDataSource {
         
         let game = viewModel.allGameList[indexPath.row]
         cell.populateWith(game: game)
-        
         return cell
     }
 }

@@ -13,9 +13,7 @@ class CustomHomeTableViewCell: UITableViewCell {
     // MARK: IBOutlets
     
     @IBOutlet weak private var icon: UIImageView!
-    
     @IBOutlet weak private var titleLabel: UILabel!
-    
     @IBOutlet weak private var playButton: UIButton!
     
     // MARK: Variables
@@ -27,7 +25,6 @@ class CustomHomeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
-        
     }
     
     func populateWith(game: Game) {
@@ -43,7 +40,7 @@ class CustomHomeTableViewCell: UITableViewCell {
         }
     }
     
-    @IBAction func playButtonTapped(_ sender: Any) {
+    @IBAction private func playButtonTapped(_ sender: Any) {
         if let gameURL = self.gameURL {
             UIApplication.shared.open(gameURL)
         }
@@ -52,11 +49,7 @@ class CustomHomeTableViewCell: UITableViewCell {
     static func HometableViewNib() -> UINib {
         UINib(nibName: Constants.TableViewIdentifiers.customHomeCellIdentifier, bundle: nil)
     }
-    
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
     }
-    
 }

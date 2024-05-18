@@ -14,10 +14,8 @@ typealias CategoryResult = (String, Result<[Game], APIError>)
 protocol CategoryRepositoryType: AnyObject {
     func fetchAPIImage(completion: @escaping (Result<[CategoryResult], APIError>) -> Void)
     func fetchCategory(endpoint: String, completion: @escaping (Result<[Game], APIError>) -> Void)
-
 }
 class CategoryRepository: CategoryRepositoryType {
-    
     
     func fetchAPIImage(completion: @escaping (Result<[CategoryResult], APIError>) -> Void) {
         
@@ -34,7 +32,6 @@ class CategoryRepository: CategoryRepositoryType {
             }
             dispatchGroup.leave()
         }
-        
         dispatchGroup.enter()
         fetchCategory(endpoint: Constants.CategoryEndpoints.stratergy) { result in
             switch result {
@@ -45,17 +42,13 @@ class CategoryRepository: CategoryRepositoryType {
             }
             dispatchGroup.leave()
         }
-        
-        
         dispatchGroup.notify(queue: .main) {
             completion(.success(results))
         }
     }
-    
     func fetchCategory(endpoint: String, completion: @escaping (Result<[Game], APIError>) -> Void) {
-           URLSession.shared.request(endpoint: endpoint, method: .GET) { result in
-               completion(result)
-           }
+        URLSession.shared.request(endpoint: endpoint, method: .GET) { result in
+            completion(result)
         }
     }
-
+}
