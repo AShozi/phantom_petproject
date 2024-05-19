@@ -11,7 +11,7 @@ class HomeScreenViewController: UIViewController{
     
     // MARK: IBOutlets
     
-    @IBOutlet weak private var HomeCollectionView: UICollectionView!
+    @IBOutlet weak private var homeCollectionView: UICollectionView!
     @IBOutlet weak private var tableView: UITableView!
     
     // MARK: UI Components
@@ -31,8 +31,8 @@ class HomeScreenViewController: UIViewController{
     }
     
     private func setupCollectionView() {
-        HomeCollectionView.dataSource = self
-        HomeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+        homeCollectionView.dataSource = self
+        homeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
     }
 }
 // MARK:  Collection View
@@ -84,7 +84,7 @@ extension HomeScreenViewController: UITableViewDelegate,UITableViewDataSource {
 extension HomeScreenViewController: HomeScreenViewModelDelegate {
     
     func reloadView() {
-        HomeCollectionView.reloadData()
+        homeCollectionView.reloadData()
         tableView.reloadData()
     }
     
