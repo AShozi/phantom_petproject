@@ -167,9 +167,12 @@
                                 <rect key="frame" x="-17" y="718" width="245" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image 1" translatesAutoresizingMaskIntoConstraints="NO" id="VdI-sV-nBe">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image 1" translatesAutoresizingMaskIntoConstraints="NO" id="VdI-sV-nBe">
                                 <rect key="frame" x="183" y="718" width="274" height="95"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="fzv-HO-Gi5"/>
+                                    <constraint firstAttribute="width" constant="274" id="ude-Cn-WQx"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -179,14 +182,16 @@
                             <constraint firstItem="mMU-Ku-xuR" firstAttribute="top" secondItem="Db9-71-pQz" secondAttribute="bottom" constant="40" id="GhX-Ic-im9"/>
                             <constraint firstItem="nBw-Uc-h7I" firstAttribute="top" secondItem="mMU-Ku-xuR" secondAttribute="bottom" constant="15" id="VD7-qL-2Jx"/>
                             <constraint firstItem="mMU-Ku-xuR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bWE-tg-0GZ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="VdI-sV-nBe" secondAttribute="bottom" constant="2" id="vgL-uJ-GJR"/>
                             <constraint firstItem="mMU-Ku-xuR" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="vwX-Wq-kH2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="VdI-sV-nBe" secondAttribute="bottom" constant="85" id="x9E-Xc-qW4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hsq-RX-kB3"/>
                     <connections>
                         <outlet property="homeCollectionView" destination="Ma1-OL-EbA" id="KZb-cf-AnE"/>
                         <outlet property="tableView" destination="PrN-Kg-JvQ" id="fOj-1y-Yt1"/>
-                        <segue destination="p5h-c3-Vkl" kind="showDetail" identifier="GameDetailScreenSegue" id="jPC-ws-abG"/>
+                        <segue destination="p5h-c3-Vkl" kind="show" identifier="GameDetailScreenSegue" id="jPC-ws-abG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -196,7 +201,9 @@
         <!--GameDetailStoryboard-->
         <scene sceneID="fjp-ul-Wg4">
             <objects>
-                <viewControllerPlaceholder storyboardName="GameDetailStoryboard" id="p5h-c3-Vkl" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="GameDetailStoryboard" id="p5h-c3-Vkl" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Ofw-75-2G7"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gJ-Sa-PaF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1894.8837209302326" y="-111.37339055793993"/>

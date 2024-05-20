@@ -39,15 +39,11 @@ extension GameDetailViewController: GameDetailViewModelDelegate {
             DispatchQueue.main.async {
                 self.updateUI()
             }
-        } else {
-            print("Failed to fetch game details.")
         }
     }
-    
     func show(error: String) {
-        print("Error: \(error)")
+        displayAlert(title: "Error", message: "Failed to fetch game details.", buttonTitle: "Ok")
     }
-    
     private func updateUI() {
         gameTitleLabel.text = gameDetailViewModel.title
         gameGenreLabel.text = gameDetailViewModel.genre

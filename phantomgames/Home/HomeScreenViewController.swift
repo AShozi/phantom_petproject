@@ -29,16 +29,15 @@ class HomeScreenViewController: UIViewController{
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
     private func setupCollectionView() {
         homeCollectionView.dataSource = self
         homeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
     }
-  
 }
+
 // MARK:  Collection View
 
-extension HomeScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+extension HomeScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.allGameList.count
     }
@@ -52,17 +51,15 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
         return cell
     }
     
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected item at indexPath: \(indexPath)")
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell,
-              let gameID = viewModel.game(atIndex: indexPath.item)?.id else {
-            print("Unable to get game ID")
+              let gameID = viewModel.game(atIndex: indexPath.item)?.id
+        else {
             return
         }
-        print("Game ID: \(gameID)")
+        
         self.performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
            let destinationVC = segue.destination as? GameDetailViewController,
@@ -71,7 +68,6 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
         }
     }
 }
-
 
 // MARK:  TableView Delegate
 
