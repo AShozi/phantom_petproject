@@ -11,7 +11,7 @@ class HomeScreenViewController: UIViewController{
     
     // MARK: IBOutlets
     
-    @IBOutlet weak private var HomeCollectionView: UICollectionView!
+    @IBOutlet weak private var homeCollectionView: UICollectionView!
     @IBOutlet weak private var tableView: UITableView!
     
     // MARK: UI Components
@@ -31,13 +31,14 @@ class HomeScreenViewController: UIViewController{
     }
     
     private func setupCollectionView() {
-        HomeCollectionView.dataSource = self
-        HomeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+        homeCollectionView.dataSource = self
+        homeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
     }
+  
 }
 // MARK:  Collection View
 
-extension HomeScreenViewController: UICollectionViewDataSource{
+extension HomeScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.allGameList.count
     }
@@ -51,24 +52,26 @@ extension HomeScreenViewController: UICollectionViewDataSource{
         return cell
     }
     
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-        
-        guard let game = viewModel.game(atIndex: indexPath.item) else { return }
-        
-        viewModel.fetchGameDetail(id: game.id) { [weak self] result in
-            switch result {
-            case .success(let gameDetail):
-                DispatchQueue.main.async {
-                    self?.performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameDetail)
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self?.show(error: error.localizedDescription)
-                }
-            }
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Selected item at indexPath: \(indexPath)")
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell,
+              let gameID = viewModel.game(atIndex: indexPath.item)?.id else {
+            print("Unable to get game ID")
+            return
+        }
+        print("Game ID: \(gameID)")
+        self.performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
+           let destinationVC = segue.destination as? GameDetailViewController,
+           let gameID = sender as? Int {
+            destinationVC.setGameID(gameID: gameID)
         }
     }
 }
+
 
 // MARK:  TableView Delegate
 
@@ -101,19 +104,11 @@ extension HomeScreenViewController: HomeScreenViewModelDelegate {
     // MARK:  functions
     
     func reloadView() {
-        HomeCollectionView.reloadData()
+        homeCollectionView.reloadData()
         tableView.reloadData()
     }
     
     func show(error: String) {
         displayAlert(title: "Error", message: error, buttonTitle: "Ok")
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
-           let destinationVC = segue.destination as? GameDetailViewController,
-           let gameDetail = sender as? GameDetail {
-            destinationVC.gameDetail = gameDetail
-        }
     }
 }

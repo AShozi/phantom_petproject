@@ -5,21 +5,16 @@
 //  Created by Aphiwe Shozi on 2024/05/17.
 //
 
-//import Foundation
-//typealias GameDetailResult = (Result<[Game], APIError>) -> Void
+import Foundation
 
-//protocol GameDetailRepositoryType: AnyObject {
-//    func fetchAPIImage(completion: @escaping(GameDetailResult))
-//    func fetchGameDetailResults(completion: @escaping (GameDetailResult))
-//}
-//class GameDetailRepository: GameDetailRepositoryType {
-//    func fetchAPIImage(completion: @escaping (GameDetailResult)) {
-//        
-//    }
-//    
-//    func fetchGameDetailResults(completion: @escaping (GameDetailResult)) {
-//
-//    }
-//    
-//    
-//}
+protocol GameDetailRepositoryType: AnyObject {
+    func fetchGameDetail(id: Int, completion: @escaping (GameDetailResult))
+}
+
+// MARK:  Functions
+class GameDetailRepository: GameDetailRepositoryType {
+    func fetchGameDetail(id: Int, completion: @escaping (GameDetailResult)) {
+        let urlString = Constants.Endpoints.gameDetail + "\(id)"
+        URLSession.shared.request(endpoint: urlString, method: .GET, completion: completion)
+    }
+}

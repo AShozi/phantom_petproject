@@ -74,7 +74,6 @@
                                         <connections>
                                             <outlet property="apiImage" destination="taL-qc-1AB" id="w1M-Wd-15y"/>
                                             <outlet property="gametitle" destination="0Br-Fh-0k3" id="KzG-7h-thK"/>
-                                            <segue destination="p5h-c3-Vkl" kind="showDetail" identifier="GameDetailScreenSegue" id="uq8-ia-LA6"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -187,6 +186,7 @@
                     <connections>
                         <outlet property="homeCollectionView" destination="Ma1-OL-EbA" id="KZb-cf-AnE"/>
                         <outlet property="tableView" destination="PrN-Kg-JvQ" id="fOj-1y-Yt1"/>
+                        <segue destination="p5h-c3-Vkl" kind="showDetail" identifier="GameDetailScreenSegue" id="jPC-ws-abG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

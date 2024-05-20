@@ -27,9 +27,7 @@ struct Constants {
     struct Endpoints {
         static let search = "https://www.freetogame.com/api/games"
         static let home = "https://www.freetogame.com/api/games?sort-by=alphabetical"
-        static func gameDetail(id: Int) -> String {
-           "https://www.freetogame.com/api/games/\(id)"
-        }
+        static let gameDetail = "https://www.freetogame.com/api/game?id="
     }
     
     struct CategoryEndpoints {

@@ -8,6 +8,7 @@ import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
     
+    var didSelectItem: ((Game) -> Void)?
     // MARK: IBOutlets
     
     @IBOutlet weak private var apiImage: UIImageView!
