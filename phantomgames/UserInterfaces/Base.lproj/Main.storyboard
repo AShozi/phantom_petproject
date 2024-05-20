@@ -2,9 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IQs-9k-TNk">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,7 +21,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="2mt-Se-fF2">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="IQs-9k-TNk" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="IQs-9k-TNk" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="97s-KT-9vF"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9C1-uS-MYw">
@@ -42,14 +42,17 @@
         <!--Welcome-->
         <scene sceneID="mWa-pu-sJQ">
             <objects>
-                <navigationController title="Welcome" automaticallyAdjustsScrollViewInsets="NO" id="LQ5-Vn-8K3" sceneMemberID="viewController">
+                <navigationController title="Welcome" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="LQ5-Vn-8K3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house" id="cb7-gd-c2P"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="9RZ-Xe-W9D">
-                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9RZ-Xe-W9D">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Kbx-wz-EwK">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Z2K-AZ-fi3" kind="relationship" relationship="rootViewController" id="rLP-ud-LSQ"/>
                     </connections>
@@ -63,6 +66,7 @@
             <objects>
                 <viewControllerPlaceholder storyboardName="HomeScreen" id="Z2K-AZ-fi3" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="hjL-m8-TE0"/>
+                    <size key="freeformSize" width="393" height="852"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8mk-x7-kI4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,11 +75,11 @@
         <!--Search-->
         <scene sceneID="HPo-dL-hlm">
             <objects>
-                <navigationController title="Search" automaticallyAdjustsScrollViewInsets="NO" id="B8m-HG-5oh" sceneMemberID="viewController">
+                <navigationController title="Search" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="B8m-HG-5oh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="JeI-jT-4PO"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="1p3-ON-JIc">
-                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1p3-ON-JIc">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -90,12 +94,12 @@
         <!--Account-->
         <scene sceneID="vbt-ST-XLB">
             <objects>
-                <viewController id="gCi-HK-gWl" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="gCi-HK-gWl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rlh-AT-K7O">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="2ej-KJ-wi2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="person.crop.circle" catalog="system" id="l5d-sl-rWJ"/>
                 </viewController>
@@ -111,15 +115,12 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQw-9m-fP6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1494" y="1124"/>
+            <point key="canvasLocation" x="1494" y="1028"/>
         </scene>
     </scenes>
     <resources>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

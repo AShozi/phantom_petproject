@@ -21,7 +21,7 @@ class SearchGameViewModel {
     private(set) var allGameList: [Game] = []
     private(set) var filteredGames: [Game] = []
     
-    init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) { 
+    init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) {
         self.repository = repository
         self.delegate = delegate }
   
@@ -48,7 +48,7 @@ class SearchGameViewModel {
             }
         }
     }
-    // MARK: - Search Functions
+    // MARK:  Search Functions
     
     func inSearchMode(_ searchController: UISearchController) -> Bool {
         let isActive = searchController.isActive

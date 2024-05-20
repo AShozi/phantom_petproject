@@ -4,22 +4,24 @@
 //
 //  Created by Aphiwe Shozi on 2024/04/20.
 //
-
-import Foundation
 import UIKit
 
 extension UIImageView {
-    func load(urlString: String) {
-        if let safeURL = URL(string: urlString) {
-            DispatchQueue.global().async { [weak self] in
-                if let data = try? Data(contentsOf: safeURL) {
-                    if let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            self?.image = image
-                        }
-                    }
-                }
+    func downloaded(from url: URL) {
+        URLSession.shared.dataTask(with: url) {data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+            else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
             }
-        }
+        } .resume()
+    }
+    func downloaded(from link: String){
+        guard let url = URL (string: link) else {return}
+        downloaded(from: url)
     }
 }
