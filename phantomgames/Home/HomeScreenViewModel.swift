@@ -45,7 +45,6 @@ class HomeScreenViewModel {
                 self?.delegate?.show(error: error.rawValue)
             }
         }
-        
     }
     func fetchGameDetail(id: Int, completion: @escaping (GameDetailResult)) {
         repository?.fetchGameDetailResults(id: id, completion: completion)

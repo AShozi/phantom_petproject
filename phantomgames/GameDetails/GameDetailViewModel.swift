@@ -14,13 +14,13 @@ protocol GameDetailViewModelDelegate: AnyObject {
 
 class GameDetailViewModel {
     
-    // MARK:  Variables
+    // MARK: Variables
     private let repository: GameDetailRepositoryType
     private var gameID = 0
     var gameDetail: GameDetail?
     weak var delegate: GameDetailViewModelDelegate?
 
-    // MARK:  Computed Properties
+    // MARK: Computed Properties
     var title: String? {
          gameDetail?.title
      }
@@ -46,7 +46,7 @@ class GameDetailViewModel {
         return URL(string: thumbnail)
     }
     
-    // MARK:  Initializer
+    // MARK: Initializer
     init(repository: GameDetailRepositoryType, delegate: GameDetailViewModelDelegate) {
         self.repository = repository
         self.delegate = delegate

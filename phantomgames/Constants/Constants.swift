@@ -10,7 +10,6 @@ import UIKit
 struct Constants {
     
     struct SegueIdentifiers {
-        
         static let loginSegueIdentifier = "MainSegue"
         static let GameDetailScreenSegue = "GameDetailScreenSegue"
     }
@@ -37,5 +36,4 @@ struct Constants {
         static let card = "https://www.freetogame.com/api/games/games?category=card"
         static let zombie = "https://www.freetogame.com/api/games/games?category=zombie"
     }
-    
 }

@@ -53,11 +53,10 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell,
-              let gameID = viewModel.game(atIndex: indexPath.item)?.id
-        else {
+              let gameID = viewModel.game(atIndex: indexPath.item)?.id else {
+            displayAlert(title: "Error", message: "Failed to select game. Please try again.", buttonTitle: "OK")
             return
         }
-        
         self.performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,7 +85,6 @@ extension HomeScreenViewController: UITableViewDelegate,UITableViewDataSource {
         else {
             return UITableViewCell()
         }
-        
         let game = viewModel.allGameList[indexPath.row]
         cell.populateWith(game: game)
         return cell
@@ -103,7 +101,6 @@ extension HomeScreenViewController: HomeScreenViewModelDelegate {
         homeCollectionView.reloadData()
         tableView.reloadData()
     }
-    
     func show(error: String) {
         displayAlert(title: "Error", message: error, buttonTitle: "Ok")
     }
