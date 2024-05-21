@@ -28,7 +28,6 @@ struct Constants {
         static let home = "https://www.freetogame.com/api/games?sort-by=alphabetical"
         static let gameDetail = "https://www.freetogame.com/api/game?id="
     }
-    
     struct CategoryEndpoints {
         static let shooter = "https://www.freetogame.com/api/games/games?category=shooter"
         static let stratergy = "https://www.freetogame.com/api/games/games?category=strategy"
