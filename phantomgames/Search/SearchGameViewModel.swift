@@ -5,8 +5,6 @@
 //  Created by Aphiwe Shozi on 2024/04/20.
 //
 
-import UIKit
-
 protocol ViewModelDelegate: AnyObject {
     func reloadView()
     func show(error: String)
@@ -50,10 +48,11 @@ class SearchGameViewModel {
     }
     // MARK:  Search Functions
     
-    func inSearchMode(_ searchController: UISearchController) -> Bool {
-        let isActive = searchController.isActive
-        let searchText = searchController.searchBar.text ?? ""
-        return isActive && !searchText.isEmpty
+    func filteredGame(index: Int, isSearchActive: Bool, searchText: String?) -> Game {
+        if isSearchActive {
+            return filteredGames[index]
+        }
+        return allGameList[index]
     }
     
     func updateSearchController(searchBarText: String?) {

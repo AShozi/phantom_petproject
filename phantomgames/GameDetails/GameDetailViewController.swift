@@ -26,21 +26,8 @@ class GameDetailViewController: UIViewController {
         updateUI()
     }
     
-    func setGameID(gameID: Int) {
+    func assignGameID(gameID: Int) {
         gameDetailViewModel.updateGameID(gameID: gameID)
-    }
-}
-
-extension GameDetailViewController: GameDetailViewModelDelegate {
-    func didFetchGameDetail(success: Bool) {
-        if success {
-            DispatchQueue.main.async {
-                self.updateUI()
-            }
-        }
-    }
-    func show(error: String) {
-        displayAlert(title: "Error", message: "Failed to fetch game details.", buttonTitle: "Ok")
     }
     private func updateUI() {
         gameTitleLabel.text = gameDetailViewModel.title
@@ -53,4 +40,17 @@ extension GameDetailViewController: GameDetailViewModelDelegate {
             gameImageView.downloaded(from: thumbnailURL)
         }
     }
+    func gameDetailFetchSuccess(success: Bool) {
+        if success {
+            self.updateUI()
+        }
+    }
+}
+
+extension GameDetailViewController: GameDetailViewModelDelegate {
+    
+    func show(error: String) {
+        displayAlert(title: "Error", message: "Failed to fetch game details.", buttonTitle: "Ok")
+    }
+    
 }

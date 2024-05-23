@@ -25,7 +25,7 @@ class HomeScreenViewController: UIViewController{
         viewModel.fetchHomeResults()
     }
     private func setupTableView() {
-        tableView.register(CustomHomeTableViewCell.HometableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customHomeCellIdentifier)
+        tableView.register(CustomHomeTableViewCell.hometableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customHomeCellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -63,7 +63,7 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
         if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
            let destinationVC = segue.destination as? GameDetailViewController,
            let gameID = sender as? Int {
-            destinationVC.setGameID(gameID: gameID)
+            destinationVC.assignGameID(gameID: gameID)
         }
     }
 }
