@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class CustomHomeTableViewCell: UITableViewCell {
     
@@ -29,9 +28,8 @@ class CustomHomeTableViewCell: UITableViewCell {
     
     func populateWith(game: Game) {
         titleLabel.text = game.title
-        
-        if let imageURL = URL(string: game.thumbnail) {
-            icon.sd_setImage(with: imageURL, placeholderImage: Constants.ImageConstants.placeholder)
+        if !game.thumbnail.isEmpty {
+            icon.downloaded(from: game.thumbnail)
         } else {
             icon.image = Constants.ImageConstants.placeholder
         }

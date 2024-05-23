@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 // MARK: UI Components
 
@@ -33,14 +32,14 @@ class CustomTableViewCell: UITableViewCell {
     func populateWith(game: Game) {
         titleLabel.text = game.title
         genreLabel.text = game.genre
-                if let imageURL = URL(string: game.thumbnail) {
-                    icon.sd_setImage(with: imageURL, placeholderImage: Constants.ImageConstants.placeholder)
-                } else {
-                    icon.image = Constants.ImageConstants.placeholder
-                }
-             if let gameURL = URL(string: game.gameURL) {
-                 self.gameURL = gameURL
-             }
+        if !game.thumbnail.isEmpty {
+            icon.downloaded(from: game.thumbnail)
+        } else {
+            icon.image = Constants.ImageConstants.placeholder
+        }
+        if let gameURL = URL(string: game.gameURL) {
+            self.gameURL = gameURL
+        }
     }
     
     @IBAction func playButtonTapped(_ sender: Any) {
@@ -48,7 +47,7 @@ class CustomTableViewCell: UITableViewCell {
             UIApplication.shared.open(gameURL)
         }
     }
-     
+    
     static func tableViewNib() -> UINib {
         UINib(nibName: Constants.TableViewIdentifiers.customCellIdentifier, bundle: nil)
     }
