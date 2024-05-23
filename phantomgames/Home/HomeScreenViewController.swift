@@ -37,7 +37,7 @@ class HomeScreenViewController: UIViewController{
 
 // MARK:  Collection View
 
-extension HomeScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+extension HomeScreenViewController: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.allGameList.count
     }

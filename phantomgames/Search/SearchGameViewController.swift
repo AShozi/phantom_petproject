@@ -70,9 +70,9 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let newGame = viewModel.filteredGame(index: indexPath.row,
-                                                 isSearchActive: searchController.isActive,
-                                                 searchText: searchController.searchBar.text)
-
+                                             isSearchActive: searchController.isActive,
+                                             searchText: searchController.searchBar.text)
+        
         
         cell.populateWith(game: newGame)
         return cell

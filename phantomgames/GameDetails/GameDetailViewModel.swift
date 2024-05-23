@@ -21,7 +21,7 @@ class GameDetailViewModel {
     private weak var delegate: GameDetailViewModelDelegate?
     
     // MARK: Computed Properties
-
+    
     var title: String? {
         gameDetail?.title
     }

@@ -15,8 +15,8 @@ protocol SearchGameRepositoryType: AnyObject {
 
 class SearchGameRepository: SearchGameRepositoryType {
     func fetchAPIImage(completion: @escaping (SearchGameResult)) {
-        URLSession.shared.fetchingAPIImages(URL: Constants.Endpoints.search) {
-            games in completion(.success(games))
+        URLSession.shared.fetchingAPIImages(URL: Constants.Endpoints.search) {games in
+            completion(.success(games))
         }
     }
     func fetchSearchResults(completion: @escaping (SearchGameResult)) {

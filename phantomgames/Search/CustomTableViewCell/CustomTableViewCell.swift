@@ -42,7 +42,7 @@ class CustomTableViewCell: UITableViewCell {
         }
     }
     
-    @IBAction func playButtonTapped(_ sender: Any) {
+    @IBAction private func playButtonTapped(_ sender: Any) {
         if let gameURL = self.gameURL {
             UIApplication.shared.open(gameURL)
         }

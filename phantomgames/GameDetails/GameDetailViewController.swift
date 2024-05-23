@@ -26,9 +26,16 @@ class GameDetailViewController: UIViewController {
         updateUI()
     }
     
+    func gameDetailFetchSuccess(success: Bool) {
+        if success {
+            self.updateUI()
+        }
+    }
+    
     func assignGameID(gameID: Int) {
         gameDetailViewModel.updateGameID(gameID: gameID)
     }
+    
     private func updateUI() {
         gameTitleLabel.text = gameDetailViewModel.title
         gameGenreLabel.text = gameDetailViewModel.genre
@@ -38,11 +45,6 @@ class GameDetailViewController: UIViewController {
         
         if let thumbnailURL = gameDetailViewModel.thumbnailURL {
             gameImageView.downloaded(from: thumbnailURL)
-        }
-    }
-    func gameDetailFetchSuccess(success: Bool) {
-        if success {
-            self.updateUI()
         }
     }
 }
