@@ -28,7 +28,7 @@ final class SearchGameViewModelTests: XCTestCase {
         super.tearDown()
     }
     class MockSearchGameRepository: SearchGameRepositoryType {
-        func fetchAPIImage(completion: @escaping (phantomgames.SearchGameResult)) {
+        func fetchAPIImage(completion: @escaping (SearchGameResult)) {
             let mockGames: [Game] = [
                 Game(id: 1, title: "game1", thumbnail: "Thumbnail1", shortDescription: "shortDes1", gameURL: "URL1", genre: "genre1", platform: "platform1", publisher: "publisher1", developer: "dev1", releaseDate: "Date1", freetogameProfileURL: "Profile1"),
                 Game(id: 2, title: "game2", thumbnail: "Thumbnail2", shortDescription: "shortDes2", gameURL: "URL2", genre: "genre2", platform: "platform2", publisher: "publisher2", developer: "dev2", releaseDate: "Date2", freetogameProfileURL: "Profile2")

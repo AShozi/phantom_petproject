@@ -8,7 +8,7 @@
 import Foundation
 
 struct Game: Codable {
-    let id: Int
+    let gameID: Int
     let title: String
     let thumbnail: String
     let shortDescription: String
