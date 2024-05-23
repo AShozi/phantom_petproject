@@ -32,7 +32,8 @@ class GameDetailViewController: UIViewController {
 }
 
 extension GameDetailViewController: GameDetailViewModelDelegate {
-    func didFetchGameDetail(success: Bool) {
+
+    func gameDetailFetchSuccess(success: Bool) {
         if success {
             DispatchQueue.main.async {
                 self.updateUI()

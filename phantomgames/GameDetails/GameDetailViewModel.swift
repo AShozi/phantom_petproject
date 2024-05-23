@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GameDetailViewModelDelegate: AnyObject {
-    func didFetchGameDetail(success: Bool)
+    func gameDetailFetchSuccess(success: Bool)
     func show(error: String)
 }
 
@@ -59,9 +59,9 @@ class GameDetailViewModel {
             switch result {
             case .success(let gameDetail):
                 self?.gameDetail = gameDetail
-                self?.delegate?.didFetchGameDetail(success: true)
+                self?.delegate?.gameDetailFetchSuccess(success: true)
             case .failure(let error):
-                self?.delegate?.didFetchGameDetail(success: false)
+                self?.delegate?.gameDetailFetchSuccess(success: false)
                 self?.delegate?.show(error: error.localizedDescription)
             }
         }
