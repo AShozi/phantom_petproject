@@ -16,8 +16,8 @@ class SearchGameViewModel {
     
     private var repository: SearchGameRepositoryType?
     private weak var delegate: ViewModelDelegate?
-    private(set) var allGameList: [Game] = []
-    private(set) var filteredGames: [Game] = []
+    private var allGameList: [Game] = []
+    private var filteredGames: [Game] = []
     
     init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) {
         self.repository = repository
@@ -27,6 +27,10 @@ class SearchGameViewModel {
     
     var gameListCount: Int {
         allGameList.count
+    }
+    
+    var filteredGamesCount: Int {
+        filteredGames.count
     }
     
     // MARK: Functions

@@ -58,7 +58,7 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let isSearchActive = searchController.isActive && !(searchController.searchBar.text?.isEmpty ?? true)
-        return isSearchActive ? viewModel.filteredGames.count : viewModel.allGameList.count    }
+        return isSearchActive ? viewModel.filteredGamesCount : viewModel.gameListCount    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         85

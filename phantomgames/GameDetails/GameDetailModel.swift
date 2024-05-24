@@ -8,7 +8,7 @@
 import Foundation
 
 struct GameDetail: Codable {
-    let id: Int
+    let gameID: Int
     let title: String
     let description: String
     let genre: String
@@ -20,7 +20,8 @@ struct GameDetail: Codable {
     let gameURL: String
     
     enum CodingKeys: String, CodingKey {
-        case id, title, description, genre, platform, publisher, developer
+        case title, description, genre, platform, publisher, developer
+        case gameID = "id"
         case releaseDate = "release_date"
         case thumbnail, gameURL = "game_url"
     }
