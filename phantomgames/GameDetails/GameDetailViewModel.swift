@@ -17,30 +17,31 @@ class GameDetailViewModel {
     // MARK: Variables
     private let repository: GameDetailRepositoryType
     private var gameID = 0
-    var gameDetail: GameDetail?
-    weak var delegate: GameDetailViewModelDelegate?
-
+    private var gameDetail: GameDetail?
+    private weak var delegate: GameDetailViewModelDelegate?
+    
     // MARK: Computed Properties
+    
     var title: String? {
-         gameDetail?.title
-     }
-     
-     var genre: String? {
-         gameDetail?.genre
-     }
-     
-     var description: String? {
-         gameDetail?.description
-     }
-     
-     var releaseDate: String? {
-         gameDetail?.releaseDate
-     }
-     
-     var platform: String? {
-         gameDetail?.platform
-     }
-     
+        gameDetail?.title
+    }
+    
+    var genre: String? {
+        gameDetail?.genre
+    }
+    
+    var description: String? {
+        gameDetail?.description
+    }
+    
+    var releaseDate: String? {
+        gameDetail?.releaseDate
+    }
+    
+    var platform: String? {
+        gameDetail?.platform
+    }
+    
     var thumbnailURL: URL? {
         guard let thumbnail = gameDetail?.thumbnail else { return nil }
         return URL(string: thumbnail)
@@ -50,10 +51,9 @@ class GameDetailViewModel {
     init(repository: GameDetailRepositoryType, delegate: GameDetailViewModelDelegate) {
         self.repository = repository
         self.delegate = delegate
-        
     }
     
-    // MARK:  functions
+    // MARK: Functions
     func fetchGameDetail() {
         repository.fetchGameDetail(id: gameID) { [weak self] result in
             switch result {
@@ -67,7 +67,7 @@ class GameDetailViewModel {
         }
     }
     func updateGameID(gameID: Int) {
-           self.gameID = gameID
-           fetchGameDetail()
-       }
+        self.gameID = gameID
+        fetchGameDetail()
+    }
 }

@@ -25,7 +25,7 @@ class HomeScreenViewController: UIViewController{
         viewModel.fetchHomeResults()
     }
     private func setupTableView() {
-        tableView.register(CustomHomeTableViewCell.HometableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customHomeCellIdentifier)
+        tableView.register(CustomHomeTableViewCell.hometableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customHomeCellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -37,7 +37,7 @@ class HomeScreenViewController: UIViewController{
 
 // MARK:  Collection View
 
-extension HomeScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+extension HomeScreenViewController: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.allGameList.count
     }
@@ -53,7 +53,7 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell,
-              let gameID = viewModel.game(atIndex: indexPath.item)?.id else {
+              let gameID = viewModel.game(atIndex: indexPath.item)?.gameID else {
             displayAlert(title: "Error", message: "Failed to select game. Please try again.", buttonTitle: "OK")
             return
         }
@@ -63,7 +63,7 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
         if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
            let destinationVC = segue.destination as? GameDetailViewController,
            let gameID = sender as? Int {
-            destinationVC.setGameID(gameID: gameID)
+            destinationVC.assignGameID(gameID: gameID)
         }
     }
 }
