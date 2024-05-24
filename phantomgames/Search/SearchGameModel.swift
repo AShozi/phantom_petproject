@@ -8,7 +8,7 @@
 import Foundation
 
 struct Game: Codable {
-    let id: Int
+    let gameID: Int
     let title: String
     let thumbnail: String
     let shortDescription: String
@@ -21,7 +21,8 @@ struct Game: Codable {
     let freetogameProfileURL: String
     
     enum CodingKeys: String, CodingKey {
-        case id, title, thumbnail
+        case title, thumbnail
+        case gameID = "id"
         case shortDescription = "short_description"
         case gameURL = "game_url"
         case genre, platform, publisher, developer
