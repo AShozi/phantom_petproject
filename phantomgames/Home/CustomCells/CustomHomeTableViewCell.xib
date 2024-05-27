@@ -36,9 +36,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TL0-aw-8me">
-                        <rect key="frame" x="234.66666666666666" y="6" width="55.333333333333343" height="34.333333333333336"/>
+                        <rect key="frame" x="221" y="6" width="69" height="35"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="gray" title="play">
+                        <buttonConfiguration key="configuration" style="gray" title="Game">
                             <backgroundConfiguration key="background">
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </backgroundConfiguration>
