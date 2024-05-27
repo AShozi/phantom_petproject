@@ -203,9 +203,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="hsq-RX-kB3"/>
                     <connections>
+                        <outlet property="browserImage" destination="VdI-sV-nBe" id="zsS-pJ-0d8"/>
                         <outlet property="buttonStackView" destination="mMU-Ku-xuR" id="gtb-9U-y8a"/>
                         <outlet property="carouselStackView" destination="qGD-d3-ZZD" id="3qM-4S-S63"/>
                         <outlet property="homeCollectionView" destination="Ma1-OL-EbA" id="KZb-cf-AnE"/>
+                        <outlet property="pcImage" destination="CvH-7K-TVs" id="FYR-NI-3F2"/>
                         <outlet property="tableView" destination="PrN-Kg-JvQ" id="fOj-1y-Yt1"/>
                         <segue destination="p5h-c3-Vkl" kind="show" identifier="GameDetailScreenSegue" id="jPC-ws-abG"/>
                     </connections>
