@@ -26,6 +26,7 @@ class HomeScreenViewController: UIViewController{
         super.viewDidLoad()
         setupTableView()
         setupCollectionView()
+        setupGestureRecognizers()
         viewModel.fetchHomeResults()
     }
     private func setupTableView() {
@@ -36,6 +37,37 @@ class HomeScreenViewController: UIViewController{
     private func setupCollectionView() {
         homeCollectionView.dataSource = self
         homeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+    }
+    private func setupGestureRecognizers() {
+        let pcTapGesture = UITapGestureRecognizer(target: self, action: #selector(pcImageTapped))
+        pcImage.isUserInteractionEnabled = true
+        pcImage.addGestureRecognizer(pcTapGesture)
+        
+        let browserTapGesture = UITapGestureRecognizer(target: self, action: #selector(browserImageTapped))
+        browserImage.isUserInteractionEnabled = true
+        browserImage.addGestureRecognizer(browserTapGesture)
+    }
+    @objc private func pcImageTapped() {
+        navigateToSearchGameScreen(with: Constants.Endpoints.pcGamesURL)
+     }
+     
+     @objc private func browserImageTapped() {
+         navigateToSearchGameScreen(with: Constants.Endpoints.browserGamesURL)
+     }
+
+    private func navigateToSearchGameScreen(with url: String) {
+        let storyboard = UIStoryboard(name: "SearchGame", bundle: nil)
+        if let searchGameVC = storyboard.instantiateViewController(withIdentifier: "SearchGameViewController") as? SearchGameViewController {
+            searchGameVC.gamesURL = url
+            navigationController?.pushViewController(searchGameVC, animated: true)
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
+           let destinationVC = segue.destination as? GameDetailViewController,
+           let gameID = sender as? Int {
+            destinationVC.assignGameID(gameID: gameID)
+        }
     }
 }
 
@@ -63,13 +95,13 @@ extension HomeScreenViewController: UICollectionViewDataSource,UICollectionViewD
         }
         self.performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
-           let destinationVC = segue.destination as? GameDetailViewController,
-           let gameID = sender as? Int {
-            destinationVC.assignGameID(gameID: gameID)
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
+//           let destinationVC = segue.destination as? GameDetailViewController,
+//           let gameID = sender as? Int {
+//            destinationVC.assignGameID(gameID: gameID)
+//        }
+//    }
 }
 
 // MARK:  TableView Delegate

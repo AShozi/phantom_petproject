@@ -50,6 +50,18 @@ class SearchGameViewModel {
             }
         }
     }
+    func fetchSearchResults(fromURL url: String) {
+        repository?.fetchGames(fromURL: url) { [weak self] result in
+            switch result {
+            case .success(let searchResults):
+                self?.allGameList = searchResults
+                self?.delegate?.reloadView()
+            case .failure(let error):
+                self?.delegate?.show(error: error.rawValue)
+            }
+        }
+    }
+    
     // MARK:  Search Functions
     
     func filteredGame(index: Int, isSearchActive: Bool, searchText: String?) -> Game {

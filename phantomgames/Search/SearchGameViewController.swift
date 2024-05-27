@@ -16,13 +16,21 @@ class SearchGameViewController: UIViewController {
     // MARK: UI Component
     private let searchController = UISearchController(searchResultsController: nil)
     
+    // Property to store the URL passed from HomeScreenViewController
+    var gamesURL: String?
+    
     // MARK: Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupSearchController()
-        viewModel.fetchSearchResults()
+        if let url = gamesURL {
+            viewModel.fetchSearchResults(fromURL: url)
+        } else {
+            viewModel.fetchSearchResults()
+        }
+//        viewModel.fetchSearchResults()
     }
     
     private func setupTableView() {
