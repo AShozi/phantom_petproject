@@ -11,7 +11,7 @@ protocol GameDetailRepositoryType: AnyObject {
     func fetchGameDetail(id: Int, completion: @escaping (GameDetailResult))
 }
 
-// MARK:  Functions
+// MARK: Functions
 class GameDetailRepository: GameDetailRepositoryType {
     func fetchGameDetail(id: Int, completion: @escaping (GameDetailResult)) {
         let urlString = Constants.Endpoints.gameDetail + "\(id)"
