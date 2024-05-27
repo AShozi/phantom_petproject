@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class SearchGameViewController: UIViewController {
     
@@ -58,8 +57,8 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
         performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: [indexPath.row])
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let inSearchMode = viewModel.inSearchMode(searchController)
-        return inSearchMode ? viewModel.filteredGames.count : viewModel.allGameList.count
+        let isSearchActive = searchController.isActive && !(searchController.searchBar.text?.isEmpty ?? true)
+        return isSearchActive ? viewModel.filteredGamesCount : viewModel.gameListCount
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -71,12 +70,12 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
                 CustomTableViewCell else {
             return UITableViewCell()
         }
-        let inSearchMode = viewModel.inSearchMode(searchController)
+        let newGame = viewModel.filteredGame(index: indexPath.row,
+                                             isSearchActive: searchController.isActive,
+                                             searchText: searchController.searchBar.text)
         
-        let game = inSearchMode ? viewModel.filteredGames[indexPath.row] :
-        viewModel.allGameList[indexPath.row]
         
-        cell.populateWith(game: game)
+        cell.populateWith(game: newGame)
         return cell
     }
 }

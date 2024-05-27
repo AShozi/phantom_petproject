@@ -10,7 +10,6 @@ import UIKit
 struct Constants {
     
     struct SegueIdentifiers {
-        
         static let loginSegueIdentifier = "MainSegue"
         static let GameDetailScreenSegue = "GameDetailScreenSegue"
     }
@@ -27,8 +26,8 @@ struct Constants {
     struct Endpoints {
         static let search = "https://www.freetogame.com/api/games"
         static let home = "https://www.freetogame.com/api/games?sort-by=alphabetical"
+        static let gameDetail = "https://www.freetogame.com/api/game?id="
     }
-    
     struct CategoryEndpoints {
         static let shooter = "https://www.freetogame.com/api/games/games?category=shooter"
         static let stratergy = "https://www.freetogame.com/api/games/games?category=strategy"
@@ -36,5 +35,4 @@ struct Constants {
         static let card = "https://www.freetogame.com/api/games/games?category=card"
         static let zombie = "https://www.freetogame.com/api/games/games?category=zombie"
     }
-    
 }
