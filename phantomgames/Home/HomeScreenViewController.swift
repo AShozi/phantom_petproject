@@ -13,10 +13,6 @@ class HomeScreenViewController: UIViewController{
     
     @IBOutlet weak private var homeCollectionView: UICollectionView!
     @IBOutlet weak private var tableView: UITableView!
-    //new outlets
-    
-    @IBOutlet weak var buttonStackView: UIStackView!
-    @IBOutlet weak var carouselStackView: UIStackView!
     
     // MARK: UI Components
     private lazy var viewModel = HomeScreenViewModel(repository: HomeScreenRepository(), delegate: self)
