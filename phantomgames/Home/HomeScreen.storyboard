@@ -164,14 +164,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homescreen" translatesAutoresizingMaskIntoConstraints="NO" id="CvH-7K-TVs">
-                                <rect key="frame" x="-31" y="812" width="271" height="86"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="U" translatesAutoresizingMaskIntoConstraints="NO" id="CvH-7K-TVs">
+                                <rect key="frame" x="-31" y="812" width="297" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="86" id="siZ-f2-GYr"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image 1" translatesAutoresizingMaskIntoConstraints="NO" id="VdI-sV-nBe">
-                                <rect key="frame" x="180" y="812" width="284" height="86"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Image 3" translatesAutoresizingMaskIntoConstraints="NO" id="VdI-sV-nBe">
+                                <rect key="frame" x="154" y="812" width="284" height="86"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -226,8 +226,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Image 1" width="1306" height="634"/>
-        <image name="homescreen" width="1296" height="652"/>
+        <image name="Image 3" width="1113" height="660"/>
+        <image name="U" width="1121" height="668"/>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
             <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

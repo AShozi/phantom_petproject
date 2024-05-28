@@ -27,7 +27,8 @@ class HomeScreenViewController: UIViewController{
         setupTableView()
         setupCollectionView()
         setupGestureRecognizers()
-        viewModel.fetchHomeResults()
+        viewModel.fetchCollectionViewGames() // Fetch data for collection view
+        viewModel.fetchTableViewGames()
     }
     private func setupTableView() {
         tableView.register(CustomHomeTableViewCell.hometableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customHomeCellIdentifier)
@@ -75,13 +76,13 @@ class HomeScreenViewController: UIViewController{
 
 extension HomeScreenViewController: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.allGameList.count
+        viewModel.collectionViewGamesCount
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as!CustomCollectionViewCell
         
-        if let game = viewModel.game(atIndex: indexPath.item) {
+        if let game = viewModel.collectionViewGame(atIndex: indexPath.item) {
             cell.ConfigCellWith(game: game)
         }
         return cell
@@ -89,7 +90,7 @@ extension HomeScreenViewController: UICollectionViewDataSource,UICollectionViewD
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell,
-              let gameID = viewModel.game(atIndex: indexPath.item)?.gameID else {
+              let gameID = viewModel.collectionViewGame(atIndex: indexPath.item)?.gameID else {
             displayAlert(title: "Error", message: "Failed to select game. Please try again.", buttonTitle: "OK")
             return
         }
@@ -113,7 +114,7 @@ extension HomeScreenViewController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.allGameList.count
+        viewModel.tableViewGamesCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -132,9 +133,14 @@ extension HomeScreenViewController: UITableViewDelegate,UITableViewDataSource {
 extension HomeScreenViewController: HomeScreenViewModelDelegate {
     
     // MARK:  functions
-    
     func reloadView() {
         homeCollectionView.reloadData()
+        tableView.reloadData()
+    }
+    func reloadCollectionView() {
+        homeCollectionView.reloadData()
+    }
+    func reloadTableView() {
         tableView.reloadData()
     }
     func show(error: String) {

@@ -94,8 +94,12 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="DXd-88-2B0" secondAttribute="trailing" id="A3z-7V-MXO"/>
                                     <constraint firstItem="DXd-88-2B0" firstAttribute="leading" secondItem="wUU-1o-4UW" secondAttribute="leading" id="Dg9-K7-V1J"/>
+                                    <constraint firstItem="DXd-88-2B0" firstAttribute="top" secondItem="wUU-1o-4UW" secondAttribute="top" constant="20" symbolic="YES" id="JUu-P5-fc8"/>
                                     <constraint firstItem="DXd-88-2B0" firstAttribute="top" secondItem="wUU-1o-4UW" secondAttribute="top" id="NNb-85-Wiv"/>
+                                    <constraint firstItem="DXd-88-2B0" firstAttribute="leading" secondItem="wUU-1o-4UW" secondAttribute="leading" constant="24" id="SL1-PT-de9"/>
+                                    <constraint firstAttribute="trailing" secondItem="DXd-88-2B0" secondAttribute="trailing" constant="24" id="Uxb-Rr-SKs"/>
                                     <constraint firstAttribute="bottom" secondItem="DXd-88-2B0" secondAttribute="bottom" id="cpI-xh-9ZJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="DXd-88-2B0" secondAttribute="bottom" constant="20" symbolic="YES" id="r6q-kk-gta"/>
                                 </constraints>
                             </stackView>
                         </subviews>
