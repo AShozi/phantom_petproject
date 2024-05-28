@@ -16,7 +16,7 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak private var gamePlatformLabel: UILabel!
     @IBOutlet weak private var gamePlayButton: UIButton!
     
-    // MARK:  Variables
+    // MARK: Variables
     private lazy var gameDetailViewModel = GameDetailViewModel(repository: GameDetailRepository(), delegate: self)
     
     // MARK: Functions
