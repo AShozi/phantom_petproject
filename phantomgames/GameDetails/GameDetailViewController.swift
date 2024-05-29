@@ -23,6 +23,7 @@ class GameDetailViewController: UIViewController {
     // MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupActivityIndicator()
         gameDetailViewModel.fetchGameDetail()
         updateUI()
     }
@@ -59,13 +60,22 @@ class GameDetailViewController: UIViewController {
 
 extension GameDetailViewController: GameDetailViewModelDelegate {
     
+    func setLoading(_ loading: Bool) {
+        if loading {
+            activityIndicator?.startAnimating()
+        } else {
+            activityIndicator?.stopAnimating()
+            activityIndicator?.isHidden = true // Hide the loading indicator after data is loaded
+        }
+    }
+    
     func reloadView() {
-        self.activityIndicator.isHidden = true // Hide the loading indicator after data is loaded
+        activityIndicator?.isHidden = true // Hide the loading indicator after data is loaded
         updateUI()
     }
     
     func show(error: String) {
         displayAlert(title: "Error", message: "Failed to fetch game details.", buttonTitle: "Ok")
     }
-
+    
 }

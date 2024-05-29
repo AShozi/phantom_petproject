@@ -11,7 +11,8 @@ protocol GameDetailViewModelDelegate: AnyObject {
     func gameDetailFetchSuccess(success: Bool)
     func reloadView()
     func show(error: String)
-    
+    func setLoading(_ loading: Bool)
+
 }
 
 class GameDetailViewModel {
@@ -57,12 +58,15 @@ class GameDetailViewModel {
     
     // MARK: Functions
     func fetchGameDetail() {
+        delegate?.setLoading(true)
         repository.fetchGameDetail(id: gameID) { [weak self] result in
             switch result {
             case .success(let gameDetail):
                 self?.gameDetail = gameDetail
+                self?.delegate?.setLoading(false)
                 self?.delegate?.gameDetailFetchSuccess(success: true)
             case .failure(let error):
+                self?.delegate?.setLoading(false)
                 self?.delegate?.gameDetailFetchSuccess(success: false)
                 self?.delegate?.show(error: error.localizedDescription)
             }
