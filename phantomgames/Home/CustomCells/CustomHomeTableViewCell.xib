@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5y-Jb-OSJ">
-                        <rect key="frame" x="0.0" y="-3" width="75" height="49"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R5y-Jb-OSJ">
+                        <rect key="frame" x="20" y="-2.6666666666666679" width="75" height="49.333333333333343"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="75" id="Ll3-Cy-q9l"/>
                             <constraint firstAttribute="height" constant="49" id="kqR-GO-0Pg"/>
@@ -30,8 +30,8 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQn-r6-r6l">
-                        <rect key="frame" x="83" y="6" width="37.666666666666657" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQn-r6-r6l">
+                        <rect key="frame" x="103" y="6" width="37.666666666666657" height="17"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -42,9 +42,9 @@
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="gray" title="Game">
                             <backgroundConfiguration key="background">
-                                <color key="backgroundColor" systemColor="tableCellBlueTextColor"/>
+                                <color key="backgroundColor" red="0.32549020649999999" green="0.34901961679999999" blue="0.86666667460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </backgroundConfiguration>
-                            <color key="baseBackgroundColor" systemColor="systemGray2Color"/>
+                            <color key="baseBackgroundColor" red="0.32549020649999999" green="0.34901961679999999" blue="0.86666667460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </buttonConfiguration>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -59,8 +59,10 @@
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="TL0-aw-8me" secondAttribute="trailing" constant="30" id="NQl-zl-KoU"/>
+                    <constraint firstItem="R5y-Jb-OSJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="Umd-Vd-Kaw"/>
                     <constraint firstItem="uQn-r6-r6l" firstAttribute="leading" secondItem="R5y-Jb-OSJ" secondAttribute="trailing" constant="8" id="aDh-aM-rw6"/>
                     <constraint firstItem="TL0-aw-8me" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="b2L-a0-cez"/>
+                    <constraint firstItem="R5y-Jb-OSJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kba-65-9Tj"/>
                     <constraint firstItem="uQn-r6-r6l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="qUB-qL-Tnq"/>
                 </constraints>
             </tableViewCellContentView>
@@ -76,12 +78,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tableCellBlueTextColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

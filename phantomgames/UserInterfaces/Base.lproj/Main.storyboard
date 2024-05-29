@@ -47,16 +47,22 @@
                 <navigationController title="Welcome" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="LQ5-Vn-8K3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house" id="cb7-gd-c2P"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9RZ-Xe-W9D">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" largeTitles="YES" id="9RZ-Xe-W9D">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Kbx-wz-EwK">
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="Z2K-AZ-fi3" kind="relationship" relationship="rootViewController" id="rLP-ud-LSQ"/>
+                        <segue destination="Z2K-AZ-fi3" kind="relationship" relationship="rootViewController" id="0f8-kT-Pdq"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tD5-8q-oNo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -67,7 +73,7 @@
         <scene sceneID="P9G-fw-KYt">
             <objects>
                 <viewControllerPlaceholder storyboardName="HomeScreen" id="Z2K-AZ-fi3" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="hjL-m8-TE0"/>
+                    <navigationItem key="navigationItem" title="Aphiwe" id="hjL-m8-TE0"/>
                     <size key="freeformSize" width="393" height="852"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8mk-x7-kI4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -80,9 +86,12 @@
                 <navigationController title="Search" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="B8m-HG-5oh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="JeI-jT-4PO"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1p3-ON-JIc">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" largeTitles="YES" id="1p3-ON-JIc">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

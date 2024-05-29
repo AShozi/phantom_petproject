@@ -24,12 +24,17 @@ class HomeScreenViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpController()
+    }
+    
+    private func setUpController() {
         setupTableView()
         setupCollectionView()
         setupGestureRecognizers()
         viewModel.fetchCollectionViewGames() // Fetch data for collection view
         viewModel.fetchTableViewGames()
     }
+    
     private func setupTableView() {
         tableView.register(CustomHomeTableViewCell.hometableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customHomeCellIdentifier)
         tableView.delegate = self

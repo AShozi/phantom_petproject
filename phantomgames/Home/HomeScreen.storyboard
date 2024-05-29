@@ -10,42 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home Screen View Controller-->
+        <!--Home-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="HomeScreenViewController" customModule="phantomgames" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="HomeScreenViewController" customModule="phantomgames" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mMU-Ku-xuR" userLabel="Button Stack View">
-                                <rect key="frame" x="0.0" y="69" width="430" height="34.333333333333343"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wv-vt-6VL">
-                                        <rect key="frame" x="0.0" y="0.0" width="132.66666666666666" height="34.333333333333336"/>
-                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Action"/>
-                                        <buttonConfiguration key="configuration" style="tinted" title="Action"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2z-d8-Weo">
-                                        <rect key="frame" x="148.66666666666669" y="0.0" width="132.66666666666669" height="34.333333333333336"/>
-                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Action"/>
-                                        <buttonConfiguration key="configuration" style="tinted" title="Shooter"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yb-Ka-cv4">
-                                        <rect key="frame" x="297.33333333333331" y="0.0" width="132.66666666666669" height="34.333333333333336"/>
-                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Action"/>
-                                        <buttonConfiguration key="configuration" style="tinted" title="Stratergy"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qGD-d3-ZZD" userLabel="Carousel Stack View">
-                                <rect key="frame" x="0.0" y="123.33333333333334" width="430" height="378.66666666666663"/>
+                                <rect key="frame" x="0.0" y="69" width="430" height="433"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See something you like?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBw-Uc-h7I">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="21.666666666666668"/>
@@ -54,7 +28,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ma1-OL-EbA">
-                                        <rect key="frame" x="0.0" y="29.666666666666686" width="430" height="349"/>
+                                        <rect key="frame" x="0.0" y="29.666666666666657" width="430" height="403.33333333333337"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="PQW-an-wKL">
                                             <size key="itemSize" width="339" height="208"/>
@@ -64,7 +38,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="cell" id="z15-IX-gTx" customClass="CustomCollectionViewCell" customModule="phantomgames" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="68" width="339" height="213"/>
+                                                <rect key="frame" x="8" y="95.333333333333329" width="339" height="213"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Vh2-PF-GnX">
                                                     <rect key="frame" x="0.0" y="0.0" width="339" height="213"/>
@@ -134,6 +108,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="See All"/>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Zcv-kV-sze" secondAttribute="trailing" constant="1" id="rIj-fF-XXv"/>
+                                        </constraints>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="3" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PrN-Kg-JvQ">
                                         <rect key="frame" x="0.0" y="133.33333333333337" width="430" height="126"/>
@@ -181,27 +158,22 @@
                             <constraint firstAttribute="trailingMargin" secondItem="VdI-sV-nBe" secondAttribute="trailing" constant="-54" id="6Z0-rC-cGw"/>
                             <constraint firstItem="VdI-sV-nBe" firstAttribute="top" secondItem="dOz-I6-FgH" secondAttribute="bottom" constant="5.9999999999998863" id="9mk-n1-hKm"/>
                             <constraint firstItem="VdI-sV-nBe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="180" id="Bac-LH-1Eo"/>
-                            <constraint firstItem="qGD-d3-ZZD" firstAttribute="top" secondItem="mMU-Ku-xuR" secondAttribute="bottom" constant="20" id="Bxx-zR-yjp"/>
                             <constraint firstItem="HD2-9M-b8L" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Cn9-3E-c5r"/>
                             <constraint firstItem="CvH-7K-TVs" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" constant="-51" id="EYA-Jk-gJt"/>
-                            <constraint firstItem="qGD-d3-ZZD" firstAttribute="leading" secondItem="mMU-Ku-xuR" secondAttribute="leading" id="F0r-70-dvv"/>
                             <constraint firstItem="dOz-I6-FgH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="NV1-b3-Ldj"/>
+                            <constraint firstItem="qGD-d3-ZZD" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="Okg-YQ-xdi"/>
+                            <constraint firstItem="qGD-d3-ZZD" firstAttribute="trailing" secondItem="HD2-9M-b8L" secondAttribute="trailing" id="SrB-OY-Bpc"/>
                             <constraint firstItem="CvH-7K-TVs" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="WlX-pm-PQc"/>
                             <constraint firstItem="CvH-7K-TVs" firstAttribute="top" secondItem="VdI-sV-nBe" secondAttribute="top" id="X64-vk-LmG"/>
                             <constraint firstItem="HD2-9M-b8L" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Yzx-rb-x2V"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dOz-I6-FgH" secondAttribute="trailing" id="Z7K-iH-ZyZ"/>
                             <constraint firstAttribute="bottom" secondItem="qGD-d3-ZZD" secondAttribute="bottom" constant="430" id="bSZ-6A-Fo0"/>
-                            <constraint firstItem="mMU-Ku-xuR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bWE-tg-0GZ"/>
-                            <constraint firstItem="mMU-Ku-xuR" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="e6y-FD-orW"/>
                             <constraint firstItem="HD2-9M-b8L" firstAttribute="top" secondItem="qGD-d3-ZZD" secondAttribute="bottom" constant="2" id="jRe-8B-eyp"/>
                             <constraint firstItem="dOz-I6-FgH" firstAttribute="top" secondItem="HD2-9M-b8L" secondAttribute="bottom" constant="6" id="lYy-fH-RqY"/>
-                            <constraint firstItem="mMU-Ku-xuR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="pnc-oF-GJl"/>
-                            <constraint firstItem="mMU-Ku-xuR" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="vwX-Wq-kH2"/>
-                            <constraint firstItem="qGD-d3-ZZD" firstAttribute="trailing" secondItem="mMU-Ku-xuR" secondAttribute="trailing" id="xtO-q7-Z5A"/>
+                            <constraint firstItem="qGD-d3-ZZD" firstAttribute="leading" secondItem="HD2-9M-b8L" secondAttribute="leading" id="ogz-M4-xJT"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CvH-7K-TVs" secondAttribute="trailing" constant="190" id="xvE-ez-sET"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hsq-RX-kB3"/>
                     <connections>
                         <outlet property="browserImage" destination="VdI-sV-nBe" id="zsS-pJ-0d8"/>
                         <outlet property="homeCollectionView" destination="Ma1-OL-EbA" id="KZb-cf-AnE"/>
