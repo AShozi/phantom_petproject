@@ -9,7 +9,9 @@ import Foundation
 
 protocol GameDetailViewModelDelegate: AnyObject {
     func gameDetailFetchSuccess(success: Bool)
+    func reloadView()
     func show(error: String)
+    
 }
 
 class GameDetailViewModel {

@@ -11,6 +11,7 @@ protocol HomeScreenViewModelDelegate: AnyObject {
     func reloadCollectionView()
     func reloadTableView()
     func show(error: String)
+    func setLoading(_ loading: Bool)
 }
 
 class HomeScreenViewModel {
@@ -40,12 +41,7 @@ class HomeScreenViewModel {
         tableViewGames
     }
     // MARK: Functions
-    
-//    func game(atIndex: Int) -> Game? {
-//        allGameList[atIndex]
-//    }
-//    
-    
+
     func collectionViewGame(atIndex: Int) -> Game? {
         collectionViewGames[atIndex]
     }
@@ -54,18 +50,8 @@ class HomeScreenViewModel {
         tableViewGames[atIndex]
     }
     
-//    func fetchHomeResults() {
-//        repository?.fetchHomeResults { [weak self] result in
-//            switch result {
-//            case .success(let homeResults):
-//                self?.allGameList = homeResults
-//                self?.delegate?.reloadView()
-//            case .failure(let error):
-//                self?.delegate?.show(error: error.rawValue)
-//            }
-//        }
-//    }
     func fetchCollectionViewGames() {
+        delegate?.setLoading(true)
         repository?.fetchHomeResultsForCollectionView { [weak self] result in
             switch result {
             case .success(let games):
@@ -78,6 +64,7 @@ class HomeScreenViewModel {
     }
     
     func fetchTableViewGames() {
+        delegate?.setLoading(true)
         repository?.fetchHomeResultsForTableView { [weak self] result in
             switch result {
             case .success(let games):

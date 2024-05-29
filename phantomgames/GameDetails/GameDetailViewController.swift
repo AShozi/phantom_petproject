@@ -15,6 +15,7 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak private var gameReleaseDate: UILabel!
     @IBOutlet weak private var gamePlatformLabel: UILabel!
     @IBOutlet weak private var gamePlayButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK:  Variables
     private lazy var gameDetailViewModel = GameDetailViewModel(repository: GameDetailRepository(), delegate: self)
@@ -25,6 +26,13 @@ class GameDetailViewController: UIViewController {
         gameDetailViewModel.fetchGameDetail()
         updateUI()
     }
+    private func setupActivityIndicator() {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.center = view.center
+        view.addSubview(activityIndicator)
+    }
+
     
     func gameDetailFetchSuccess(success: Bool) {
         if success {
@@ -51,8 +59,13 @@ class GameDetailViewController: UIViewController {
 
 extension GameDetailViewController: GameDetailViewModelDelegate {
     
+    func reloadView() {
+        self.activityIndicator.isHidden = true // Hide the loading indicator after data is loaded
+        updateUI()
+    }
+    
     func show(error: String) {
         displayAlert(title: "Error", message: "Failed to fetch game details.", buttonTitle: "Ok")
     }
-    
+
 }

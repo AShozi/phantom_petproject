@@ -16,6 +16,7 @@ class HomeScreenViewController: UIViewController{
     //new outlets
     @IBOutlet weak private var pcImage: UIImageView!
     @IBOutlet weak private var browserImage: UIImageView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     // MARK: UI Components
     private lazy var viewModel = HomeScreenViewModel(repository: HomeScreenRepository(), delegate: self)
@@ -101,13 +102,7 @@ extension HomeScreenViewController: UICollectionViewDataSource,UICollectionViewD
         }
         self.performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
-//           let destinationVC = segue.destination as? GameDetailViewController,
-//           let gameID = sender as? Int {
-//            destinationVC.assignGameID(gameID: gameID)
-//        }
-//    }
+
 }
 
 // MARK:  TableView Delegate
@@ -150,5 +145,12 @@ extension HomeScreenViewController: HomeScreenViewModelDelegate {
     }
     func show(error: String) {
         displayAlert(title: "Error", message: error, buttonTitle: "Ok")
+    }
+    func setLoading(_ loading: Bool) {
+        if loading {
+            spinner.startAnimating()
+        } else {
+            spinner.stopAnimating()
+        }
     }
 }
