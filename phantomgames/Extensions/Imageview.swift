@@ -20,7 +20,7 @@ extension UIImageView {
             }
         } .resume()
     }
-    func downloaded(from link: String){
+    func downloaded(from link: String) {
         guard let url = URL (string: link) else {return}
         downloaded(from: url)
     }

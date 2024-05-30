@@ -8,6 +8,8 @@ import UIKit
 
 class GameDetailViewController: UIViewController {
     
+    // MARK: IBOutlets
+    
     @IBOutlet weak private var gameImageView: UIImageView!
     @IBOutlet weak private var gameTitleLabel: UILabel!
     @IBOutlet weak private var gameGenreLabel: UILabel!

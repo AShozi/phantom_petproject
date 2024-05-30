@@ -13,8 +13,11 @@ class SearchGameViewController: UIViewController {
     
     @IBOutlet weak private var tableView: UITableView!
     private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepository(), delegate: self)
+
     // MARK: UI Component
     private let searchController = UISearchController(searchResultsController: nil)
+    
+    var gamesURL: String?
     
     // MARK: Functions
     
@@ -22,13 +25,18 @@ class SearchGameViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupSearchController()
-        viewModel.fetchSearchResults()
+        if let url = gamesURL {
+            viewModel.fetchSearchResults(fromURL: url)
+        } else {
+            viewModel.fetchSearchResults()
+        }
     }
     
     private func setupTableView() {
         tableView.register(CustomTableViewCell.tableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customCellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .singleLine
     }
     private func setupSearchController () {
         searchController.searchResultsUpdater = self
