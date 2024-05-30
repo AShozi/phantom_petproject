@@ -48,7 +48,7 @@ class SearchGameViewController: UIViewController {
     }
 }
 
-// MARK:  Search Controller Functions
+// MARK: Search Controller Functions
 
 extension SearchGameViewController: UISearchResultsUpdating {
     
@@ -56,7 +56,7 @@ extension SearchGameViewController: UISearchResultsUpdating {
         viewModel.updateSearchController(searchBarText: searchController.searchBar.text)
     }
 }
-// MARK:  TableView Delegate
+// MARK: TableView Delegate
 
 extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -86,7 +86,7 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// MARK:  ViewModel Delegate
+// MARK: ViewModel Delegate
 
 extension SearchGameViewController: ViewModelDelegate {
     
