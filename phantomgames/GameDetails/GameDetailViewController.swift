@@ -17,6 +17,7 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak private var gameReleaseDate: UILabel!
     @IBOutlet weak private var gamePlatformLabel: UILabel!
     @IBOutlet weak private var gamePlayButton: UIButton!
+    @IBOutlet weak private var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Variables
     
@@ -26,6 +27,7 @@ class GameDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupActivityIndicator()
         gameDetailViewModel.fetchGameDetail()
         updateUI()
     }
@@ -51,9 +53,30 @@ class GameDetailViewController: UIViewController {
             gameImageView.downloaded(from: thumbnailURL)
         }
     }
+    
+    private func setupActivityIndicator() {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.center = view.center
+        view.addSubview(activityIndicator)
+    }
 }
 
 extension GameDetailViewController: GameDetailViewModelDelegate {
+    
+    func setLoading(_ loading: Bool) {
+        if loading {
+            activityIndicator?.startAnimating()
+        } else {
+            activityIndicator?.stopAnimating()
+            activityIndicator?.isHidden = true 
+        }
+    }
+    
+    func reloadView() {
+        activityIndicator?.isHidden = true
+        updateUI()
+    }
     
     func show(error: String) {
         displayAlert(title: "Error", message: "Failed to fetch game details.", buttonTitle: "Ok")

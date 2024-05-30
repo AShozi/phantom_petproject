@@ -102,25 +102,37 @@
                                     <constraint firstAttribute="bottom" secondItem="DXd-88-2B0" secondAttribute="bottom" constant="20" symbolic="YES" id="r6q-kk-gta"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Lz4-el-Kwj" userLabel="Activity Indicator">
+                                <rect key="frame" x="196.66666666666666" y="323" width="36.666666666666657" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="uxM-1P-tRJ"/>
+                                </constraints>
+                                <color key="color" red="0.32549020649999999" green="0.34901961679999999" blue="0.86666667460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3mo-jE-8vS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="39v-3N-pqL"/>
+                            <constraint firstItem="Lz4-el-Kwj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="196.66666666666666" id="6cR-YR-uDr"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3mo-jE-8vS" secondAttribute="trailing" constant="10" id="9IJ-lM-vXG"/>
                             <constraint firstItem="wUU-1o-4UW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="IJo-3B-ik8"/>
                             <constraint firstItem="3mo-jE-8vS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="Njw-Mf-S4u"/>
                             <constraint firstItem="wUU-1o-4UW" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="U05-zC-EFK"/>
                             <constraint firstItem="wUU-1o-4UW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="VgZ-Ce-rCR"/>
+                            <constraint firstItem="Lz4-el-Kwj" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="264" id="Y77-2N-tfL"/>
                             <constraint firstItem="wUU-1o-4UW" firstAttribute="top" secondItem="3mo-jE-8vS" secondAttribute="bottom" constant="55" id="aay-cd-zlZ"/>
                             <constraint firstItem="wUU-1o-4UW" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="dy3-Kd-oiB"/>
                             <constraint firstItem="vdi-0y-oKE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="150" id="hP4-cg-XYJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vdi-0y-oKE" secondAttribute="bottom" constant="20" id="hqj-1q-P8f"/>
                             <constraint firstItem="vdi-0y-oKE" firstAttribute="top" secondItem="wUU-1o-4UW" secondAttribute="bottom" constant="37" id="n1y-1F-oJg"/>
+                            <constraint firstItem="Lz4-el-Kwj" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="qbi-Dk-wkP"/>
+                            <constraint firstItem="wUU-1o-4UW" firstAttribute="top" secondItem="Lz4-el-Kwj" secondAttribute="bottom" constant="64.666666666666742" id="ssc-aV-rlo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Eoc-yj-AwP"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Lz4-el-Kwj" id="Hr4-ld-r3M"/>
                         <outlet property="gameDescriptionLabel" destination="DL8-R9-oyt" id="0cT-7s-IO9"/>
                         <outlet property="gameGenreLabel" destination="W1f-vU-Zgv" id="vcU-Lg-eBj"/>
                         <outlet property="gameImageView" destination="3mo-jE-8vS" id="rzG-j3-Ejf"/>

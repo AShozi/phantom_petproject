@@ -17,6 +17,8 @@ class SearchGameViewController: UIViewController {
     // MARK: UI Component
     private let searchController = UISearchController(searchResultsController: nil)
     
+    var gamesURL: String?
+    
     // MARK: Functions
     
     override func viewDidLoad() {
@@ -42,6 +44,7 @@ class SearchGameViewController: UIViewController {
         tableView.register(CustomTableViewCell.tableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customCellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .singleLine
     }
     
     private func setupSearchController () {
