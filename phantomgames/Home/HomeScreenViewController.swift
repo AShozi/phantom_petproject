@@ -85,7 +85,9 @@ extension HomeScreenViewController: UICollectionViewDataSource,UICollectionViewD
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as!CustomCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CustomCollectionViewCell else {
+            return UICollectionViewCell() // Return a default cell or handle the error appropriately
+        }
         
         if let game = viewModel.collectionViewGame(atIndex: indexPath.item) {
             cell.ConfigCellWith(game: game)

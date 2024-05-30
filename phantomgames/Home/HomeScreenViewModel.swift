@@ -65,6 +65,9 @@ class HomeScreenViewModel {
     func fetchTableViewGames() {
         repository?.fetchHomeResultsForTableView { [weak self] result in
             switch result {
+            case .success(let homeResults):
+                self?.allGameList = homeResults
+                self?.delegate?.reloadView()
             case .success(let games):
                 self?.tableViewGames = games
                 self?.delegate?.reloadTableView()
