@@ -4,11 +4,10 @@
 //
 //  Created by Aphiwe Shozi on 2024/05/13.
 //
-
-import UIKit
-
-protocol HomeScreenViewModelDelegate: AnyObject {
+protocol HomeScreenViewModelDelegate: AnyObject { 
     func reloadView()
+    func reloadCollectionView()
+    func reloadTableView()
     func show(error: String)
 }
 
@@ -18,7 +17,8 @@ class HomeScreenViewModel {
     
     private var repository: HomeScreenRepositoryType?
     private weak var delegate: HomeScreenViewModelDelegate?
-    private(set) var allGameList: [Game] = []
+    private(set) var collectionViewGames: [Game] = []
+    private(set) var tableViewGames: [Game] = []
     
     init(repository: HomeScreenRepositoryType, delegate: HomeScreenViewModelDelegate) {
         self.repository = repository
@@ -26,26 +26,52 @@ class HomeScreenViewModel {
     
     // MARK: Computed Properties
     
-    var gameListCount: Int {
-        allGameList.count
+    var collectionViewGamesCount: Int {
+        collectionViewGames.count
     }
     
+    var tableViewGamesCount: Int {
+        tableViewGames.count
+    }
+    var allGameList: [Game] {
+        tableViewGames
+    }
+ 
     // MARK: Functions
     
-    func game(atIndex: Int) -> Game? {
-        allGameList[atIndex]
+    func collectionViewGame(atIndex: Int) -> Game? {
+        collectionViewGames[atIndex]
     }
-    func fetchHomeResults() {
-        repository?.fetchHomeResults { [weak self] result in
+    
+    func tableViewGame(atIndex: Int) -> Game? {
+        tableViewGames[atIndex]
+    }
+    
+    func fetchCollectionViewGames() {
+        repository?.fetchHomeResultsForCollectionView { [weak self] result in
             switch result {
-            case .success(let homeResults):
-                self?.allGameList = homeResults
+            case .success(let games):
+                self?.collectionViewGames = games
+                self?.delegate?.reloadCollectionView()
+            case .failure(let error):
+                self?.delegate?.show(error: error.rawValue)
+            }
+        }
+    }
+    
+    func fetchTableViewGames() {
+        repository?.fetchHomeResultsForTableView { [weak self] result in
+            switch result {
+            case .success(let games):
+                self?.tableViewGames = games
+                self?.delegate?.reloadTableView()
                 self?.delegate?.reloadView()
             case .failure(let error):
                 self?.delegate?.show(error: error.rawValue)
             }
         }
     }
+    
     func fetchGameDetail(id: Int, completion: @escaping (GameDetailResult)) {
         repository?.fetchGameDetailResults(id: id, completion: completion)
     }

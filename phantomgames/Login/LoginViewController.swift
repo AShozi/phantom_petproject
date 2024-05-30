@@ -21,9 +21,9 @@ class LoginvViewController: UIViewController {
     
     // MARK: IBAction
     
-    @IBAction func logingin(_ sender: Any) {
-        let enteredUsername = username.text ?? ""
-        let enteredPassword = password.text ?? ""
+    @IBAction private func logingin(_ sender: Any) {
+        let enteredUsername = username.text ?? "Admin"
+        let enteredPassword = password.text ?? "Pass123"
         if enteredUsername == "" && enteredPassword == "" {
             performSegue(withIdentifier: Constants.SegueIdentifiers.loginSegueIdentifier, sender: self)
         } else {

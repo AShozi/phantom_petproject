@@ -13,6 +13,7 @@ class SearchGameViewController: UIViewController {
     
     @IBOutlet weak private var tableView: UITableView!
     private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepository(), delegate: self)
+    
     // MARK: UI Component
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -22,7 +23,19 @@ class SearchGameViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupSearchController()
-        viewModel.fetchSearchResults()
+        loadResults()
+    }
+    
+    func setUrl(gamesURL: String) {
+        viewModel.setGameUrl(gamesURL: gamesURL)
+    }
+    
+    private func loadResults() {
+        if let url = viewModel.gamesURL {
+            viewModel.fetchSearchResults(fromURL: url)
+        } else {
+            viewModel.fetchSearchResults()
+        }
     }
     
     private func setupTableView() {
@@ -30,6 +43,7 @@ class SearchGameViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
     private func setupSearchController () {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -41,21 +55,23 @@ class SearchGameViewController: UIViewController {
     }
 }
 
-// MARK:  Search Controller Functions
+// MARK: Search Controller Functions
 
 extension SearchGameViewController: UISearchResultsUpdating {
     
-    func updateSearchResults(for searchController: UISearchController){
+    func updateSearchResults(for searchController: UISearchController) {
         viewModel.updateSearchController(searchBarText: searchController.searchBar.text)
     }
 }
-// MARK:  TableView Delegate
+
+// MARK: TableView Delegate
 
 extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: [indexPath.row])
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let isSearchActive = searchController.isActive && !(searchController.searchBar.text?.isEmpty ?? true)
         return isSearchActive ? viewModel.filteredGamesCount : viewModel.gameListCount
@@ -74,13 +90,12 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
                                              isSearchActive: searchController.isActive,
                                              searchText: searchController.searchBar.text)
         
-        
         cell.populateWith(game: newGame)
         return cell
     }
 }
 
-// MARK:  ViewModel Delegate
+// MARK: ViewModel Delegate
 
 extension SearchGameViewController: ViewModelDelegate {
     

@@ -45,13 +45,20 @@ final class SearchGameViewModelTests: XCTestCase {
         func fetchSearchResults(completion: @escaping (SearchGameResult)) {
             if shouldReturnError {
                 completion(.failure(APIError.serverError))
+            } else {
+                completion(.success(mockGameList))
             }
-            else {
-                completion(Result.success(mockGameList))
+        }
+        
+        func fetchGames(fromURL url: String, completion: @escaping (SearchGameResult)) {
+            if shouldReturnError {
+                completion(.failure(APIError.serverError))
+            } else {
+                completion(.success(mockGameList))
             }
         }
     }
-    
+
     class MockViewModelDelegate: ViewModelDelegate {
         var showErrorCalled = false
         var errorMessage: String?

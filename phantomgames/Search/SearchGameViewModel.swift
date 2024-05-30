@@ -14,11 +14,12 @@ class SearchGameViewModel {
     
     // MARK: Variables
     
+    var gamesURL: String?
     private var repository: SearchGameRepositoryType?
     private weak var delegate: ViewModelDelegate?
     private var allGameList: [Game] = []
     private var filteredGames: [Game] = []
-    
+     
     init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) {
         self.repository = repository
         self.delegate = delegate }
@@ -39,6 +40,10 @@ class SearchGameViewModel {
         allGameList[atIndex]
     }
     
+    func setGameUrl(gamesURL: String) {
+        self.gamesURL = gamesURL
+    }
+    
     func fetchSearchResults() {
         repository?.fetchSearchResults { [weak self] result in
             switch result {
@@ -50,7 +55,20 @@ class SearchGameViewModel {
             }
         }
     }
-    // MARK:  Search Functions
+    
+    func fetchSearchResults(fromURL url: String) {
+        repository?.fetchGames(fromURL: url) { [weak self] result in
+            switch result {
+            case .success(let searchResults):
+                self?.allGameList = searchResults
+                self?.delegate?.reloadView()
+            case .failure(let error):
+                self?.delegate?.show(error: error.rawValue)
+            }
+        }
+    }
+    
+    // MARK: Search Functions
     
     func filteredGame(index: Int, isSearchActive: Bool, searchText: String?) -> Game {
         if isSearchActive {

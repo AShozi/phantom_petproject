@@ -8,6 +8,8 @@ import UIKit
 
 class GameDetailViewController: UIViewController {
     
+    // MARK: IBOutlets
+    
     @IBOutlet weak private var gameImageView: UIImageView!
     @IBOutlet weak private var gameTitleLabel: UILabel!
     @IBOutlet weak private var gameGenreLabel: UILabel!
@@ -17,9 +19,11 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak private var gamePlayButton: UIButton!
     
     // MARK: Variables
+    
     private lazy var gameDetailViewModel = GameDetailViewModel(repository: GameDetailRepository(), delegate: self)
     
     // MARK: Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         gameDetailViewModel.fetchGameDetail()

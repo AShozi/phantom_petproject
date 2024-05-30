@@ -54,6 +54,7 @@ class GameDetailViewModel {
     }
     
     // MARK: Functions
+    
     func fetchGameDetail() {
         repository.fetchGameDetail(id: gameID) { [weak self] result in
             switch result {
@@ -66,6 +67,7 @@ class GameDetailViewModel {
             }
         }
     }
+    
     func updateGameID(gameID: Int) {
         self.gameID = gameID
         fetchGameDetail()
