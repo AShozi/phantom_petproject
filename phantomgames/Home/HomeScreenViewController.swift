@@ -65,9 +65,9 @@ class HomeScreenViewController: UIViewController{
     
     private func navigateToSearchGameScreen(with url: String) {
         let storyboard = UIStoryboard(name: "SearchGame", bundle: nil)
-        if let searchGameVC = storyboard.instantiateViewController(withIdentifier: "SearchGameViewController") as? SearchGameViewController {
-            searchGameVC.gamesURL = url
-            navigationController?.pushViewController(searchGameVC, animated: true)
+        if let searchGameViewController = storyboard.instantiateViewController(withIdentifier: "SearchGameViewController") as? SearchGameViewController {
+            searchGameViewController.setUrl(gamesURL: url)
+            navigationController?.pushViewController(searchGameViewController, animated: true)
         }
     }
     

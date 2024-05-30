@@ -14,11 +14,12 @@ class SearchGameViewModel {
     
     // MARK: Variables
     
+    var gamesURL: String?
     private var repository: SearchGameRepositoryType?
     private weak var delegate: ViewModelDelegate?
     private var allGameList: [Game] = []
     private var filteredGames: [Game] = []
-    
+     
     init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) {
         self.repository = repository
         self.delegate = delegate }
@@ -37,6 +38,10 @@ class SearchGameViewModel {
     
     func game(atIndex: Int) -> Game? {
         allGameList[atIndex]
+    }
+    
+    func setGameUrl(gamesURL: String){
+        self.gamesURL = gamesURL
     }
     
     func fetchSearchResults() {

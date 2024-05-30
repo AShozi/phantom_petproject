@@ -17,16 +17,22 @@ class SearchGameViewController: UIViewController {
     // MARK: UI Component
     private let searchController = UISearchController(searchResultsController: nil)
     
-    var gamesURL: String?
-    
     // MARK: Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupSearchController()
-        if let gamesurl = gamesURL {
-            viewModel.fetchSearchResults(fromURL: gamesurl)
+        loadResults()
+    }
+    
+    func setUrl(gamesURL: String) {
+        viewModel.setGameUrl(gamesURL: gamesURL)
+    }
+    
+    private func loadResults() {
+        if let url = viewModel.gamesURL {
+            viewModel.fetchSearchResults(fromURL: url)
         } else {
             viewModel.fetchSearchResults()
         }
@@ -54,7 +60,8 @@ class SearchGameViewController: UIViewController {
 extension SearchGameViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        viewModel.updateSearchController(searchBarText: searchController.searchBar.text) }
+        viewModel.updateSearchController(searchBarText: searchController.searchBar.text)
+    }
 }
 // MARK: TableView Delegate
 
@@ -69,8 +76,8 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
         return isSearchActive ? viewModel.filteredGamesCount : viewModel.gameListCount
     }
     
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {85
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        85
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,8 +99,10 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
 extension SearchGameViewController: ViewModelDelegate {
     
     func reloadView() {
-        tableView.reloadData() }
+        tableView.reloadData()
+    }
     
     func show(error: String) {
-        displayAlert(title: "Error", message: error, buttonTitle: "Ok") }
+        displayAlert(title: "Error", message: error, buttonTitle: "Ok")
+    }
 }
