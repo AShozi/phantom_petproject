@@ -13,7 +13,6 @@ class HomeScreenViewController: UIViewController{
     
     @IBOutlet weak private var homeCollectionView: UICollectionView!
     @IBOutlet weak private var tableView: UITableView!
-    //new outlets
     @IBOutlet weak private var pcImage: UIImageView!
     @IBOutlet weak private var browserImage: UIImageView!
     
@@ -86,7 +85,7 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CustomCollectionViewCell else {
-            return UICollectionViewCell() // Return a default cell or handle the error appropriately
+            return UICollectionViewCell()
         }
         
         if let game = viewModel.collectionViewGame(atIndex: indexPath.item) {
@@ -132,7 +131,8 @@ extension HomeScreenViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeScreenViewController: HomeScreenViewModelDelegate {
     
-    // MARK:  functions
+    // MARK: functions
+    
     func reloadView() {
         homeCollectionView.reloadData()
         tableView.reloadData()
