@@ -2,8 +2,8 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="GameFavorite" representedClassName="GameFavorite" syncable="YES" codeGenerationType="class">
         <attribute name="gameDescription" optional="YES" attributeType="String"/>
+        <attribute name="gameURL" optional="YES" attributeType="URI"/>
         <attribute name="genre" optional="YES" attributeType="String"/>
-        <attribute name="gmaeURL" optional="YES" attributeType="URI"/>
         <attribute name="icon" optional="YES" attributeType="String"/>
         <attribute name="platform" optional="YES" attributeType="String"/>
         <attribute name="releaseDate" optional="YES" attributeType="String"/>

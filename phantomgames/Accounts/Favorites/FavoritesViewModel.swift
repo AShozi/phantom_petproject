@@ -10,19 +10,23 @@ import Foundation
 class FavoritesViewModel {
 
     // MARK: Variables
+    
     private let favoritesRepository: FavoritesRepositoryType
 
     // MARK: Computed Variables
+    
     var savedFavoritesCount: Int {
         favoritesRepository.getAllFavorites().count
     }
 
-    // MARK:  Initializer
+    // MARK: Initializer
+    
     init(favoritesRepository: FavoritesRepositoryType) {
         self.favoritesRepository = favoritesRepository
     }
 
     // MARK: Functions
+    
     func fetchAndDisplayFavorites() -> [GameFavorite] {
         favoritesRepository.getAllFavorites()
     }
