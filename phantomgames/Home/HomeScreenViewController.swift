@@ -39,10 +39,12 @@ class HomeScreenViewController: UIViewController{
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
     private func setupCollectionView() {
         homeCollectionView.dataSource = self
         homeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
     }
+    
     private func setupGestureRecognizers() {
         let pcTapGesture = UITapGestureRecognizer(target: self, action: #selector(pcImageTapped))
         pcImage.isUserInteractionEnabled = true
@@ -52,6 +54,7 @@ class HomeScreenViewController: UIViewController{
         browserImage.isUserInteractionEnabled = true
         browserImage.addGestureRecognizer(browserTapGesture)
     }
+    
     @objc private func pcImageTapped() {
         navigateToSearchGameScreen(with: Constants.Endpoints.pcGamesURL)
     }
@@ -67,6 +70,7 @@ class HomeScreenViewController: UIViewController{
             navigationController?.pushViewController(searchGameVC, animated: true)
         }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
            let destinationVC = segue.destination as? GameDetailViewController,
@@ -100,7 +104,7 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
             displayAlert(title: "Error", message: "Failed to select game. Please try again.", buttonTitle: "OK")
             return
         }
-        self.performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
+       performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
     }
 }
 

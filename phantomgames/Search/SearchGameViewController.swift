@@ -25,8 +25,8 @@ class SearchGameViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupSearchController()
-        if let url = gamesURL {
-            viewModel.fetchSearchResults(fromURL: url)
+        if let gamesurl = gamesURL {
+            viewModel.fetchSearchResults(fromURL: gamesurl)
         } else {
             viewModel.fetchSearchResults()
         }
@@ -36,7 +36,6 @@ class SearchGameViewController: UIViewController {
         tableView.register(CustomTableViewCell.tableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customCellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .singleLine
     }
     private func setupSearchController () {
         searchController.searchResultsUpdater = self
