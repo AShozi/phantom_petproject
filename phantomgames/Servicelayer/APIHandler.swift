@@ -46,8 +46,8 @@ extension URLSession {
         }
         dataTask.resume()
     }
-    func fetchingAPIImages(URL Url:String, completion: @escaping ([Game]) -> Void){
-            let url = URL(string: Url)
+    func fetchingAPIImages(URL url:String, completion: @escaping ([Game]) -> Void){
+            let url = URL(string: url)
             let session = URLSession.shared
             let dataTask = session.dataTask(with: url!) {data, response, error in
                 do {

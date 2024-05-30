@@ -18,7 +18,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     // MARK: Functions
     
-    func ConfigCellWith(game:Game){
+    func configCellWith(game:Game){
         gametitle.text = game.title
         if !game.thumbnail.isEmpty {
             apiImage.downloaded(from: game.thumbnail)
