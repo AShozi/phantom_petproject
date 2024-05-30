@@ -59,7 +59,6 @@ final class SearchGameViewModelTests: XCTestCase {
         }
     }
 
-    
     class MockViewModelDelegate: ViewModelDelegate {
         var showErrorCalled = false
         var errorMessage: String?
