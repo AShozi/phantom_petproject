@@ -13,6 +13,7 @@ class SearchGameViewController: UIViewController {
     
     @IBOutlet weak private var tableView: UITableView!
     private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepository(), delegate: self)
+
     // MARK: UI Component
     private let searchController = UISearchController(searchResultsController: nil)
     

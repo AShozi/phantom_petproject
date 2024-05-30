@@ -39,12 +39,8 @@ class HomeScreenViewModel {
     var allGameList: [Game] {
         tableViewGames
     }
+ 
     // MARK: Functions
-    
-//    func game(atIndex: Int) -> Game? {
-//        allGameList[atIndex]
-//    }
-//    
     
     func collectionViewGame(atIndex: Int) -> Game? {
         collectionViewGames[atIndex]
@@ -54,17 +50,6 @@ class HomeScreenViewModel {
         tableViewGames[atIndex]
     }
     
-//    func fetchHomeResults() {
-//        repository?.fetchHomeResults { [weak self] result in
-//            switch result {
-//            case .success(let homeResults):
-//                self?.allGameList = homeResults
-//                self?.delegate?.reloadView()
-//            case .failure(let error):
-//                self?.delegate?.show(error: error.rawValue)
-//            }
-//        }
-//    }
     func fetchCollectionViewGames() {
         repository?.fetchHomeResultsForCollectionView { [weak self] result in
             switch result {

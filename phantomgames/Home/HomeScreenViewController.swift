@@ -31,7 +31,7 @@ class HomeScreenViewController: UIViewController{
         setupTableView()
         setupCollectionView()
         setupGestureRecognizers()
-        viewModel.fetchCollectionViewGames() // Fetch data for collection view
+        viewModel.fetchCollectionViewGames()
         viewModel.fetchTableViewGames()
     }
     
@@ -101,13 +101,6 @@ extension HomeScreenViewController: UICollectionViewDataSource,UICollectionViewD
         }
         self.performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
-//           let destinationVC = segue.destination as? GameDetailViewController,
-//           let gameID = sender as? Int {
-//            destinationVC.assignGameID(gameID: gameID)
-//        }
-//    }
 }
 
 // MARK:  TableView Delegate
