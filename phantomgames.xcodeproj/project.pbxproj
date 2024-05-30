@@ -41,6 +41,12 @@
 		D8B0882E2BD006DB00EFD094 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8B0882C2BD006DB00EFD094 /* LaunchScreen.storyboard */; };
 		D8B79B722C0938C70075C73F /* FavoriteCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8B79B702C0938C70075C73F /* FavoriteCoreDataModel.xcdatamodeld */; };
 		D8B79B742C0939F50075C73F /* FavoriteCoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B79B732C0939F50075C73F /* FavoriteCoreDataModel.swift */; };
+		D8B79B782C093CB90075C73F /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B79B772C093CB90075C73F /* FavoriteRepository.swift */; };
+		D8B79B7A2C093CCC0075C73F /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B79B792C093CCC0075C73F /* FavoritesViewModel.swift */; };
+		D8B79B7D2C093D010075C73F /* AccountScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8B79B7C2C093D010075C73F /* AccountScreen.storyboard */; };
+		D8B79B7F2C093D2E0075C73F /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B79B7E2C093D2E0075C73F /* AccountsViewController.swift */; };
+		D8B79B822C093DB90075C73F /* FavoriteCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B79B802C093DB90075C73F /* FavoriteCustomTableViewCell.swift */; };
+		D8B79B832C093DB90075C73F /* FavoriteCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B79B812C093DB90075C73F /* FavoriteCustomTableViewCell.xib */; };
 		D8D1B2AC2BE3928D00C272C9 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1B2AB2BE3928D00C272C9 /* APIHandler.swift */; };
 		D8D1B2C82BE92F3F00C272C9 /* SearchGameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1B2C72BE92F3F00C272C9 /* SearchGameViewModelTests.swift */; };
 /* End PBXBuildFile section */
@@ -90,6 +96,12 @@
 		D8B0882F2BD006DB00EFD094 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8B79B712C0938C70075C73F /* FavoriteCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		D8B79B732C0939F50075C73F /* FavoriteCoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCoreDataModel.swift; sourceTree = "<group>"; };
+		D8B79B772C093CB90075C73F /* FavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
+		D8B79B792C093CCC0075C73F /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		D8B79B7C2C093D010075C73F /* AccountScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountScreen.storyboard; sourceTree = "<group>"; };
+		D8B79B7E2C093D2E0075C73F /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
+		D8B79B802C093DB90075C73F /* FavoriteCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCustomTableViewCell.swift; sourceTree = "<group>"; };
+		D8B79B812C093DB90075C73F /* FavoriteCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCustomTableViewCell.xib; sourceTree = "<group>"; };
 		D8D1B2AB2BE3928D00C272C9 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		D8D1B2BE2BE92EE200C272C9 /* phantomgamesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = phantomgamesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8D1B2C72BE92F3F00C272C9 /* SearchGameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGameViewModelTests.swift; sourceTree = "<group>"; };
@@ -227,6 +239,7 @@
 		D8B088202BD006DA00EFD094 /* phantomgames */ = {
 			isa = PBXGroup;
 			children = (
+				D8B79B752C093C7E0075C73F /* Accounts */,
 				D8B79B6F2C09389A0075C73F /* CoreData */,
 				D896C6C32BF608D200463D3A /* GameDetails */,
 				D853B6A52BD444A700A26090 /* Constants */,
@@ -260,6 +273,35 @@
 				D8B79B732C0939F50075C73F /* FavoriteCoreDataModel.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		D8B79B752C093C7E0075C73F /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				D8B79B7B2C093CDE0075C73F /* CustomCells */,
+				D8B79B762C093C950075C73F /* Favorites */,
+				D8B79B7C2C093D010075C73F /* AccountScreen.storyboard */,
+				D8B79B7E2C093D2E0075C73F /* AccountsViewController.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		D8B79B762C093C950075C73F /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				D8B79B772C093CB90075C73F /* FavoriteRepository.swift */,
+				D8B79B792C093CCC0075C73F /* FavoritesViewModel.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		D8B79B7B2C093CDE0075C73F /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				D8B79B802C093DB90075C73F /* FavoriteCustomTableViewCell.swift */,
+				D8B79B812C093DB90075C73F /* FavoriteCustomTableViewCell.xib */,
+			);
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 		D8D1B2BF2BE92EE200C272C9 /* phantomgamesTests */ = {
@@ -361,8 +403,10 @@
 			files = (
 				D896C6BB2BF3FAF100463D3A /* CustomHomeTableViewCell.xib in Resources */,
 				D82642FB2BD1006800C133BB /* SearchGame.storyboard in Resources */,
+				D8B79B832C093DB90075C73F /* FavoriteCustomTableViewCell.xib in Resources */,
 				D8B0882E2BD006DB00EFD094 /* LaunchScreen.storyboard in Resources */,
 				D896C6C52BF6096000463D3A /* GameDetailStoryboard.storyboard in Resources */,
+				D8B79B7D2C093D010075C73F /* AccountScreen.storyboard in Resources */,
 				D8B0882B2BD006DB00EFD094 /* Assets.xcassets in Resources */,
 				D826430F2BD11DA900C133BB /* HomeScreen.storyboard in Resources */,
 				D82643062BD10F3900C133BB /* CustomTableViewCell.xib in Resources */,
@@ -408,6 +452,7 @@
 			files = (
 				D82642F92BD1005400C133BB /* SearchGameViewController.swift in Sources */,
 				D82642F32BD0FFB400C133BB /* ServiceErrors.swift in Sources */,
+				D8B79B822C093DB90075C73F /* FavoriteCustomTableViewCell.swift in Sources */,
 				D82643092BD1130800C133BB /* UIViewController+Extension.swift in Sources */,
 				D86262272BF75D3800E647AA /* GameDetailViewModel.swift in Sources */,
 				D82643052BD10F3900C133BB /* CustomTableViewCell.swift in Sources */,
@@ -418,6 +463,8 @@
 				D896C6B82BF3F20700463D3A /* CustomHomeTableViewCell.swift in Sources */,
 				D853B6A12BD4176400A26090 /* HomeScreenViewController.swift in Sources */,
 				D853B6A72BD444B800A26090 /* Constants.swift in Sources */,
+				D8B79B7A2C093CCC0075C73F /* FavoritesViewModel.swift in Sources */,
+				D8B79B782C093CB90075C73F /* FavoriteRepository.swift in Sources */,
 				D8D1B2AC2BE3928D00C272C9 /* APIHandler.swift in Sources */,
 				D896C6C72BF6098500463D3A /* GameDetailViewController.swift in Sources */,
 				D896C6AE2BF2100400463D3A /* HomeScreenRepository.swift in Sources */,
@@ -429,6 +476,7 @@
 				D826430D2BD11D3D00C133BB /* LoginViewController.swift in Sources */,
 				D8B088242BD006DA00EFD094 /* SceneDelegate.swift in Sources */,
 				D8094B192BD932FC00EE19ED /* SearchGameViewModel.swift in Sources */,
+				D8B79B7F2C093D2E0075C73F /* AccountsViewController.swift in Sources */,
 				D853B69F2BD40A7800A26090 /* UIImageView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
