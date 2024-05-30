@@ -37,8 +37,4 @@ class HomeScreenRepository: HomeScreenRepositoryType {
         let urlString = Constants.Endpoints.gameDetail + "\(id)"
         URLSession.shared.request(endpoint: urlString, method: .GET, completion: completion)
     }
-    func fetchGameDetailResults(id: Int, completion: @escaping (GameDetailResult)) {
-        let urlString = Constants.Endpoints.gameDetail + "\(id)"
-        URLSession.shared.request(endpoint: urlString, method: .GET, completion: completion)
-    }
 }

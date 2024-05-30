@@ -55,12 +55,12 @@ class HomeScreenViewController: UIViewController{
     }
     @objc private func pcImageTapped() {
         navigateToSearchGameScreen(with: Constants.Endpoints.pcGamesURL)
-     }
-     
-     @objc private func browserImageTapped() {
-         navigateToSearchGameScreen(with: Constants.Endpoints.browserGamesURL)
-     }
-
+    }
+    
+    @objc private func browserImageTapped() {
+        navigateToSearchGameScreen(with: Constants.Endpoints.browserGamesURL)
+    }
+    
     private func navigateToSearchGameScreen(with url: String) {
         let storyboard = UIStoryboard(name: "SearchGame", bundle: nil)
         if let searchGameVC = storyboard.instantiateViewController(withIdentifier: "SearchGameViewController") as? SearchGameViewController {
@@ -77,9 +77,9 @@ class HomeScreenViewController: UIViewController{
     }
 }
 
-// MARK:  Collection View
+// MARK: Collection View
 
-extension HomeScreenViewController: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+extension HomeScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.collectionViewGamesCount
     }
@@ -90,7 +90,7 @@ extension HomeScreenViewController: UICollectionViewDataSource,UICollectionViewD
         }
         
         if let game = viewModel.collectionViewGame(atIndex: indexPath.item) {
-            cell.ConfigCellWith(game: game)
+            cell.configCellWith(game: game)
         }
         return cell
     }
@@ -105,9 +105,9 @@ extension HomeScreenViewController: UICollectionViewDataSource,UICollectionViewD
     }
 }
 
-// MARK:  TableView Delegate
+// MARK: TableView Delegate
 
-extension HomeScreenViewController: UITableViewDelegate,UITableViewDataSource {
+extension HomeScreenViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         3
@@ -128,7 +128,7 @@ extension HomeScreenViewController: UITableViewDelegate,UITableViewDataSource {
     }
 }
 
-// MARK:  ViewModel Delegate
+// MARK: ViewModel Delegate
 
 extension HomeScreenViewController: HomeScreenViewModelDelegate {
     

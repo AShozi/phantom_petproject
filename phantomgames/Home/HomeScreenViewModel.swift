@@ -4,9 +4,7 @@
 //
 //  Created by Aphiwe Shozi on 2024/05/13.
 //
-
-
-protocol HomeScreenViewModelDelegate: AnyObject {
+protocol HomeScreenViewModelDelegate: AnyObject { 
     func reloadView()
     func reloadCollectionView()
     func reloadTableView()
@@ -27,7 +25,6 @@ class HomeScreenViewModel {
         self.delegate = delegate }
     
     // MARK: Computed Properties
-    
     
     var collectionViewGamesCount: Int {
         collectionViewGames.count
@@ -65,12 +62,10 @@ class HomeScreenViewModel {
     func fetchTableViewGames() {
         repository?.fetchHomeResultsForTableView { [weak self] result in
             switch result {
-            case .success(let homeResults):
-                self?.allGameList = homeResults
-                self?.delegate?.reloadView()
             case .success(let games):
                 self?.tableViewGames = games
                 self?.delegate?.reloadTableView()
+                self?.delegate?.reloadView()
             case .failure(let error):
                 self?.delegate?.show(error: error.rawValue)
             }
