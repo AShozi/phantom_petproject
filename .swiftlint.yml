@@ -1,6 +1,9 @@
-included:
-- phantomgames
-- phantomgamesTests
+excluded:
+ - Pods
+ - Carthage
+ - Build
+ - Generated
+ - Generated/Assets
 disabled_rules:
 - trailing_whitespace
 opt_in_rules:
@@ -24,15 +27,18 @@ opt_in_rules:
  - file_name_no_space
  - first_where
  - flatmap_over_map_reduce
+ - force_cast
  - force_unwrapping
  - force_try
  - function_body_length
  - function_parameter_count
  - identical_operands
+ - identifier_name
  - implicit_return
  - implicitly_unwrapped_optional
  - last_where
  - legacy_multiple
+ - line_length
  - multiline_arguments
  - multiline_parameters
  - operator_usage_whitespace
@@ -61,8 +67,4 @@ opt_in_rules:
  - yoda_condition
 line_length:
  warning: 140
-force_cast:
- severity: warning
-identifier_name:
- severity: warning
- validates_start_with_lowercase: warning
+ error: 200
