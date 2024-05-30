@@ -17,25 +17,20 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak private var gameReleaseDate: UILabel!
     @IBOutlet weak private var gamePlatformLabel: UILabel!
     @IBOutlet weak private var gamePlayButton: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak private var activityIndicator: UIActivityIndicatorView!
     
-    // MARK:  Variables
+    // MARK: Variables
+    
     private lazy var gameDetailViewModel = GameDetailViewModel(repository: GameDetailRepository(), delegate: self)
     
     // MARK: Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupActivityIndicator()
         gameDetailViewModel.fetchGameDetail()
         updateUI()
     }
-    private func setupActivityIndicator() {
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.center = view.center
-        view.addSubview(activityIndicator)
-    }
-
     
     func gameDetailFetchSuccess(success: Bool) {
         if success {
@@ -58,12 +53,12 @@ class GameDetailViewController: UIViewController {
             gameImageView.downloaded(from: thumbnailURL)
         }
     }
-}
-
-extension GameDetailViewController: GameDetailViewModelDelegate {
     
-    func show(error: String) {
-        displayAlert(title: "Error", message: "Failed to fetch game details.", buttonTitle: "Ok")
+    private func setupActivityIndicator() {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.center = view.center
+        view.addSubview(activityIndicator)
     }
 }
 
@@ -74,17 +69,16 @@ extension GameDetailViewController: GameDetailViewModelDelegate {
             activityIndicator?.startAnimating()
         } else {
             activityIndicator?.stopAnimating()
-            activityIndicator?.isHidden = true // Hide the loading indicator after data is loaded
+            activityIndicator?.isHidden = true 
         }
     }
     
     func reloadView() {
-        activityIndicator?.isHidden = true // Hide the loading indicator after data is loaded
+        activityIndicator?.isHidden = true
         updateUI()
     }
     
     func show(error: String) {
         displayAlert(title: "Error", message: "Failed to fetch game details.", buttonTitle: "Ok")
     }
-    
 }

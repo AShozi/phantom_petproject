@@ -34,16 +34,11 @@ class HomeScreenViewModel {
     var tableViewGamesCount: Int {
         tableViewGames.count
     }
+    
     var allGameList: [Game] {
         tableViewGames
     }
     
-    var tableViewGamesCount: Int {
-        tableViewGames.count
-    }
-    var allGameList: [Game] {
-        tableViewGames
-    }
     // MARK: Functions
     
     func collectionViewGame(atIndex: Int) -> Game? {

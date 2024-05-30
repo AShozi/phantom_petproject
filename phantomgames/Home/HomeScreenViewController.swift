@@ -13,10 +13,9 @@ class HomeScreenViewController: UIViewController {
     
     @IBOutlet weak private var homeCollectionView: UICollectionView!
     @IBOutlet weak private var tableView: UITableView!
-    //new outlets
     @IBOutlet weak private var pcImage: UIImageView!
     @IBOutlet weak private var browserImage: UIImageView!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak private var spinner: UIActivityIndicatorView!
     
     // MARK: UI Components
     private lazy var viewModel = HomeScreenViewModel(repository: HomeScreenRepository(), delegate: self)
@@ -42,9 +41,10 @@ class HomeScreenViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
     private func setupCollectionView() {
         homeCollectionView.dataSource = self
-        homeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), 
+        homeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil),
                                     forCellWithReuseIdentifier: "CustomCollectionViewCell")
     }
     
@@ -60,7 +60,7 @@ class HomeScreenViewController: UIViewController {
     
     private func navigateToSearchGameScreen(with url: String) {
         let storyboard = UIStoryboard(name: "SearchGame", bundle: nil)
-        if let searchGameViewController = storyboard.instantiateViewController(withIdentifier: "SearchGameViewController") as? 
+        if let searchGameViewController = storyboard.instantiateViewController(withIdentifier: "SearchGameViewController") as?
             SearchGameViewController {
             searchGameViewController.setUrl(gamesURL: url)
             navigationController?.pushViewController(searchGameViewController, animated: true)
@@ -82,42 +82,12 @@ class HomeScreenViewController: UIViewController {
             destinationVC.assignGameID(gameID: gameID)
         }
     }
-    private func setupGestureRecognizers() {
-        let pcTapGesture = UITapGestureRecognizer(target: self, action: #selector(pcImageTapped))
-        pcImage.isUserInteractionEnabled = true
-        pcImage.addGestureRecognizer(pcTapGesture)
-        
-        let browserTapGesture = UITapGestureRecognizer(target: self, action: #selector(browserImageTapped))
-        browserImage.isUserInteractionEnabled = true
-        browserImage.addGestureRecognizer(browserTapGesture)
-    }
-    @objc private func pcImageTapped() {
-        navigateToSearchGameScreen(with: Constants.Endpoints.pcGamesURL)
-     }
-     
-     @objc private func browserImageTapped() {
-         navigateToSearchGameScreen(with: Constants.Endpoints.browserGamesURL)
-     }
-
-    private func navigateToSearchGameScreen(with url: String) {
-        let storyboard = UIStoryboard(name: "SearchGame", bundle: nil)
-        if let searchGameVC = storyboard.instantiateViewController(withIdentifier: "SearchGameViewController") as? SearchGameViewController {
-            searchGameVC.gamesURL = url
-            navigationController?.pushViewController(searchGameVC, animated: true)
-        }
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
-           let destinationVC = segue.destination as? GameDetailViewController,
-           let gameID = sender as? Int {
-            destinationVC.assignGameID(gameID: gameID)
-        }
-    }
 }
 
 // MARK: Collection View
 
 extension HomeScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.collectionViewGamesCount
     }
@@ -141,7 +111,7 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
         }
         performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
     }
-
+    
 }
 
 // MARK: TableView Delegate
@@ -157,7 +127,7 @@ extension HomeScreenViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewIdentifiers.customHomeCellIdentifier) as? 
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewIdentifiers.customHomeCellIdentifier) as?
                 CustomHomeTableViewCell
         else {
             return UITableViewCell()
@@ -190,6 +160,7 @@ extension HomeScreenViewController: HomeScreenViewModelDelegate {
     func show(error: String) {
         displayAlert(title: "Error", message: error, buttonTitle: "Ok")
     }
+    
     func setLoading(_ loading: Bool) {
         if loading {
             spinner.startAnimating()

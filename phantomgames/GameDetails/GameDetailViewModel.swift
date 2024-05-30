@@ -12,12 +12,12 @@ protocol GameDetailViewModelDelegate: AnyObject {
     func reloadView()
     func show(error: String)
     func setLoading(_ loading: Bool)
-
 }
 
 class GameDetailViewModel {
     
     // MARK: Variables
+    
     private let repository: GameDetailRepositoryType
     private var gameID = 0
     private var gameDetail: GameDetail?
@@ -51,12 +51,14 @@ class GameDetailViewModel {
     }
     
     // MARK: Initializer
+    
     init(repository: GameDetailRepositoryType, delegate: GameDetailViewModelDelegate) {
         self.repository = repository
         self.delegate = delegate
     }
     
     // MARK: Functions
+    
     func fetchGameDetail() {
         delegate?.setLoading(true)
         repository.fetchGameDetail(id: gameID) { [weak self] result in
@@ -72,6 +74,7 @@ class GameDetailViewModel {
             }
         }
     }
+    
     func updateGameID(gameID: Int) {
         self.gameID = gameID
         fetchGameDetail()
