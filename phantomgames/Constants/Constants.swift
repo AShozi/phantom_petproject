@@ -13,16 +13,20 @@ struct Constants {
         static let loginSegueIdentifier = "MainSegue"
         static let GameDetailScreenSegue = "GameDetailScreenSegue"
     }
+    
     struct TableViewIdentifiers {
         static let customCellIdentifier = "CustomTableViewCell"
         static let customHomeCellIdentifier = "CustomHomeTableViewCell"
     }
+    
     struct ImageConstants {
         static let placeholder = UIImage(named: "placeholder")
     }
+    
     struct SearchConstants {
         static let searchBarPlaceholder = "Search Game title"
     }
+    
     struct Endpoints {
         static let search = "https://www.freetogame.com/api/games?sort-by=alphabetical"
         static let homeForCollectionView = "https://www.freetogame.com/api/games?sort-by=release-date"

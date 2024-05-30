@@ -8,6 +8,8 @@ import UIKit
 
 class GameDetailViewController: UIViewController {
     
+    // MARK: IBOutlets
+    
     @IBOutlet weak private var gameImageView: UIImageView!
     @IBOutlet weak private var gameTitleLabel: UILabel!
     @IBOutlet weak private var gameGenreLabel: UILabel!
@@ -55,6 +57,13 @@ class GameDetailViewController: UIViewController {
         if let thumbnailURL = gameDetailViewModel.thumbnailURL {
             gameImageView.downloaded(from: thumbnailURL)
         }
+    }
+}
+
+extension GameDetailViewController: GameDetailViewModelDelegate {
+    
+    func show(error: String) {
+        displayAlert(title: "Error", message: "Failed to fetch game details.", buttonTitle: "Ok")
     }
 }
 

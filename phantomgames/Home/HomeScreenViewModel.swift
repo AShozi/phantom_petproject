@@ -4,8 +4,6 @@
 //
 //  Created by Aphiwe Shozi on 2024/05/13.
 //
-
-
 protocol HomeScreenViewModelDelegate: AnyObject {
     func reloadView()
     func reloadCollectionView()
@@ -29,7 +27,6 @@ class HomeScreenViewModel {
     
     // MARK: Computed Properties
     
-    
     var collectionViewGamesCount: Int {
         collectionViewGames.count
     }
@@ -40,8 +37,15 @@ class HomeScreenViewModel {
     var allGameList: [Game] {
         tableViewGames
     }
+    
+    var tableViewGamesCount: Int {
+        tableViewGames.count
+    }
+    var allGameList: [Game] {
+        tableViewGames
+    }
     // MARK: Functions
-
+    
     func collectionViewGame(atIndex: Int) -> Game? {
         collectionViewGames[atIndex]
     }
