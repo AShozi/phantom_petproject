@@ -73,6 +73,15 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGW-Gy-1iV">
+                                                <rect key="frame" x="299" y="105" width="47" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="bookmark.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="addToFavorite:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sX6-Df-64D"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="3MS-QA-ngR" firstAttribute="top" secondItem="DXd-88-2B0" secondAttribute="top" constant="15" id="4NG-Ye-bYe"/>
@@ -132,14 +141,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="Eoc-yj-AwP"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="Lz4-el-Kwj" id="Hr4-ld-r3M"/>
-                        <outlet property="gameDescriptionLabel" destination="DL8-R9-oyt" id="0cT-7s-IO9"/>
-                        <outlet property="gameGenreLabel" destination="W1f-vU-Zgv" id="vcU-Lg-eBj"/>
-                        <outlet property="gameImageView" destination="3mo-jE-8vS" id="rzG-j3-Ejf"/>
-                        <outlet property="gamePlatformLabel" destination="8HE-Zu-btz" id="xLx-vq-1eI"/>
+                        <outlet property="activityIndicator" destination="Lz4-el-Kwj" id="Pgb-tg-fk4"/>
+                        <outlet property="gameDescriptionLabel" destination="DL8-R9-oyt" id="Vxo-s9-7Xi"/>
+                        <outlet property="gameGenreLabel" destination="W1f-vU-Zgv" id="LsX-2h-HEx"/>
+                        <outlet property="gameImageView" destination="3mo-jE-8vS" id="Ybs-Z0-chf"/>
+                        <outlet property="gamePlatformLabel" destination="8HE-Zu-btz" id="vxv-wY-4et"/>
                         <outlet property="gamePlayButton" destination="vdi-0y-oKE" id="b8N-g5-ZMG"/>
-                        <outlet property="gameReleaseDate" destination="6so-12-D6n" id="Ur5-sM-gwf"/>
-                        <outlet property="gameTitleLabel" destination="3MS-QA-ngR" id="aBD-1P-V88"/>
+                        <outlet property="gameReleaseDate" destination="6so-12-D6n" id="SHx-ek-QB7"/>
+                        <outlet property="gameTitleLabel" destination="3MS-QA-ngR" id="1B6-I5-rB1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -149,6 +158,7 @@
     </scenes>
     <resources>
         <image name="Image 2" width="300" height="300"/>
+        <image name="bookmark.fill" catalog="system" width="110" height="128"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -21,30 +21,39 @@
                         <rect key="frame" x="30" y="7" width="83" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gri-X2-I5H">
-                        <rect key="frame" x="321" y="6" width="74" height="35"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gri-X2-I5H">
+                        <rect key="frame" x="353" y="5.6666666666666679" width="48" height="35"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Delete"/>
+                        <buttonConfiguration key="configuration" style="plain" image="trash.fill" catalog="system">
+                            <color key="baseForegroundColor" red="0.32549020649999999" green="0.34901961679999999" blue="0.86666667460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </buttonConfiguration>
                         <connections>
                             <action selector="deleteButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IoR-l6-ZCa"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RO2-r0-Dt6">
-                        <rect key="frame" x="242" y="6" width="67" height="35"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RO2-r0-Dt6">
+                        <rect key="frame" x="242" y="5.6666666666666679" width="67" height="35"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="filled" title="game"/>
+                        <buttonConfiguration key="configuration" style="filled" title="game">
+                            <color key="baseBackgroundColor" red="0.32549020649999999" green="0.34901961679999999" blue="0.86666667460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </buttonConfiguration>
                         <connections>
                             <action selector="gameButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="SwP-jR-Nq7"/>
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="gri-X2-I5H" firstAttribute="leading" secondItem="RO2-r0-Dt6" secondAttribute="trailing" constant="44" id="6oc-2Z-MmO"/>
+                    <constraint firstAttribute="trailing" secondItem="gri-X2-I5H" secondAttribute="trailing" constant="20" id="Z5a-Zi-CN6"/>
+                    <constraint firstItem="gri-X2-I5H" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="n7s-Sk-dHb"/>
+                    <constraint firstItem="gri-X2-I5H" firstAttribute="baseline" secondItem="RO2-r0-Dt6" secondAttribute="baseline" id="x83-s3-UpG"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="deleteButton" destination="gri-X2-I5H" id="ytu-Ja-yQn"/>
                 <outlet property="favoriteGameTitle" destination="8vd-so-9gY" id="XSi-QU-cKA"/>
@@ -53,4 +62,7 @@
             <point key="canvasLocation" x="81.679389312977094" y="21.126760563380284"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="trash.fill" catalog="system" width="117" height="128"/>
+    </resources>
 </document>

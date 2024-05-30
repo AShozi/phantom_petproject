@@ -8,8 +8,6 @@ import UIKit
 
 class GameDetailViewController: UIViewController {
     
-    // MARK: IBOutlets
-    
     @IBOutlet weak private var gameImageView: UIImageView!
     @IBOutlet weak private var gameTitleLabel: UILabel!
     @IBOutlet weak private var gameGenreLabel: UILabel!
@@ -19,19 +17,31 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak private var gamePlayButton: UIButton!
     @IBOutlet weak private var activityIndicator: UIActivityIndicatorView!
     
-    // MARK: Variables
-    
-    private lazy var gameDetailViewModel = GameDetailViewModel(repository: GameDetailRepository(), delegate: self)
+    //IBOUTLET FOR THE ADD FAV
+    @IBAction private func addToFavorite(_ sender: UIButton) {
+           gameDetailViewModel.addToFavorites()
+           let alert = UIAlertController(title: "Added to Favorites", message: "This item has been added to your favorites.", preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+           present(alert, animated: true, completion: nil)
+       }
+
+    // MARK:  Variables
+    private lazy var gameDetailViewModel = GameDetailViewModel(repository: GameDetailRepository(coreDataManager: CoreDataModel()), delegate: self)
     
     // MARK: Functions
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupActivityIndicator()
         gameDetailViewModel.fetchGameDetail()
         updateUI()
     }
-    
+    private func setupActivityIndicator() {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.center = view.center
+        view.addSubview(activityIndicator)
+    }
+
     func gameDetailFetchSuccess(success: Bool) {
         if success {
             self.updateUI()
@@ -53,13 +63,6 @@ class GameDetailViewController: UIViewController {
             gameImageView.downloaded(from: thumbnailURL)
         }
     }
-    
-    private func setupActivityIndicator() {
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.center = view.center
-        view.addSubview(activityIndicator)
-    }
 }
 
 extension GameDetailViewController: GameDetailViewModelDelegate {
@@ -69,7 +72,7 @@ extension GameDetailViewController: GameDetailViewModelDelegate {
             activityIndicator?.startAnimating()
         } else {
             activityIndicator?.stopAnimating()
-            activityIndicator?.isHidden = true 
+            activityIndicator?.isHidden = true
         }
     }
     
@@ -81,4 +84,6 @@ extension GameDetailViewController: GameDetailViewModelDelegate {
     func show(error: String) {
         displayAlert(title: "Error", message: "Failed to fetch game details.", buttonTitle: "Ok")
     }
+    
 }
+

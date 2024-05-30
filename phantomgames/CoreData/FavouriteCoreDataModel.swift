@@ -7,20 +7,24 @@
 import UIKit
 import CoreData
 
-// MARK:  Enum
+// MARK: Enum
+
 enum CoreDataError: Error {
     case noContext
 }
 // MARK:  Protocol
+
 protocol CoreDataModelDelegate: AnyObject {
     func favoritesUpdated()
 }
 
 // MARK:  CoreData Class
+
 class CoreDataModel {
     let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
     // MARK:  Functions
+    
     func fetchAllGameFavorites() -> [GameFavorite] {
         do {
             guard let context = context else { throw CoreDataError.noContext }
