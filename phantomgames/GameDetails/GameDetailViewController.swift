@@ -19,9 +19,11 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak private var gamePlayButton: UIButton!
     
     // MARK: Variables
+    
     private lazy var gameDetailViewModel = GameDetailViewModel(repository: GameDetailRepository(), delegate: self)
     
     // MARK: Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         gameDetailViewModel.fetchGameDetail()

@@ -141,12 +141,15 @@ extension HomeScreenViewController: HomeScreenViewModelDelegate {
         homeCollectionView.reloadData()
         tableView.reloadData()
     }
+    
     func reloadCollectionView() {
         homeCollectionView.reloadData()
     }
+    
     func reloadTableView() {
         tableView.reloadData()
     }
+    
     func show(error: String) {
         displayAlert(title: "Error", message: error, buttonTitle: "Ok")
     }

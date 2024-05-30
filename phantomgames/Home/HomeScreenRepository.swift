@@ -17,24 +17,30 @@ protocol HomeScreenRepositoryType: AnyObject {
 }
 
 class HomeScreenRepository: HomeScreenRepositoryType {
+    
     func fetchAPIImageCollectionView(completion: @escaping (HomeScreenResult)) {
         URLSession.shared.fetchingAPIImages(URL: Constants.Endpoints.homeForCollectionView) {
             games in completion(.success(games))
         }
     }
+    
     func fetchAPIImageTableView(completion: @escaping (HomeScreenResult)) {
         URLSession.shared.fetchingAPIImages(URL: Constants.Endpoints.homeForCollectionView) {
             games in completion(.success(games))
         }
     }
+    
     func fetchHomeResultsForCollectionView(completion: @escaping (HomeScreenResult)) {
         URLSession.shared.request(endpoint: Constants.Endpoints.homeForCollectionView, method: .GET, completion: completion)
     }
+    
     func fetchHomeResultsForTableView(completion: @escaping (HomeScreenResult)) {
         URLSession.shared.request(endpoint: Constants.Endpoints.homeForTableView, method: .GET, completion: completion)
     }
+    
     func fetchGameDetailResults(id: Int, completion: @escaping (GameDetailResult)) {
         let urlString = Constants.Endpoints.gameDetail + "\(id)"
         URLSession.shared.request(endpoint: urlString, method: .GET, completion: completion)
     }
+    
 }
