@@ -35,14 +35,16 @@ class HomeScreenViewController: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.register(CustomHomeTableViewCell.hometableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customHomeCellIdentifier)
+        tableView.register(CustomHomeTableViewCell.hometableViewNib(),
+                           forCellReuseIdentifier: Constants.TableViewIdentifiers.customHomeCellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
     }
     
     private func setupCollectionView() {
         homeCollectionView.dataSource = self
-        homeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+        homeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), 
+                                    forCellWithReuseIdentifier: "CustomCollectionViewCell")
     }
     
     private func setupGestureRecognizers() {
@@ -57,7 +59,8 @@ class HomeScreenViewController: UIViewController {
     
     private func navigateToSearchGameScreen(with url: String) {
         let storyboard = UIStoryboard(name: "SearchGame", bundle: nil)
-        if let searchGameViewController = storyboard.instantiateViewController(withIdentifier: "SearchGameViewController") as? SearchGameViewController {
+        if let searchGameViewController = storyboard.instantiateViewController(withIdentifier: "SearchGameViewController") as? 
+            SearchGameViewController {
             searchGameViewController.setUrl(gamesURL: url)
             navigationController?.pushViewController(searchGameViewController, animated: true)
         }
@@ -104,7 +107,7 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
             displayAlert(title: "Error", message: "Failed to select game. Please try again.", buttonTitle: "OK")
             return
         }
-       performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
+        performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
     }
 }
 
@@ -121,7 +124,8 @@ extension HomeScreenViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewIdentifiers.customHomeCellIdentifier) as? CustomHomeTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewIdentifiers.customHomeCellIdentifier) as? 
+                CustomHomeTableViewCell
         else {
             return UITableViewCell()
         }

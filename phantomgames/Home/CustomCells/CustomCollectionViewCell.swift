@@ -7,6 +7,7 @@
 import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
+    
     // MARK: IBOutlets
     
     @IBOutlet weak private var apiImage: UIImageView!
@@ -18,7 +19,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     // MARK: Functions
     
-    func configCellWith(game:Game){
+    func configCellWith(game: Game) {
         gametitle.text = game.title
         if !game.thumbnail.isEmpty {
             apiImage.downloaded(from: game.thumbnail)

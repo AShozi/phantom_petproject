@@ -47,6 +47,7 @@ class CustomHomeTableViewCell: UITableViewCell {
     static func hometableViewNib() -> UINib {
         UINib(nibName: Constants.TableViewIdentifiers.customHomeCellIdentifier, bundle: nil)
     }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

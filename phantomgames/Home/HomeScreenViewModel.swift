@@ -4,7 +4,7 @@
 //
 //  Created by Aphiwe Shozi on 2024/05/13.
 //
-protocol HomeScreenViewModelDelegate: AnyObject { 
+protocol HomeScreenViewModelDelegate: AnyObject {
     func reloadView()
     func reloadCollectionView()
     func reloadTableView()
@@ -36,7 +36,7 @@ class HomeScreenViewModel {
     var allGameList: [Game] {
         tableViewGames
     }
- 
+    
     // MARK: Functions
     
     func collectionViewGame(atIndex: Int) -> Game? {

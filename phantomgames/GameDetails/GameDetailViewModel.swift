@@ -48,6 +48,7 @@ class GameDetailViewModel {
     }
     
     // MARK: Initializer
+    
     init(repository: GameDetailRepositoryType, delegate: GameDetailViewModelDelegate) {
         self.repository = repository
         self.delegate = delegate

@@ -12,16 +12,17 @@ extension UIImageView {
             guard
                 let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                 let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
+                let data, error == nil,
                 let image = UIImage(data: data)
             else { return }
-            DispatchQueue.main.async() { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 self?.image = image
             }
         } .resume()
     }
+    
     func downloaded(from link: String) {
-        guard let url = URL (string: link) else {return}
+        guard let url = URL(string: link) else { return }
         downloaded(from: url)
     }
 }
