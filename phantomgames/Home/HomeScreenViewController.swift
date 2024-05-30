@@ -13,7 +13,6 @@ class HomeScreenViewController: UIViewController{
     
     @IBOutlet weak private var homeCollectionView: UICollectionView!
     @IBOutlet weak private var tableView: UITableView!
-    //new outlets
     @IBOutlet weak private var pcImage: UIImageView!
     @IBOutlet weak private var browserImage: UIImageView!
     
@@ -40,10 +39,12 @@ class HomeScreenViewController: UIViewController{
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
     private func setupCollectionView() {
         homeCollectionView.dataSource = self
         homeCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
     }
+    
     private func setupGestureRecognizers() {
         let pcTapGesture = UITapGestureRecognizer(target: self, action: #selector(pcImageTapped))
         pcImage.isUserInteractionEnabled = true
@@ -53,6 +54,7 @@ class HomeScreenViewController: UIViewController{
         browserImage.isUserInteractionEnabled = true
         browserImage.addGestureRecognizer(browserTapGesture)
     }
+    
     @objc private func pcImageTapped() {
         navigateToSearchGameScreen(with: Constants.Endpoints.pcGamesURL)
     }
@@ -68,6 +70,7 @@ class HomeScreenViewController: UIViewController{
             navigationController?.pushViewController(searchGameVC, animated: true)
         }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
            let destinationVC = segue.destination as? GameDetailViewController,
@@ -86,7 +89,7 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CustomCollectionViewCell else {
-            return UICollectionViewCell() // Return a default cell or handle the error appropriately
+            return UICollectionViewCell()
         }
         
         if let game = viewModel.collectionViewGame(atIndex: indexPath.item) {
@@ -101,7 +104,7 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
             displayAlert(title: "Error", message: "Failed to select game. Please try again.", buttonTitle: "OK")
             return
         }
-        self.performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
+       performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
     }
 }
 
@@ -132,7 +135,8 @@ extension HomeScreenViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeScreenViewController: HomeScreenViewModelDelegate {
     
-    // MARK:  functions
+    // MARK: functions
+    
     func reloadView() {
         homeCollectionView.reloadData()
         tableView.reloadData()

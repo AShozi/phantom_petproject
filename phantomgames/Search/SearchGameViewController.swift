@@ -25,8 +25,8 @@ class SearchGameViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupSearchController()
-        if let url = gamesURL {
-            viewModel.fetchSearchResults(fromURL: url)
+        if let gamesurl = gamesURL {
+            viewModel.fetchSearchResults(fromURL: gamesurl)
         } else {
             viewModel.fetchSearchResults()
         }
@@ -36,7 +36,6 @@ class SearchGameViewController: UIViewController {
         tableView.register(CustomTableViewCell.tableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customCellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .singleLine
     }
     private func setupSearchController () {
         searchController.searchResultsUpdater = self
@@ -49,15 +48,15 @@ class SearchGameViewController: UIViewController {
     }
 }
 
-// MARK:  Search Controller Functions
+// MARK: Search Controller Functions
 
 extension SearchGameViewController: UISearchResultsUpdating {
     
-    func updateSearchResults(for searchController: UISearchController){
+    func updateSearchResults(for searchController: UISearchController) {
         viewModel.updateSearchController(searchBarText: searchController.searchBar.text)
     }
 }
-// MARK:  TableView Delegate
+// MARK: TableView Delegate
 
 extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -81,13 +80,12 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
                                              isSearchActive: searchController.isActive,
                                              searchText: searchController.searchBar.text)
         
-        
         cell.populateWith(game: newGame)
         return cell
     }
 }
 
-// MARK:  ViewModel Delegate
+// MARK: ViewModel Delegate
 
 extension SearchGameViewController: ViewModelDelegate {
     
