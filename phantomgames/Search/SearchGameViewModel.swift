@@ -40,7 +40,7 @@ class SearchGameViewModel {
         allGameList[atIndex]
     }
     
-    func setGameUrl(gamesURL: String){
+    func setGameUrl(gamesURL: String) {
         self.gamesURL = gamesURL
     }
     
