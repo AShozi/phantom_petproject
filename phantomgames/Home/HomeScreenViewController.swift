@@ -89,7 +89,7 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
         }
         
         if let game = viewModel.collectionViewGame(atIndex: indexPath.item) {
-            cell.ConfigCellWith(game: game)
+            cell.configCellWith(game: game)
         }
         return cell
     }
