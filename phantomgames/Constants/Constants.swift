@@ -12,13 +12,11 @@ struct Constants {
     struct SegueIdentifiers {
         static let loginSegueIdentifier = "MainSegue"
         static let GameDetailScreenSegue = "GameDetailScreenSegue"
-        
     }
     
     struct TableViewIdentifiers {
         static let customCellIdentifier = "CustomTableViewCell"
         static let customHomeCellIdentifier = "CustomHomeTableViewCell"
-        
     }
     
     struct ImageConstants {

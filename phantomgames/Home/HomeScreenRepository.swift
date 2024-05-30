@@ -19,14 +19,14 @@ protocol HomeScreenRepositoryType: AnyObject {
 class HomeScreenRepository: HomeScreenRepositoryType {
     
     func fetchAPIImageCollectionView(completion: @escaping (HomeScreenResult)) {
-        URLSession.shared.fetchingAPIImages(URL: Constants.Endpoints.homeForCollectionView) {
-            games in completion(.success(games))
+        URLSession.shared.fetchingAPIImages(URL: Constants.Endpoints.homeForCollectionView) { games in
+            completion(.success(games))
         }
     }
     
     func fetchAPIImageTableView(completion: @escaping (HomeScreenResult)) {
-        URLSession.shared.fetchingAPIImages(URL: Constants.Endpoints.homeForCollectionView) {
-            games in completion(.success(games))
+        URLSession.shared.fetchingAPIImages(URL: Constants.Endpoints.homeForCollectionView) { games in
+            completion(.success(games))
         }
     }
     
@@ -42,5 +42,4 @@ class HomeScreenRepository: HomeScreenRepositoryType {
         let urlString = Constants.Endpoints.gameDetail + "\(id)"
         URLSession.shared.request(endpoint: urlString, method: .GET, completion: completion)
     }
-    
 }

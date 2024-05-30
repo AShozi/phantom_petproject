@@ -63,6 +63,7 @@ extension SearchGameViewController: UISearchResultsUpdating {
         viewModel.updateSearchController(searchBarText: searchController.searchBar.text)
     }
 }
+
 // MARK: TableView Delegate
 
 extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {

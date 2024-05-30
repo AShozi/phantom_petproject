@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeScreenViewController: UIViewController{
+class HomeScreenViewController: UIViewController {
     
     // MARK: IBOutlets
     
@@ -55,20 +55,20 @@ class HomeScreenViewController: UIViewController{
         browserImage.addGestureRecognizer(browserTapGesture)
     }
     
-    @objc private func pcImageTapped() {
-        navigateToSearchGameScreen(with: Constants.Endpoints.pcGamesURL)
-    }
-    
-    @objc private func browserImageTapped() {
-        navigateToSearchGameScreen(with: Constants.Endpoints.browserGamesURL)
-    }
-    
     private func navigateToSearchGameScreen(with url: String) {
         let storyboard = UIStoryboard(name: "SearchGame", bundle: nil)
         if let searchGameViewController = storyboard.instantiateViewController(withIdentifier: "SearchGameViewController") as? SearchGameViewController {
             searchGameViewController.setUrl(gamesURL: url)
             navigationController?.pushViewController(searchGameViewController, animated: true)
         }
+    }
+    
+    @objc private func pcImageTapped() {
+        navigateToSearchGameScreen(with: Constants.Endpoints.pcGamesURL)
+    }
+    
+    @objc private func browserImageTapped() {
+        navigateToSearchGameScreen(with: Constants.Endpoints.browserGamesURL)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,8 +98,8 @@ extension HomeScreenViewController: UICollectionViewDataSource, UICollectionView
         return cell
     }
     
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell,
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let _ = collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell,
               let gameID = viewModel.collectionViewGame(atIndex: indexPath.item)?.gameID else {
             displayAlert(title: "Error", message: "Failed to select game. Please try again.", buttonTitle: "OK")
             return
