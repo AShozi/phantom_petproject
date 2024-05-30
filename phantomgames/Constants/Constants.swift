@@ -17,7 +17,7 @@ struct Constants {
     struct TableViewIdentifiers {
         static let customCellIdentifier = "CustomTableViewCell"
         static let customHomeCellIdentifier = "CustomHomeTableViewCell"
-        static let customFavoriteCellIdentifier = "CustomHomeTableViewCell"
+        static let customFavoriteCellIdentifier = "FavoriteCell"
     }
     
     struct ImageConstants {

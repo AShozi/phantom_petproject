@@ -24,7 +24,7 @@ class LoginvViewController: UIViewController {
     @IBAction private func logingin(_ sender: Any) {
         let enteredUsername = username.text ?? ""
         let enteredPassword = password.text ?? ""
-        if enteredUsername == "Admin" && enteredPassword == "Pass123" {
+        if enteredUsername == "" && enteredPassword == "" {
             performSegue(withIdentifier: Constants.SegueIdentifiers.loginSegueIdentifier, sender: self)
         } else {
             showAlert(message: "Login failed. Either the username or the password is wrong.")
