@@ -52,7 +52,7 @@ class SearchGameViewController: UIViewController {
 
 extension SearchGameViewController: UISearchResultsUpdating {
     
-    func updateSearchResults(for searchController: UISearchController){
+    func updateSearchResults(for searchController: UISearchController) {
         viewModel.updateSearchController(searchBarText: searchController.searchBar.text)
     }
 }
@@ -79,7 +79,6 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
         let newGame = viewModel.filteredGame(index: indexPath.row,
                                              isSearchActive: searchController.isActive,
                                              searchText: searchController.searchBar.text)
-        
         
         cell.populateWith(game: newGame)
         return cell
