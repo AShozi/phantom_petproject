@@ -20,7 +20,7 @@ extension URLSession {
         call(with: request, completion: completion)
     }
     private func call<T: Codable>(with request: URLRequest, completion: @escaping((Result<T, APIError>) -> Void)) {
-        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+        let dataTask = URLSession.shared.dataTask(with: request) { data, _, error in
             guard error == nil else {
                 DispatchQueue.main.async {
                     completion(.failure(.serverError))
@@ -28,7 +28,7 @@ extension URLSession {
                 return
             }
             do {
-                guard let data = data else {
+                guard let data else {
                     DispatchQueue.main.async {
                         completion(.failure(.serverError))
                     }
@@ -39,27 +39,26 @@ extension URLSession {
                     completion(Result.success(object))
                 }
             } catch {
-                DispatchQueue.main.async{
+                DispatchQueue.main.async {
                     completion(Result.failure(.parsingError))
                 }
             }
         }
         dataTask.resume()
     }
-    func fetchingAPIImages(URL Url:String, completion: @escaping ([Game]) -> Void){
-            let url = URL(string: Url)
-            let session = URLSession.shared
-            let dataTask = session.dataTask(with: url!) {data, response, error in
-                do {
-                    let fetchingData =
-                    try JSONDecoder().decode([Game].self, from: data!)
-                    completion(fetchingData)
-                } catch {
-                    print("Parsing error")
-                }
-                
+    func fetchingAPIImages(URL url: String, completion: @escaping ([Game]) -> Void) {
+        guard let url = URL(string: url) else { return }
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: url) { data, _, _ in
+            guard let data else { return }
+            do {
+                let fetchingData =
+                try JSONDecoder().decode([Game].self, from: data)
+                completion(fetchingData)
+            } catch {
             }
-            dataTask.resume()
+            
         }
+        dataTask.resume()
+    }
 }
-

@@ -19,11 +19,11 @@ class SearchGameViewModel {
     private weak var delegate: ViewModelDelegate?
     private var allGameList: [Game] = []
     private var filteredGames: [Game] = []
-     
+    
     init(repository: SearchGameRepositoryType, delegate: ViewModelDelegate) {
         self.repository = repository
         self.delegate = delegate }
-  
+    
     // MARK: Computed Proterties
     
     var gameListCount: Int {

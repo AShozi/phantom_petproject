@@ -18,6 +18,14 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak private var playButton: UIButton!
     @IBOutlet weak private var genreLabel: UILabel!
     
+    // MARK: IBActions
+    
+    @IBAction private func playButtonTapped(_ sender: Any) {
+        if let gameURL = self.gameURL {
+            UIApplication.shared.open(gameURL)
+        }
+    }
+    
     // MARK: Variables
     
     private var gameURL: URL?
@@ -39,12 +47,6 @@ class CustomTableViewCell: UITableViewCell {
         }
         if let gameURL = URL(string: game.gameURL) {
             self.gameURL = gameURL
-        }
-    }
-    
-    @IBAction private func playButtonTapped(_ sender: Any) {
-        if let gameURL = self.gameURL {
-            UIApplication.shared.open(gameURL)
         }
     }
     

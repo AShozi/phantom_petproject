@@ -58,5 +58,4 @@ extension GameDetailViewController: GameDetailViewModelDelegate {
     func show(error: String) {
         displayAlert(title: "Error", message: "Failed to fetch game details.", buttonTitle: "Ok")
     }
-    
 }
