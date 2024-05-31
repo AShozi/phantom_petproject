@@ -35,9 +35,9 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MS-QA-ngR">
-                                <rect key="frame" x="192.66666666666666" y="409" width="45" height="26.333333333333314"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <color key="textColor" red="0.32549020649999999" green="0.34901961679999999" blue="0.86666667460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="191.33333333333334" y="409" width="47.333333333333343" height="26.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdi-0y-oKE">
@@ -45,6 +45,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Game" buttonSize="medium">
                                     <color key="baseBackgroundColor" red="0.32549020649999999" green="0.34901961679999999" blue="0.86666667460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="gameButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WJj-mL-emp"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1f-vU-Zgv">
                                 <rect key="frame" x="20" y="439" width="44" height="20.333333333333314"/>
@@ -109,6 +112,7 @@
                     <navigationItem key="navigationItem" id="Eoc-yj-AwP"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Lz4-el-Kwj" id="Pgb-tg-fk4"/>
+                        <outlet property="gameButton" destination="vdi-0y-oKE" id="yk1-6V-4ZW"/>
                         <outlet property="gameGenreLabel" destination="W1f-vU-Zgv" id="LsX-2h-HEx"/>
                         <outlet property="gameImageView" destination="3mo-jE-8vS" id="Ybs-Z0-chf"/>
                         <outlet property="gamePlatformLabel" destination="8HE-Zu-btz" id="vxv-wY-4et"/>

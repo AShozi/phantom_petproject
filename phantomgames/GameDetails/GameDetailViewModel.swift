@@ -19,37 +19,41 @@ class GameDetailViewModel {
     private var gameID = 0
     private var gameDetail: GameDetail?
     private weak var delegate: GameDetailViewModelDelegate?
-
+    
     init(repository: GameDetailRepositoryType, delegate: GameDetailViewModelDelegate) {
         self.repository = repository
         self.delegate = delegate
     }
-
+    
     var title: String? {
         gameDetail?.title
     }
-
+    
     var genre: String? {
         gameDetail?.genre
     }
-
+    
     var description: String? {
         gameDetail?.description
     }
-
+    
     var releaseDate: String? {
         gameDetail?.releaseDate
     }
-
+    
     var platform: String? {
         gameDetail?.platform
     }
-
+    
     var thumbnailURL: URL? {
         guard let thumbnail = gameDetail?.thumbnail else { return nil }
         return URL(string: thumbnail)
     }
-
+    
+    var gameURL: String? {
+        gameDetail?.gameURL
+    }
+    
     func fetchGameDetail() {
         delegate?.setLoading(true)
         repository.fetchGameDetail(id: gameID) { [weak self] result in
@@ -65,15 +69,15 @@ class GameDetailViewModel {
             }
         }
     }
-
+    
     func updateGameID(gameID: Int) {
         self.gameID = gameID
         fetchGameDetail()
     }
-
+    
     func addToFavorites() {
         guard let gameDetail = gameDetail else { return }
         repository.addToFavorites(gameDetail: gameDetail)
-   
+        
     }
 }
