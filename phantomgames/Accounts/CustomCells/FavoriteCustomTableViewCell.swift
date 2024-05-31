@@ -21,7 +21,7 @@ class FavoriteCustomTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var favoriteGameTitle: UILabel!
     @IBOutlet private weak var deleteButton: UIButton!
-    @IBOutlet weak var gameButton: UIButton!
+    @IBOutlet private weak var gameButton: UIButton!
     
     // MARK: Function
     
@@ -39,7 +39,7 @@ class FavoriteCustomTableViewCell: UITableViewCell {
         deleteHandler?()
     }
     
-    @IBAction func gameButtonTapped(_ sender: UIButton) {
+    @IBAction private func gameButtonTapped(_ sender: UIButton) {
         if let gameURL = self.gameURL {
             UIApplication.shared.open(gameURL)
         }

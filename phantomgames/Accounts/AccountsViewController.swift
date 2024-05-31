@@ -42,7 +42,6 @@ class AccountsViewController: UIViewController {
         favouriteTableView.dataSource = self
         
     }
-    
 }
 
 // MARK: UITableView Delegate

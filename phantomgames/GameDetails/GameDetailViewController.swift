@@ -11,7 +11,7 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak private var gameImageView: UIImageView!
     @IBOutlet weak private var gameTitleLabel: UILabel!
     @IBOutlet weak private var gameGenreLabel: UILabel!
-    @IBOutlet weak private var gameDescriptionLabel: UILabel!
+//    @IBOutlet weak private var gameDescriptionLabel: UILabel!
     @IBOutlet weak private var gameReleaseDate: UILabel!
     @IBOutlet weak private var gamePlatformLabel: UILabel!
     @IBOutlet weak private var gamePlayButton: UIButton!
@@ -59,7 +59,7 @@ class GameDetailViewController: UIViewController {
     private func updateUI() {
         gameTitleLabel.text = gameDetailViewModel.title
         gameGenreLabel.text = gameDetailViewModel.genre
-        gameDescriptionLabel.text = gameDetailViewModel.description
+//        gameDescriptionLabel.text = gameDetailViewModel.description
         gameReleaseDate.text = gameDetailViewModel.releaseDate
         gamePlatformLabel.text = gameDetailViewModel.platform
         
