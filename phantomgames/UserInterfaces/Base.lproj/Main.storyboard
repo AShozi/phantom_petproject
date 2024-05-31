@@ -23,7 +23,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="IQs-9k-TNk" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="97s-KT-9vF"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="9C1-uS-MYw">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" selectionIndicatorImage="person.crop.circle" catalog="system" id="9C1-uS-MYw">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.14729325488360245" green="0.14729325488360245" blue="0.14729325488360245" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
@@ -124,7 +124,7 @@
         <scene sceneID="kgX-Wa-VC1">
             <objects>
                 <navigationController title="Accounts" automaticallyAdjustsScrollViewInsets="NO" id="3pj-i1-aCh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="fVS-E1-EY0"/>
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="character.book.closed.fill" catalog="system" id="fVS-E1-EY0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gga-2q-aoj">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -141,7 +141,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="character.book.closed.fill" catalog="system" width="115" height="128"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
     </resources>
 </document>
