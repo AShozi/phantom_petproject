@@ -5,7 +5,7 @@
 //  Created by Aphiwe Shozi on 2024/05/17.
 //
 
-import Foundation
+import UIKit
 
 protocol GameDetailViewModelDelegate: AnyObject {
     func gameDetailFetchSuccess(success: Bool)
@@ -15,15 +15,15 @@ protocol GameDetailViewModelDelegate: AnyObject {
 }
 
 class GameDetailViewModel {
-    
-    // MARK: Variables
-    
     private let repository: GameDetailRepositoryType
     private var gameID = 0
     private var gameDetail: GameDetail?
     private weak var delegate: GameDetailViewModelDelegate?
     
-    // MARK: Computed Properties
+    init(repository: GameDetailRepositoryType, delegate: GameDetailViewModelDelegate) {
+        self.repository = repository
+        self.delegate = delegate
+    }
     
     var title: String? {
         gameDetail?.title
@@ -50,14 +50,9 @@ class GameDetailViewModel {
         return URL(string: thumbnail)
     }
     
-    // MARK: Initializer
-    
-    init(repository: GameDetailRepositoryType, delegate: GameDetailViewModelDelegate) {
-        self.repository = repository
-        self.delegate = delegate
+    var gameURL: String? {
+        gameDetail?.gameURL
     }
-    
-    // MARK: Functions
     
     func fetchGameDetail() {
         delegate?.setLoading(true)
@@ -78,5 +73,11 @@ class GameDetailViewModel {
     func updateGameID(gameID: Int) {
         self.gameID = gameID
         fetchGameDetail()
+    }
+    
+    func addToFavorites() {
+        guard let gameDetail = gameDetail else { return }
+        repository.addToFavorites(gameDetail: gameDetail)
+        
     }
 }

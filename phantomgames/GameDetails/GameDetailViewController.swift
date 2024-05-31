@@ -8,20 +8,37 @@ import UIKit
 
 class GameDetailViewController: UIViewController {
     
-    // MARK: IBOutlets
-    
     @IBOutlet weak private var gameImageView: UIImageView!
     @IBOutlet weak private var gameTitleLabel: UILabel!
     @IBOutlet weak private var gameGenreLabel: UILabel!
-    @IBOutlet weak private var gameDescriptionLabel: UILabel!
     @IBOutlet weak private var gameReleaseDate: UILabel!
     @IBOutlet weak private var gamePlatformLabel: UILabel!
     @IBOutlet weak private var gamePlayButton: UIButton!
     @IBOutlet weak private var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak private var gameButton: UIButton!
     
     // MARK: Variables
     
-    private lazy var gameDetailViewModel = GameDetailViewModel(repository: GameDetailRepository(), delegate: self)
+    private var gameURL: URL?
+    
+    @IBAction private func addToFavorite(_ sender: UIButton) {
+        gameDetailViewModel.addToFavorites()
+        let alert = UIAlertController(title: "Added to Favorites",
+                                      message: "This item has been added to your favorites.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func gameButtonTapped(_ sender: Any) {
+        if let gameURL = self.gameURL {
+            UIApplication.shared.open(gameURL)
+        }
+    }
+    
+    // MARK: Variables
+    
+    private lazy var gameDetailViewModel = GameDetailViewModel(repository: GameDetailRepository(coreDataManager: CoreDataModel()), delegate: self)
     
     // MARK: Functions
     
@@ -42,23 +59,27 @@ class GameDetailViewController: UIViewController {
         gameDetailViewModel.updateGameID(gameID: gameID)
     }
     
-    private func updateUI() {
-        gameTitleLabel.text = gameDetailViewModel.title
-        gameGenreLabel.text = gameDetailViewModel.genre
-        gameDescriptionLabel.text = gameDetailViewModel.description
-        gameReleaseDate.text = gameDetailViewModel.releaseDate
-        gamePlatformLabel.text = gameDetailViewModel.platform
-        
-        if let thumbnailURL = gameDetailViewModel.thumbnailURL {
-            gameImageView.downloaded(from: thumbnailURL)
-        }
-    }
-    
     private func setupActivityIndicator() {
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.center = view.center
         view.addSubview(activityIndicator)
+    }
+    
+    private func updateUI() {
+        gameTitleLabel.text = gameDetailViewModel.title
+        gameGenreLabel.text = gameDetailViewModel.genre
+        gameReleaseDate.text = gameDetailViewModel.releaseDate
+        gamePlatformLabel.text = gameDetailViewModel.platform
+        if let thumbnailURL = gameDetailViewModel.thumbnailURL {
+            gameImageView.downloaded(from: thumbnailURL)
+        }
+        if let urlString = gameDetailViewModel.gameURL, let url = URL(string: urlString) {
+            gameURL = url
+            gameButton.isEnabled = true
+        } else {
+            gameButton.isEnabled = false
+        }
     }
 }
 
@@ -69,7 +90,7 @@ extension GameDetailViewController: GameDetailViewModelDelegate {
             activityIndicator?.startAnimating()
         } else {
             activityIndicator?.stopAnimating()
-            activityIndicator?.isHidden = true 
+            activityIndicator?.isHidden = true
         }
     }
     

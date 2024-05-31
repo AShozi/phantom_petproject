@@ -70,11 +70,7 @@ extension SearchGameViewController: UISearchResultsUpdating {
 // MARK: TableView Delegate
 
 extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: [indexPath.row])
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let isSearchActive = searchController.isActive && !(searchController.searchBar.text?.isEmpty ?? true)
         return isSearchActive ? viewModel.filteredGamesCount : viewModel.gameListCount
