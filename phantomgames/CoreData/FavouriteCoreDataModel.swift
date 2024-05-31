@@ -7,27 +7,24 @@
 import UIKit
 import CoreData
 
-// MARK: Enum
-
+// MARK: - Enum
 enum CoreDataError: Error {
     case noContext
 }
-// MARK:  Protocol
 
+// MARK: - Protocol
 protocol CoreDataModelDelegate: AnyObject {
     func favoritesUpdated()
 }
 
-// MARK:  CoreData Class
-
+// MARK: - CoreData Class
 class CoreDataModel {
     let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
-    // MARK:  Functions
-    
+    // MARK: - Functions
     func fetchAllGameFavorites() -> [GameFavorite] {
         do {
-            guard let context = context else { throw CoreDataError.noContext }
+            guard let context else { throw CoreDataError.noContext }
             return try context.fetch(GameFavorite.fetchRequest())
         } catch {
             print("Error fetching game favorites: \(error)")
@@ -37,7 +34,7 @@ class CoreDataModel {
     
     func saveGameToFavorites(gameDetail: GameDetail) {
         do {
-            guard let context = context else { throw CoreDataError.noContext }
+            guard let context else { throw CoreDataError.noContext }
             let fetchRequest: NSFetchRequest<GameFavorite> = GameFavorite.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "title = %@", gameDetail.title)
             let results = try context.fetch(fetchRequest)
@@ -49,7 +46,7 @@ class CoreDataModel {
                 newFavorite.gameDescription = gameDetail.description
                 newFavorite.releaseDate = gameDetail.releaseDate
                 newFavorite.platform = gameDetail.platform
-                newFavorite.gameURL = URL(string: gameDetail.gameURL ?? "")
+                newFavorite.gameURL = URL(string: gameDetail.gameURL)
                 
                 try context.save()
             } else {
@@ -61,21 +58,21 @@ class CoreDataModel {
     }
     
     func removeGameFromFavorites(item: GameFavorite) {
-        guard let context = context else { return }
+        guard let context else { return }
         context.delete(item)
         do {
             try context.save()
-            
         } catch {
             print("Error removing game from favorites: \(error)")
         }
     }
+    
     func clearAllFavorites() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = GameFavorite.fetchRequest()
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {
-            guard let context = context else { throw CoreDataError.noContext }
+            guard let context else { throw CoreDataError.noContext }
             try context.execute(batchDeleteRequest)
             try context.save()
         } catch {

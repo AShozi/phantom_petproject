@@ -13,21 +13,22 @@ protocol GameDetailRepositoryType: AnyObject {
 }
 
 class GameDetailRepository: GameDetailRepositoryType {
-
     
     private let coreDataManager: CoreDataModel
-
-    // MARK: - Initializer
+    
+    // MARK: Initializer
+    
     init(coreDataManager: CoreDataModel) {
         self.coreDataManager = coreDataManager
     }
-
-    // MARK: - Functions
+    
+    // MARK: Functions
+    
     func fetchGameDetail(id: Int, completion: @escaping (Result<GameDetail, APIError>) -> Void) {
         let urlString = Constants.Endpoints.gameDetail + "\(id)"
         URLSession.shared.request(endpoint: urlString, method: .GET, completion: completion)
     }
-
+    
     func addToFavorites(gameDetail: GameDetail) {
         coreDataManager.saveGameToFavorites(gameDetail: gameDetail)
     }

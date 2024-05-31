@@ -17,11 +17,13 @@ class FavoritesRepository: FavoritesRepositoryType {
     private let coreDataManager: CoreDataModel
 
     // MARK: Initialization
+    
     init(coreDataManager: CoreDataModel) {
         self.coreDataManager = coreDataManager
     }
 
     // MARK: Functions
+    
     func addToFavorites(item: GameDetail) {
         coreDataManager.saveGameToFavorites(gameDetail: item)
     }
@@ -33,6 +35,7 @@ class FavoritesRepository: FavoritesRepositoryType {
     func removeFavorite(item: GameFavorite) {
         coreDataManager.removeGameFromFavorites(item: item)
     }
+    
     func clearAllFavorites() {
         coreDataManager.clearAllFavorites()
     }

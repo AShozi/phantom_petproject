@@ -17,12 +17,11 @@ class AccountsViewController: UIViewController {
     // MARK: Variables
     private lazy var favoritesViewModel = FavoritesViewModel(favoritesRepository: FavoritesRepository(coreDataManager: CoreDataModel()))
     
-    
     @IBAction private func resetFavorites(_ sender: UIButton) {
         favoritesViewModel.clearAllFavorites()
         fetchAndDisplayFavorites()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         setupTableView()
         fetchAndDisplayFavorites()
@@ -37,7 +36,8 @@ class AccountsViewController: UIViewController {
     
     private func setupTableView() {
         
-        favouriteTableView.register(FavoriteCustomTableViewCell.favoritetableViewNib(),forCellReuseIdentifier: Constants.TableViewIdentifiers.customFavoriteCellIdentifier)
+        favouriteTableView.register(FavoriteCustomTableViewCell.favoritetableViewNib(),
+                                    forCellReuseIdentifier: Constants.TableViewIdentifiers.customFavoriteCellIdentifier)
         favouriteTableView.delegate = self
         favouriteTableView.dataSource = self
         
@@ -49,13 +49,14 @@ class AccountsViewController: UIViewController {
 
 extension AccountsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoriteItems.count
+        favoriteItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         tableView.register(UINib(nibName: "FavoriteCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "FavoriteCell")
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath) as? FavoriteCustomTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell",
+                                                       for: indexPath) as? FavoriteCustomTableViewCell else {
             return UITableViewCell()
         }
         let game = favoriteItems[indexPath.row]
@@ -66,7 +67,7 @@ extension AccountsViewController: UITableViewDelegate, UITableViewDataSource {
             self.favoriteItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        cell.configure(with: game.title, item: game,gameURL: game.gameURL, deleteHandler: deleteHandler)
+        cell.configure(with: game.title, item: game, gameURL: game.gameURL, deleteHandler: deleteHandler)
         
         return cell
     }

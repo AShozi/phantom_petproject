@@ -18,20 +18,22 @@ class FavoriteCustomTableViewCell: UITableViewCell {
     private var gameURL: URL?
     
     // MARK: IBOutlets
+    
     @IBOutlet private weak var favoriteGameTitle: UILabel!
     @IBOutlet private weak var deleteButton: UIButton!
     @IBOutlet weak var gameButton: UIButton!
     
-    // MARK:  Function
+    // MARK: Function
     
-    func configure(with title: String?, item: GameFavorite,gameURL: URL?, deleteHandler: (() -> Void)?) {
+    func configure(with title: String?, item: GameFavorite, gameURL: URL?, deleteHandler: (() -> Void)?) {
         favoriteGameTitle.text = title
         favoriteItem = item
         self.gameURL = gameURL
         self.deleteHandler = deleteHandler
         
     }
-    // MARK:  IBAction
+    
+    // MARK: IBAction
     
     @IBAction private func deleteButtonTapped(_ sender: UIButton) {
         deleteHandler?()
