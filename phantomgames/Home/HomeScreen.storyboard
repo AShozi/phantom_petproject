@@ -117,7 +117,6 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="hql-Aj-TKb" firstAttribute="leading" secondItem="xsr-l3-wS1" secondAttribute="leading" constant="10" id="bIZ-Es-3yI"/>
-                                            <constraint firstAttribute="bottom" secondItem="hql-Aj-TKb" secondAttribute="bottom" constant="2" id="y0q-fM-U5q"/>
                                         </constraints>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="3" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PrN-Kg-JvQ">
@@ -210,7 +209,7 @@
         <image name="Image 3" width="1113" height="660"/>
         <image name="U" width="1121" height="668"/>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
