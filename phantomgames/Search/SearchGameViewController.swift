@@ -52,6 +52,26 @@ class SearchGameViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = Constants.SearchConstants.searchBarPlaceholder
+        // Customize search bar appearance
+        if let textField = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+            textField.backgroundColor = .darkGray
+            textField.textColor = .white
+            textField.attributedPlaceholder = NSAttributedString(
+                string: Constants.SearchConstants.searchBarPlaceholder,
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+            )
+        }
+        searchController.searchBar.barStyle = .black
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.backgroundColor = .black
+        searchController.searchBar.searchBarStyle = .minimal
+        
+        if let backgroundView = searchController.searchBar.subviews.first?.subviews.first(where: { $0 is UITextField })?.superview {
+            backgroundView.backgroundColor = .black
+            backgroundView.layer.cornerRadius = 10
+            backgroundView.clipsToBounds = true
+        }
+        
         navigationItem.searchController = searchController
         definesPresentationContext = false
         navigationItem.hidesSearchBarWhenScrolling = false
