@@ -68,9 +68,9 @@ class GameDetailViewController: UIViewController {
     
     private func updateUI() {
         gameTitleLabel.text = gameDetailViewModel.title
-        gameGenreLabel.text = gameDetailViewModel.genre
-        gameReleaseDate.text = gameDetailViewModel.releaseDate
-        gamePlatformLabel.text = gameDetailViewModel.platform
+        gameGenreLabel.text = "Genre: \(gameDetailViewModel.genre ?? "N/A")"
+        gameReleaseDate.text = "Release Date: \(gameDetailViewModel.releaseDate ?? "N/A")"
+        gamePlatformLabel.text = "Platform: \(gameDetailViewModel.platform ?? "N/A")"
         if let thumbnailURL = gameDetailViewModel.thumbnailURL {
             gameImageView.downloaded(from: thumbnailURL)
         }

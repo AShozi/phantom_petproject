@@ -50,19 +50,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1f-vU-Zgv">
-                                <rect key="frame" x="20" y="439" width="44" height="20.333333333333314"/>
+                                <rect key="frame" x="20" y="459" width="44" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Platform" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HE-Zu-btz">
-                                <rect key="frame" x="20" y="509.66666666666669" width="64.666666666666671" height="20.333333333333314"/>
+                                <rect key="frame" x="20" y="529.66666666666663" width="64.666666666666671" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="releaseDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6so-12-D6n">
-                                <rect key="frame" x="20" y="474.33333333333331" width="91" height="20.333333333333314"/>
+                                <rect key="frame" x="20" y="494.33333333333331" width="91" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -75,9 +75,9 @@
                                 <color key="color" red="0.32549020649999999" green="0.34901961679999999" blue="0.86666667460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGW-Gy-1iV">
-                                <rect key="frame" x="341" y="432" width="47" height="35"/>
+                                <rect key="frame" x="336" y="469" width="52" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="bookmark.fill" catalog="system">
+                                <buttonConfiguration key="configuration" style="plain" image="star.fill" catalog="system">
                                     <color key="baseForegroundColor" red="0.32549020649999999" green="0.34901961679999999" blue="0.86666667460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -94,7 +94,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3mo-jE-8vS" secondAttribute="trailing" constant="10" id="9IJ-lM-vXG"/>
                             <constraint firstItem="3mo-jE-8vS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="Njw-Mf-S4u"/>
                             <constraint firstItem="8HE-Zu-btz" firstAttribute="top" secondItem="6so-12-D6n" secondAttribute="bottom" constant="15" id="QTz-ip-NfE"/>
-                            <constraint firstItem="W1f-vU-Zgv" firstAttribute="top" secondItem="3mo-jE-8vS" secondAttribute="bottom" constant="70" id="T8y-V3-jaC"/>
+                            <constraint firstItem="W1f-vU-Zgv" firstAttribute="top" secondItem="3mo-jE-8vS" secondAttribute="bottom" constant="90" id="T8y-V3-jaC"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TGW-Gy-1iV" secondAttribute="trailing" constant="42" id="UlT-fy-p30"/>
                             <constraint firstItem="8HE-Zu-btz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="WQE-cp-dBf"/>
                             <constraint firstItem="Lz4-el-Kwj" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="264" id="Y77-2N-tfL"/>
@@ -102,7 +102,7 @@
                             <constraint firstItem="6so-12-D6n" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="eYW-Cx-Zg4"/>
                             <constraint firstItem="vdi-0y-oKE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="150" id="hP4-cg-XYJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vdi-0y-oKE" secondAttribute="bottom" constant="20" id="hqj-1q-P8f"/>
-                            <constraint firstItem="TGW-Gy-1iV" firstAttribute="top" secondItem="3mo-jE-8vS" secondAttribute="bottom" constant="63" id="kmL-L2-deN"/>
+                            <constraint firstItem="TGW-Gy-1iV" firstAttribute="top" secondItem="3mo-jE-8vS" secondAttribute="bottom" constant="100" id="kmL-L2-deN"/>
                             <constraint firstItem="W1f-vU-Zgv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="ne8-NJ-4yp"/>
                             <constraint firstItem="Lz4-el-Kwj" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="qbi-Dk-wkP"/>
                             <constraint firstItem="3MS-QA-ngR" firstAttribute="top" secondItem="3mo-jE-8vS" secondAttribute="bottom" constant="40" id="u1p-xF-ZpV"/>
@@ -127,6 +127,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmark.fill" catalog="system" width="110" height="128"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
     </resources>
 </document>
