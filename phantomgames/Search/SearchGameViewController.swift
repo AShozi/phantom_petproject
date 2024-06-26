@@ -13,8 +13,11 @@ class SearchGameViewController: UIViewController {
     
     @IBOutlet weak private var tableView: UITableView!
     private lazy var viewModel = SearchGameViewModel(repository: SearchGameRepository(), delegate: self)
+    
     // MARK: UI Component
     private let searchController = UISearchController(searchResultsController: nil)
+    
+    var gamesURL: String?
     
     // MARK: Functions
     
@@ -22,40 +25,72 @@ class SearchGameViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupSearchController()
-        viewModel.fetchSearchResults()
+        loadResults()
+    }
+    
+    func setUrl(gamesURL: String) {
+        viewModel.setGameUrl(gamesURL: gamesURL)
+    }
+    
+    private func loadResults() {
+        if let url = viewModel.gamesURL {
+            viewModel.fetchSearchResults(fromURL: url)
+        } else {
+            viewModel.fetchSearchResults()
+        }
     }
     
     private func setupTableView() {
         tableView.register(CustomTableViewCell.tableViewNib(), forCellReuseIdentifier: Constants.TableViewIdentifiers.customCellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .singleLine
     }
+    
     private func setupSearchController () {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = Constants.SearchConstants.searchBarPlaceholder
+        // Customize search bar appearance
+        if let textField = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+            textField.backgroundColor = .darkGray
+            textField.textColor = .white
+            textField.attributedPlaceholder = NSAttributedString(
+                string: Constants.SearchConstants.searchBarPlaceholder,
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+            )
+        }
+        searchController.searchBar.barStyle = .black
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.backgroundColor = .black
+        searchController.searchBar.searchBarStyle = .minimal
+        
+        if let backgroundView = searchController.searchBar.subviews.first?.subviews.first(where: { $0 is UITextField })?.superview {
+            backgroundView.backgroundColor = .black
+            backgroundView.layer.cornerRadius = 10
+            backgroundView.clipsToBounds = true
+        }
+        
         navigationItem.searchController = searchController
         definesPresentationContext = false
         navigationItem.hidesSearchBarWhenScrolling = false
     }
 }
 
-// MARK:  Search Controller Functions
+// MARK: Search Controller Functions
 
 extension SearchGameViewController: UISearchResultsUpdating {
     
-    func updateSearchResults(for searchController: UISearchController){
+    func updateSearchResults(for searchController: UISearchController) {
         viewModel.updateSearchController(searchBarText: searchController.searchBar.text)
     }
 }
-// MARK:  TableView Delegate
+
+// MARK: TableView Delegate
 
 extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: [indexPath.row])
-    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let isSearchActive = searchController.isActive && !(searchController.searchBar.text?.isEmpty ?? true)
         return isSearchActive ? viewModel.filteredGamesCount : viewModel.gameListCount
@@ -74,13 +109,12 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
                                              isSearchActive: searchController.isActive,
                                              searchText: searchController.searchBar.text)
         
-        
         cell.populateWith(game: newGame)
         return cell
     }
 }
 
-// MARK:  ViewModel Delegate
+// MARK: ViewModel Delegate
 
 extension SearchGameViewController: ViewModelDelegate {
     
