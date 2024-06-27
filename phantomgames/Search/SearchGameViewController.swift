@@ -115,7 +115,6 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
         let newGame = viewModel.filteredGame(index: indexPath.row,
                                              isSearchActive: searchController.isActive,
                                              searchText: searchController.searchBar.text)
-        
         cell.populateWith(game: newGame)
         return cell
     }
@@ -125,15 +124,12 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
             displayAlert(title: "Error", message: "Failed to select game. Please try again.", buttonTitle: "OK")
             return
         }
-        
         let game = viewModel.filteredGame(index: indexPath.row,
                                           isSearchActive: searchController.isActive,
                                           searchText: searchController.searchBar.text)
         let gameID = game.gameID
-        
         performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
     }
-    
 }
 
 // MARK: ViewModel Delegate
