@@ -72,7 +72,7 @@ class GameDetailViewController: UIViewController {
         gameGenreLabel.text = "Genre: \(gameDetailViewModel.genre ?? "N/A")"
         gameReleaseDate.text = "Release Date: \(gameDetailViewModel.releaseDate ?? "N/A")"
         gamePlatformLabel.text = "Platform: \(gameDetailViewModel.platform ?? "N/A")"
-        gameDescriptionLabel.text = "Description: \(gameDetailViewModel.description ?? "N/A")"
+        gameDescriptionLabel.text = gameDetailViewModel.description ?? "N/A"
         if let thumbnailURL = gameDetailViewModel.thumbnailURL {
             gameImageView.downloaded(from: thumbnailURL)
         }
