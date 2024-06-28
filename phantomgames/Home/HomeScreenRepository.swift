@@ -14,7 +14,6 @@ protocol HomeScreenRepositoryType: AnyObject {
     func fetchAPIImageTableView(completion: @escaping(HomeScreenResult))
     func fetchHomeResultsForCollectionView(completion: @escaping (HomeScreenResult))
     func fetchHomeResultsForTableView(completion: @escaping (HomeScreenResult))
-    
     func fetchGameDetailResults(id: Int, completion: @escaping (GameDetailResult))
 }
 
