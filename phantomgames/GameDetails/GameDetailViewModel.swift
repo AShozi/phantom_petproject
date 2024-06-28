@@ -59,7 +59,6 @@ class GameDetailViewModel {
         guard let gameDetail else { return false }
         return coreDataManager.gameExistsInFavorites(gameDetail: gameDetail)
     }
-
     
     func fetchGameDetail() {
         delegate?.setLoading(true)
