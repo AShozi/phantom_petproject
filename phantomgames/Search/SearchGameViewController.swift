@@ -127,8 +127,7 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
         let game = viewModel.filteredGame(index: indexPath.row,
                                           isSearchActive: searchController.isActive,
                                           searchText: searchController.searchBar.text)
-        let gameID = game.gameID
-        performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
+        performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: game.gameID)
     }
 }
 
