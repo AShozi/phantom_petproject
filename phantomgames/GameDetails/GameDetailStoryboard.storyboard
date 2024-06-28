@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="59" width="430" height="786"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z8Q-lB-tbb">
-                                        <rect key="frame" x="8" y="0.0" width="410" height="873"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="410" height="1000"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3mo-jE-8vS">
                                                 <rect key="frame" x="0.0" y="4" width="410" height="260"/>
@@ -82,7 +82,7 @@
                                                 <rect key="frame" x="318" y="372" width="52" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="star.fill" catalog="system">
+                                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system">
                                                     <color key="baseForegroundColor" red="0.32549020649999999" green="0.34901961679999999" blue="0.86666667460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -106,7 +106,7 @@
                                             <constraint firstItem="W1f-vU-Zgv" firstAttribute="top" secondItem="3mo-jE-8vS" secondAttribute="bottom" constant="80" id="MyN-oE-qr6"/>
                                             <constraint firstItem="6so-12-D6n" firstAttribute="top" secondItem="8HE-Zu-btz" secondAttribute="bottom" constant="8" id="Ru6-09-U3i"/>
                                             <constraint firstItem="8HE-Zu-btz" firstAttribute="top" secondItem="W1f-vU-Zgv" secondAttribute="bottom" constant="8" id="S0W-FE-1UW"/>
-                                            <constraint firstAttribute="height" constant="873" id="bBT-MG-tLs"/>
+                                            <constraint firstAttribute="height" constant="1000" id="bBT-MG-tLs"/>
                                             <constraint firstItem="W1f-vU-Zgv" firstAttribute="leading" secondItem="Z8Q-lB-tbb" secondAttribute="leading" constant="10" id="dZh-i2-pEc"/>
                                             <constraint firstItem="b6c-uk-muN" firstAttribute="leading" secondItem="Z8Q-lB-tbb" secondAttribute="leading" constant="10" id="l1q-2C-Dcu"/>
                                             <constraint firstItem="3MS-QA-ngR" firstAttribute="leading" secondItem="Z8Q-lB-tbb" secondAttribute="leading" constant="176" id="mFA-fY-PqG"/>
@@ -146,6 +146,7 @@
                     <navigationItem key="navigationItem" id="Eoc-yj-AwP"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Lz4-el-Kwj" id="Pgb-tg-fk4"/>
+                        <outlet property="favoriteButton" destination="TGW-Gy-1iV" id="mLj-iV-c7G"/>
                         <outlet property="gameButton" destination="vdi-0y-oKE" id="yk1-6V-4ZW"/>
                         <outlet property="gameDescriptionLabel" destination="b6c-uk-muN" id="UyG-KG-rXv"/>
                         <outlet property="gameGenreLabel" destination="W1f-vU-Zgv" id="LsX-2h-HEx"/>
@@ -162,6 +163,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="star" catalog="system" width="128" height="116"/>
     </resources>
 </document>
