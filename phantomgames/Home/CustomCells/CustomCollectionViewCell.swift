@@ -7,7 +7,6 @@
 import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
-    
     // MARK: IBOutlets
     
     @IBOutlet weak private var apiImage: UIImageView!

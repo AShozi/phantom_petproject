@@ -68,6 +68,10 @@ class SearchGameViewModel {
         }
     }
     
+    func fetchTableDetailResult(id: Int, completion: @escaping (TableDetailResult)) {
+        repository?.fetchTableDetailResults(id: id, completion: completion)
+    }
+    
     // MARK: Search Functions
     
     func filteredGame(index: Int, isSearchActive: Bool, searchText: String?) -> Game {
