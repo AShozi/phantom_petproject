@@ -28,9 +28,6 @@ final class SearchGameViewModelTests: XCTestCase {
         super.tearDown()
     }
     class MockSearchGameRepository: SearchGameRepositoryType {
-        func fetchTableDetailResults(id: Int, completion: @escaping (phantomgames.TableDetailResult)) {
-            <#code#>
-        }
         
         func fetchAPIImage(completion: @escaping (SearchGameResult)) {
             let mockGames: [Game] = [
