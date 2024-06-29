@@ -21,7 +21,7 @@ class LoginvViewController: UIViewController {
     
     // MARK: IBAction
     
-    @IBAction func logingin(_ sender: Any) {
+    @IBAction private func logingin(_ sender: Any) {
         let enteredUsername = username.text ?? ""
         let enteredPassword = password.text ?? ""
         if enteredUsername == "" && enteredPassword == "" {
