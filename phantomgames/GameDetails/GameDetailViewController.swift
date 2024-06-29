@@ -13,9 +13,11 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak private var gameGenreLabel: UILabel!
     @IBOutlet weak private var gameReleaseDate: UILabel!
     @IBOutlet weak private var gamePlatformLabel: UILabel!
+    @IBOutlet weak private var gameDescriptionLabel: UILabel!
     @IBOutlet weak private var gamePlayButton: UIButton!
     @IBOutlet weak private var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak private var gameButton: UIButton!
+    @IBOutlet weak private var favoriteButton: UIButton!
     
     // MARK: Variables
     
@@ -23,6 +25,7 @@ class GameDetailViewController: UIViewController {
     
     @IBAction private func addToFavorite(_ sender: UIButton) {
         gameDetailViewModel.addToFavorites()
+        updateFavoriteButton()
         let alert = UIAlertController(title: "Added to Favorites",
                                       message: "This item has been added to your favorites.",
                                       preferredStyle: .alert)
@@ -47,11 +50,13 @@ class GameDetailViewController: UIViewController {
         setupActivityIndicator()
         gameDetailViewModel.fetchGameDetail()
         updateUI()
+        updateFavoriteButton()
     }
     
     func gameDetailFetchSuccess(success: Bool) {
         if success {
             self.updateUI()
+            updateFavoriteButton()
         }
     }
     
@@ -71,6 +76,7 @@ class GameDetailViewController: UIViewController {
         gameGenreLabel.text = "Genre: \(gameDetailViewModel.genre ?? "N/A")"
         gameReleaseDate.text = "Release Date: \(gameDetailViewModel.releaseDate ?? "N/A")"
         gamePlatformLabel.text = "Platform: \(gameDetailViewModel.platform ?? "N/A")"
+        gameDescriptionLabel.text = gameDetailViewModel.description ?? "N/A"
         if let thumbnailURL = gameDetailViewModel.thumbnailURL {
             gameImageView.downloaded(from: thumbnailURL)
         }
@@ -81,6 +87,14 @@ class GameDetailViewController: UIViewController {
             gameButton.isEnabled = false
         }
     }
+    private func updateFavoriteButton() {
+        if gameDetailViewModel.isFavorite {
+            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
+    }
+    
 }
 
 extension GameDetailViewController: GameDetailViewModelDelegate {
@@ -97,6 +111,7 @@ extension GameDetailViewController: GameDetailViewModelDelegate {
     func reloadView() {
         activityIndicator?.isHidden = true
         updateUI()
+        updateFavoriteButton()
     }
     
     func show(error: String) {

@@ -18,11 +18,13 @@ class GameDetailViewModel {
     private let repository: GameDetailRepositoryType
     private var gameID = 0
     private var gameDetail: GameDetail?
+    private var coreDataManager: CoreDataModel
     private weak var delegate: GameDetailViewModelDelegate?
     
     init(repository: GameDetailRepositoryType, delegate: GameDetailViewModelDelegate) {
         self.repository = repository
         self.delegate = delegate
+        self.coreDataManager = CoreDataModel()
     }
     
     var title: String? {
@@ -52,6 +54,10 @@ class GameDetailViewModel {
     
     var gameURL: String? {
         gameDetail?.gameURL
+    }
+    var isFavorite: Bool {
+        guard let gameDetail else { return false }
+        return coreDataManager.gameExistsInFavorites(gameDetail: gameDetail)
     }
     
     func fetchGameDetail() {

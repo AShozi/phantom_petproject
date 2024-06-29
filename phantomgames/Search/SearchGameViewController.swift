@@ -76,6 +76,13 @@ class SearchGameViewController: UIViewController {
         definesPresentationContext = false
         navigationItem.hidesSearchBarWhenScrolling = false
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.SegueIdentifiers.GameDetailScreenSegue,
+           let destinationVC = segue.destination as? GameDetailViewController,
+           let gameID = sender as? Int {
+            destinationVC.assignGameID(gameID: gameID)
+        }
+    }
 }
 
 // MARK: Search Controller Functions
@@ -108,9 +115,20 @@ extension SearchGameViewController: UITableViewDelegate, UITableViewDataSource {
         let newGame = viewModel.filteredGame(index: indexPath.row,
                                              isSearchActive: searchController.isActive,
                                              searchText: searchController.searchBar.text)
-        
         cell.populateWith(game: newGame)
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let _ = tableView.cellForRow(at: indexPath) as? CustomTableViewCell else {
+            displayAlert(title: "Error", message: "Failed to select game. Please try again.", buttonTitle: "OK")
+            return
+        }
+        let game = viewModel.filteredGame(index: indexPath.row,
+                                          isSearchActive: searchController.isActive,
+                                          searchText: searchController.searchBar.text)
+        let gameID = game.gameID
+        performSegue(withIdentifier: Constants.SegueIdentifiers.GameDetailScreenSegue, sender: gameID)
     }
 }
 
