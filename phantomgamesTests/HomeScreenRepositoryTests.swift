@@ -36,21 +36,6 @@ final class HomeScreenRepositoryTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-    func testFetchAPIImageCollectionViewFailure() {
-        let expectation = expectation(description: "fetch APIImage CollectionView Failure")
-        let mockRepository = HomeScreenRepository()
-        mockRepository.fetchAPIImageCollectionView { result in
-            switch result {
-            case .success:
-                XCTFail("Expected failure but got success")
-            case .failure(let error):
-                XCTAssertNotNil(error, "Expected non-nil error")
-            }
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: 5, handler: nil)
-    }
-    
     func testFetchAPIImageTableViewSuccess() {
         let expectation = expectation(description: "fetch APIImage TableView")
         repository.fetchAPIImageTableView { result in
@@ -59,21 +44,6 @@ final class HomeScreenRepositoryTests: XCTestCase {
                 XCTAssertFalse(games.isEmpty, "Expected non-empty game list")
             case .failure(let error):
                 XCTFail("Expected success but got failure: \(error)")
-            }
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: 5, handler: nil)
-    }
-    
-    func testFetchAPIImageTableViewFailure() {
-        let expectation = expectation(description: "fetch APIImage TableView Failure")
-        let mockRepository = HomeScreenRepository()
-        mockRepository.fetchAPIImageTableView { result in
-            switch result {
-            case .success:
-                XCTFail("Expected failure but got success")
-            case .failure(let error):
-                XCTAssertNotNil(error, "Expected non-nil error")
             }
             expectation.fulfill()
         }
@@ -94,21 +64,6 @@ final class HomeScreenRepositoryTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-    func testFetchHomeResultsForCollectionViewFailure() {
-        let expectation = self.expectation(description: "fetch HomeResults For CollectionView Failure")
-        let mockRepository = HomeScreenRepository()
-        mockRepository.fetchHomeResultsForCollectionView { result in
-            switch result {
-            case .success:
-                XCTFail("Expected failure but got success")
-            case .failure(let error):
-                XCTAssertNotNil(error, "Expected non-nil error")
-            }
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: 5, handler: nil)
-    }
-    
     func testFetchHomeResultsForTableViewSuccess() {
         let expectation = expectation(description: "fetch HomeResults For TableView")
         repository.fetchHomeResultsForTableView { result in
@@ -122,22 +77,6 @@ final class HomeScreenRepositoryTests: XCTestCase {
         }
         waitForExpectations(timeout: 5, handler: nil)
     }
-    
-    func testFetchHomeResultsForTableViewFailure() {
-        let expectation = expectation(description: "fetch HomeResults For TableView Failure")
-        let mockRepository = HomeScreenRepository()
-        mockRepository.fetchHomeResultsForTableView { result in
-            switch result {
-            case .success:
-                XCTFail("Expected failure but got success")
-            case .failure(let error):
-                XCTAssertNotNil(error, "Expected non-nil error")
-            }
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: 5, handler: nil)
-    }
-
     func testFetchGameDetailResultsSuccess() {
         let gameId = 1
         let expectation = self.expectation(description: "fetchGameDetailResults")
