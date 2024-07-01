@@ -139,7 +139,50 @@ final class HomeScreenViewModelTests: XCTestCase {
             errorMessage = error
         }
     }
+  
+    func testCollectionViewGamesCount() {
+        viewModel.fetchCollectionViewGames()
+        XCTAssertEqual(viewModel.collectionViewGamesCount, 2)
+    }
+
+    func testTableViewGamesCount() {
+        viewModel.fetchTableViewGames()
+        XCTAssertEqual(viewModel.tableViewGamesCount, 2)
+    }
+
+    func testAllGameList() {
+        viewModel.fetchTableViewGames()
+        XCTAssertEqual(viewModel.allGameList.count, 2)
+    }
     
+    func testCollectionViewGameAtIndex() {
+        viewModel.fetchCollectionViewGames()
+        let game = viewModel.collectionViewGame(atIndex: 0)
+        XCTAssertNotNil(game)
+        XCTAssertEqual(game?.title, "game1")
+    }
+
+    func testTableViewGameAtIndex() {
+        viewModel.fetchTableViewGames()
+        let game = viewModel.tableViewGame(atIndex: 0)
+        XCTAssertNotNil(game)
+        XCTAssertEqual(game?.title, "game1")
+    }
+    
+    func testFetchGameDetail() {
+        let expectation = self.expectation(description: "fetchGameDetail")
+        viewModel.fetchGameDetail(id: 1) { result in
+            switch result {
+            case .success(let gameDetail):
+                XCTAssertEqual(gameDetail.title, "game1")
+            case .failure:
+                XCTFail("Expected success but got failure")
+            }
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
     func testFetchCollectionViewGamesSuccess() {
         viewModel.fetchCollectionViewGames()
         XCTAssertTrue(mockDelegate.setLoadingCalled)
