@@ -171,9 +171,7 @@ final class SearchGameViewModelTests: XCTestCase {
         let mockDelegate = MockViewModelDelegate()
         mockRepository.shouldReturnError = true
         viewModel = SearchGameViewModel(repository: mockRepository, delegate: mockDelegate)
-        
         viewModel.fetchSearchResults()
-        
         XCTAssertTrue(mockDelegate.showErrorCalled)
         XCTAssertNotNil(mockDelegate.errorMessage)
         

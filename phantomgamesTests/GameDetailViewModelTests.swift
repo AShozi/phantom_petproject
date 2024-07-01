@@ -29,7 +29,6 @@ final class GameDetailViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    // Mock GameDetailRepository for testing purposes
     class MockGameDetailRepository: GameDetailRepositoryType {
         
         var shouldReturnError = false
@@ -57,11 +56,9 @@ final class GameDetailViewModelTests: XCTestCase {
         
         func addToFavorites(gameDetail: GameDetail) {
             addToFavoritesCalled = true
-            // Implement this if needed
         }
     }
     
-    // Mock GameDetailViewModelDelegate for capturing delegate method calls
     class MockGameDetailViewModelDelegate: GameDetailViewModelDelegate {
         var setLoadingCalled = false
         var gameDetailFetchSuccessCalled = false
@@ -86,40 +83,7 @@ final class GameDetailViewModelTests: XCTestCase {
             errorMessage = error
         }
     }
-//    
-//    func testFetchGameDetailSuccess() {
-//        // Given
-//        let expectedGameID = 1
-//        
-//        // When
-//        viewModel.updateGameID(gameID: expectedGameID)
-//        
-//        XCTAssertTrue(mockDelegate.setLoadingCalled)
-//        XCTAssertTrue(mockDelegate.gameDetailFetchSuccessCalled)
-//        XCTAssertFalse(mockDelegate.showErrorCalled)
-//        XCTAssertEqual(viewModel.title, "game\(expectedGameID)")
-//    }
-//    
-//    func testFetchGameDetailFailure() {
-//        let expectedGameID = 1
-//        mockRepository.shouldReturnError = true
-//        
-//        // When
-//        viewModel.updateGameID(gameID: expectedGameID)
-//        XCTAssertTrue(mockDelegate.setLoadingCalled)
-//        XCTAssertFalse(mockDelegate.gameDetailFetchSuccessCalled)
-//        XCTAssertTrue(mockDelegate.showErrorCalled)
-//        XCTAssertNotNil(mockDelegate.errorMessage)
-//    }
-//    func testIsFavorite() {
-//        // Given
-//        let expectedGameID = 1
-//        
-//        // When
-//        viewModel.updateGameID(gameID: expectedGameID)
-//        
-//        XCTAssertTrue(viewModel.isFavorite)
-//    }
+    
     func testAddToFavorites() {
         
         let expectedGameID = 1
