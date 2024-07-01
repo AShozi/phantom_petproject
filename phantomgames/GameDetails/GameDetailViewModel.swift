@@ -82,7 +82,7 @@ class GameDetailViewModel {
     }
     
     func addToFavorites() {
-        guard let gameDetail = gameDetail else { return }
+        guard let gameDetail else { return }
         repository.addToFavorites(gameDetail: gameDetail)
         
     }
