@@ -83,4 +83,16 @@ class CoreDataModel {
             print("Error clearing all favorites: \(error)")
         }
     }
+    func gameExistsInFavorites(gameDetail: GameDetail) -> Bool {
+        let fetchRequest: NSFetchRequest<GameFavorite> = GameFavorite.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "title = %@", gameDetail.title)
+        do {
+            guard let context else { return false }
+            let results = try context.fetch(fetchRequest)
+            return !results.isEmpty
+        } catch {
+            print("Error checking game in favorites: \(error)")
+            return false
+        }
+    }
 }

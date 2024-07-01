@@ -9,10 +9,12 @@ typealias HomeScreenResult = (Result<[Game], APIError>) -> Void
 typealias GameDetailResult = (Result<GameDetail, APIError>) -> Void
 
 protocol HomeScreenRepositoryType: AnyObject {
+    
     func fetchAPIImageCollectionView(completion: @escaping(HomeScreenResult))
     func fetchAPIImageTableView(completion: @escaping(HomeScreenResult))
     func fetchHomeResultsForCollectionView(completion: @escaping (HomeScreenResult))
     func fetchHomeResultsForTableView(completion: @escaping (HomeScreenResult))
+    
     func fetchGameDetailResults(id: Int, completion: @escaping (GameDetailResult))
 }
 
