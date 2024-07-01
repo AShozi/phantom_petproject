@@ -160,7 +160,7 @@ final class SearchGameViewModelTests: XCTestCase {
             repository: MockSearchGameRepository(),
             delegate: successDelegate)
         
-        successDelegate.testException = XCTestExpectation(description:"We expect this function to succeed")
+        successDelegate.testException = XCTestExpectation(description: "We expect this function to succeed")
         
         viewModel.fetchSearchResults()
     }
