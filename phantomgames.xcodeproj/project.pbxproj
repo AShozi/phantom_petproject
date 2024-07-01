@@ -31,6 +31,7 @@
 		D88CA25B2C32B49600EDBC9A /* GameDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88CA25A2C32B49600EDBC9A /* GameDetailViewModelTests.swift */; };
 		D88CA25F2C32C84700EDBC9A /* URLSessionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88CA25E2C32C84700EDBC9A /* URLSessionExtensionTests.swift */; };
 		D88CA2612C32CED500EDBC9A /* UIImageViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88CA2602C32CED500EDBC9A /* UIImageViewExtensionTests.swift */; };
+		D88CA2652C32DA2000EDBC9A /* HomeScreenRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88CA2642C32DA2000EDBC9A /* HomeScreenRepositoryTests.swift */; };
 		D896C6AA2BF20FCE00463D3A /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896C6A92BF20FCE00463D3A /* HomeScreenViewModel.swift */; };
 		D896C6AE2BF2100400463D3A /* HomeScreenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896C6AD2BF2100400463D3A /* HomeScreenRepository.swift */; };
 		D896C6B52BF29C5400463D3A /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896C6B42BF29C5400463D3A /* CustomCollectionViewCell.swift */; };
@@ -88,6 +89,7 @@
 		D88CA25A2C32B49600EDBC9A /* GameDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewModelTests.swift; sourceTree = "<group>"; };
 		D88CA25E2C32C84700EDBC9A /* URLSessionExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtensionTests.swift; sourceTree = "<group>"; };
 		D88CA2602C32CED500EDBC9A /* UIImageViewExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensionTests.swift; sourceTree = "<group>"; };
+		D88CA2642C32DA2000EDBC9A /* HomeScreenRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenRepositoryTests.swift; sourceTree = "<group>"; };
 		D896C6A92BF20FCE00463D3A /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		D896C6AD2BF2100400463D3A /* HomeScreenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenRepository.swift; sourceTree = "<group>"; };
 		D896C6B42BF29C5400463D3A /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				D88CA25A2C32B49600EDBC9A /* GameDetailViewModelTests.swift */,
 				D88CA25E2C32C84700EDBC9A /* URLSessionExtensionTests.swift */,
 				D88CA2602C32CED500EDBC9A /* UIImageViewExtensionTests.swift */,
+				D88CA2642C32DA2000EDBC9A /* HomeScreenRepositoryTests.swift */,
 			);
 			path = phantomgamesTests;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D88CA2652C32DA2000EDBC9A /* HomeScreenRepositoryTests.swift in Sources */,
 				D88CA25F2C32C84700EDBC9A /* URLSessionExtensionTests.swift in Sources */,
 				D88CA25B2C32B49600EDBC9A /* GameDetailViewModelTests.swift in Sources */,
 				D88CA2612C32CED500EDBC9A /* UIImageViewExtensionTests.swift in Sources */,
