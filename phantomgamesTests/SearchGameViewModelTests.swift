@@ -97,6 +97,26 @@ final class SearchGameViewModelTests: XCTestCase {
                 completion(.success(mockGameList))
             }
         }
+        func fetchTableDetailResults(id: Int, completion: @escaping (TableDetailResult)) {
+            let mockGameDetail = GameDetail(
+                gameID: id,
+                title: "game\(id)",
+                description: "Description of game\(id)",
+                genre: "genre\(id)",
+                platform: "platform\(id)",
+                publisher: "publisher\(id)",
+                developer: "developer\(id)",
+                releaseDate: "Date\(id)",
+                thumbnail: "Thumbnail\(id)",
+                gameURL: "URL\(id)"
+            )
+            if shouldReturnError {
+                completion(.failure(APIError.serverError))
+            } else {
+                completion(.success(mockGameDetail))
+            }
+        }
+        
     }
 
     class MockViewModelDelegate: ViewModelDelegate {
@@ -144,11 +164,10 @@ final class SearchGameViewModelTests: XCTestCase {
         viewModel.fetchSearchResults()
     }
     
-    func testFetchSearchResultFail(){
+    func testFetchSearchResultFail() {
         
         let mockRepository = MockSearchGameRepository()
         let mockDelegate = MockViewModelDelegate()
-        
         mockRepository.shouldReturnError = true
         viewModel = SearchGameViewModel(repository: mockRepository, delegate: mockDelegate)
         
