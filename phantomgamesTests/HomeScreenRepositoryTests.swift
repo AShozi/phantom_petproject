@@ -80,7 +80,7 @@ final class HomeScreenRepositoryTests: XCTestCase {
     
     func testFetchGameDetailResultsSuccess() {
         let gameId = 1
-        let expectation = self.expectation(description: "fetchGameDetailResults")
+        let expectation = expectation(description: "fetch GameDetail should suceed")
         repository.fetchGameDetailResults(id: gameId) { result in
             switch result {
             case .success(let gameDetail):
@@ -94,8 +94,8 @@ final class HomeScreenRepositoryTests: XCTestCase {
     }
     
     func testFetchGameDetailResultsFailure() {
-        let gameId = -1 // Assuming an invalid game ID for testing failure scenario
-        let expectation = self.expectation(description: "fetch GameDetail Results Failure")
+        let gameId = -1
+        let expectation = expectation(description: "fetch GameDetail Results Failure")
         let mockRepository = HomeScreenRepository()
         mockRepository.fetchGameDetailResults(id: gameId) { result in
             switch result {

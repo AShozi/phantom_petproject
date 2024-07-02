@@ -22,8 +22,6 @@ class URLSessionExtensionTests: XCTestCase {
         super.tearDown()
     }
     
-    // MARK: - Test Cases
-    
     func testRequestSuccess() {
         let endpoint = "https://www.freetogame.com/api/games"
         let expectation = expectation(description: "API request should succeed")
