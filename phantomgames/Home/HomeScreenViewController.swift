@@ -67,11 +67,13 @@ class HomeScreenViewController: UIViewController {
         }
     }
     
-    @objc private func pcImageTapped() {
+    @objc
+    private func pcImageTapped() {
         navigateToSearchGameScreen(with: Constants.Endpoints.pcGamesURL)
     }
     
-    @objc private func browserImageTapped() {
+    @objc
+    private func browserImageTapped() {
         navigateToSearchGameScreen(with: Constants.Endpoints.browserGamesURL)
     }
     

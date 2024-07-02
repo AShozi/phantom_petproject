@@ -28,6 +28,7 @@ final class SearchGameViewModelTests: XCTestCase {
         super.tearDown()
     }
     class MockSearchGameRepository: SearchGameRepositoryType {
+        
         func fetchAPIImage(completion: @escaping (SearchGameResult)) {
             let mockGames: [Game] = [
                 Game(gameID: 1,
@@ -159,7 +160,7 @@ final class SearchGameViewModelTests: XCTestCase {
             repository: MockSearchGameRepository(),
             delegate: successDelegate)
         
-        successDelegate.testException = XCTestExpectation(description:"We expect this function to succeed")
+        successDelegate.testException = XCTestExpectation(description: "We expect this function to succeed")
         
         viewModel.fetchSearchResults()
     }
@@ -170,9 +171,7 @@ final class SearchGameViewModelTests: XCTestCase {
         let mockDelegate = MockViewModelDelegate()
         mockRepository.shouldReturnError = true
         viewModel = SearchGameViewModel(repository: mockRepository, delegate: mockDelegate)
-        
         viewModel.fetchSearchResults()
-        
         XCTAssertTrue(mockDelegate.showErrorCalled)
         XCTAssertNotNil(mockDelegate.errorMessage)
         
