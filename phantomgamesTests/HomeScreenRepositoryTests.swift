@@ -77,6 +77,7 @@ final class HomeScreenRepositoryTests: XCTestCase {
         }
         waitForExpectations(timeout: 5, handler: nil)
     }
+    
     func testFetchGameDetailResultsSuccess() {
         let gameId = 1
         let expectation = self.expectation(description: "fetchGameDetailResults")

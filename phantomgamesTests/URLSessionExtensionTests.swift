@@ -40,7 +40,6 @@ class URLSessionExtensionTests: XCTestCase {
     }
     
     func testRequestFailure() {
-        
         let endpoint = "invalidURL"
         sessionUnderTest.request(endpoint: endpoint, method: .GET) { (result: Result<[Game], APIError>) in
             switch result {

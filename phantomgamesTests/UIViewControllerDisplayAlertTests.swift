@@ -34,7 +34,6 @@ class UIViewControllerDisplayAlertTests: XCTestCase {
     }
     
     func testDisplayAlertSuccess() {
-        
         let title = "Test Title"
         let message = "Test Message"
         let buttonTitle = "OK"

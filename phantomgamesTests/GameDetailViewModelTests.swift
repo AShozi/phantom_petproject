@@ -85,7 +85,6 @@ final class GameDetailViewModelTests: XCTestCase {
     }
     
     func testAddToFavorites() {
-        
         let expectedGameID = 1
         viewModel.updateGameID(gameID: expectedGameID)
         viewModel.addToFavorites()
