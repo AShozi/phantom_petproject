@@ -62,7 +62,7 @@ final class HomeScreenViewModelTests: XCTestCase {
         
         func fetchAPIImageCollectionView(completion: @escaping (phantomgames.HomeScreenResult)) {
             if shouldReturnError {
-                completion(.failure(.serverError))
+                completion(.failure(APIError.serverError))
             } else {
                 completion(.success(mockGameList))
             }
@@ -70,7 +70,7 @@ final class HomeScreenViewModelTests: XCTestCase {
         
         func fetchAPIImageTableView(completion: @escaping (phantomgames.HomeScreenResult)) {
             if shouldReturnError {
-                completion(.failure(.serverError))
+                completion(.failure(APIError.serverError))
             } else {
                 completion(.success(mockGameList))
             }
@@ -78,7 +78,7 @@ final class HomeScreenViewModelTests: XCTestCase {
 
         func fetchHomeResultsForCollectionView(completion: @escaping (phantomgames.HomeScreenResult)) {
             if shouldReturnError {
-                completion(.failure(.serverError))
+                completion(.failure(APIError.serverError))
             } else {
                 completion(.success(mockGameList))
             }
@@ -86,7 +86,7 @@ final class HomeScreenViewModelTests: XCTestCase {
         
         func fetchHomeResultsForTableView(completion: @escaping (phantomgames.HomeScreenResult)) {
             if shouldReturnError {
-                completion(.failure(.serverError))
+                completion(.failure(APIError.serverError))
             } else {
                 completion(.success(mockGameList))
             }
@@ -106,7 +106,7 @@ final class HomeScreenViewModelTests: XCTestCase {
                 gameURL: "URL\(id)"
             )
             if shouldReturnError {
-                completion(.failure(.serverError))
+                completion(.failure(APIError.serverError))
             } else {
                 completion(.success(mockGameDetail))
             }
@@ -170,7 +170,7 @@ final class HomeScreenViewModelTests: XCTestCase {
     }
     
     func testFetchGameDetail() {
-        let expectation = self.expectation(description: "fetchGameDetail")
+        let expectation = expectation(description: "fetchGameDetail")
         viewModel.fetchGameDetail(id: 1) { result in
             switch result {
             case .success(let gameDetail):
